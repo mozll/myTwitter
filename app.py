@@ -18,7 +18,7 @@ def dict_factory(cursor, row):
 ##############################
 @get("/")
 def _():
-  return "Home page TESTING TO PYTHONANYWHERE1"
+  return "Hello world"
 
 
 ## TEST WITH NEW FOLDER NAME, IT WORKS
