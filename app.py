@@ -1,7 +1,14 @@
-from bottle import default_app, get, template, run, view
+## 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  TOKEN FROM GITHUB
+
+
+# https://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@github.com/mozll/myTwitter.git
+
+from bottle import default_app, get, template, run, view, post
 import sqlite3
 import pathlib
 import git
+
+
 
 ##############################
 def dict_factory(cursor, row):
@@ -11,7 +18,7 @@ def dict_factory(cursor, row):
 ##############################
 @get("/")
 def _():
-  return "Home page"
+  return "Home page TWO"
 
 
 ## TEST WITH NEW FOLDER NAME, IT WORKS
