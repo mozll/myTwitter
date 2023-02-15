@@ -12,7 +12,7 @@ def dict_factory(cursor, row):
 def _():
   return "Home page"
 
-
+#hello world
 
 ##############################
 @get("/<username>")
