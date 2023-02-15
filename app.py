@@ -13,6 +13,8 @@ def _():
   return "Home page"
 
 
+## TEST WITH NEW FOLDER NAME
+
 ##############################
 @get("/<username>")
 # @view("profile")
