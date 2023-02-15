@@ -1,6 +1,7 @@
 from bottle import default_app, get, template, run, view
 import sqlite3
 import pathlib
+import git
 
 ##############################
 def dict_factory(cursor, row):
@@ -46,6 +47,18 @@ def _(username):
 
 ##############################
 ##############################
+
+@post('/secret_url_for_git_hook')
+def git_update():
+  repo = git.Repo('./mysite')
+  origin = repo.remotes.origin
+  repo.create_head('main', origin.refs.main).set_tracking_branch(origin.refs.main).checkout()
+  origin.pull()
+  return ""
+
+##############################
+
+
 # Run in AWS
 try:
   import production
@@ -53,6 +66,5 @@ try:
   application = default_app()
 # Run in local computer
 except Exception as ex:
-  print("Server running locally")
+  print("Running local server")
   run(host="127.0.0.1", port=80, debug=True, reloader=True)
-
