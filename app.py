@@ -18,7 +18,7 @@ def dict_factory(cursor, row):
 ##############################
 @get("/")
 def _():
-  return "Home page TWO"
+  return "Home page TWO working"
 
 
 ## TEST WITH NEW FOLDER NAME, IT WORKS
