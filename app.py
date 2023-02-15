@@ -1,7 +1,7 @@
-## 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  TOKEN FROM GITHUB
+## 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  TOKEN FROM GITHUB
 
 
-# https://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@github.com/mozll/myTwitter.git
+# https://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@github.com/mozll/myTwitter.git
 
 from bottle import default_app, get, template, run, view, post
 import sqlite3
@@ -18,7 +18,7 @@ def dict_factory(cursor, row):
 ##############################
 @get("/")
 def _():
-  return "Home page THREE working"
+  return "Home page TESTING TO PYTHONANYWHERE"
 
 
 ## TEST WITH NEW FOLDER NAME, IT WORKS
