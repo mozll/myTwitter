@@ -11,62 +11,72 @@
   </title>
 </head>
 
-<body class="grid grid-cols-[100fr_150fr_100fr] w-full h-full text-gray-200 text-lg bg-slate-800 font-light overflow-hidden overflow-y-scroll">
+<body class="grid grid-cols-[100fr_150fr_100fr] w-full h-full text-gray-200 text-lg bg-twitterDarkMode font-light overflow-hidden overflow-y-scroll max-w-screen-xl m-auto">
 
   <!-- left -->
   <div class="sticky top-0 flex flex-col h-screen px-16 py-4">
 
-    <div class="flex flex-col gap-2 text-2xl">
-      <a href="/" class="flex items-center gap-2 px-4 py-2 hover:bg-gray-700 rounded-full">
+    <div class="flex flex-col gap-2 text-2xl ">
+      <a href="/" class="flex items-center gap-2 px-4 py-2 rounded-full">
         <svg width="32" height="32" viewBox="0 0 24 24" class=""><path fill="currentColor" d="M22.46 6c-.77.35-1.6.58-2.46.69c.88-.53 1.56-1.37 1.88-2.38c-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29c0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15c0 1.49.75 2.81 1.91 3.56c-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07a4.28 4.28 0 0 0 4 2.98a8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21C16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56c.84-.6 1.56-1.36 2.14-2.23Z"/></svg>
       </a>
 
-      <a href="/" class="flex items-center gap-2 px-4 py-2 hover:bg-gray-700 rounded-full">
+      <a href="/" class="flex items-center gap-2 px-4 py-3 hover:bg-twitterLightDark rounded-full ">
         <svg width="32" height="32" viewBox="0 0 24 24" class=""><path fill="currentColor" d="M10 20v-6h4v6h5v-8h3L12 3L2 12h3v8z"/></svg>
         <span>
           Home
         </span>
       </a>
 
-      <a href="/explore" class="flex items-center gap-2 px-4 py-2 hover:bg-gray-700 rounded-full">
+      <a href="/explore" class="flex items-center gap-2 px-4 py-3 hover:bg-twitterLightDark rounded-full">
         <svg width="32" height="32" viewBox="0 0 256 256"><path fill="currentColor" d="M224 88h-48.6l8.5-46.6a8 8 0 0 0-15.8-2.8l-9 49.4h-47.7l8.5-46.6a8 8 0 1 0-15.8-2.8l-9 49.4H43.6a8 8 0 1 0 0 16h48.6l-8.7 48H32a8 8 0 0 0 0 16h48.6l-8.5 46.6a8 8 0 0 0 6.5 9.3H80a8 8 0 0 0 7.9-6.6l9-49.4h47.7l-8.5 46.6a8 8 0 0 0 6.5 9.3h1.4a8 8 0 0 0 7.9-6.6l9-49.4h51.5a8 8 0 0 0 0-16h-48.6l8.7-48H224a8 8 0 0 0 0-16Zm-76.5 64H99.8l8.7-48h47.7Z"/></svg>
         <span>
           Explore
         </span>
       </a>
 
-      <a href="/explore" class="flex gap-2 px-4 py-2 hover:bg-gray-700 rounded-full relative">
+      <a href="/notifications" class="flex gap-2 px-4 py-3 hover:bg-twitterLightDark rounded-full relative">
         <svg width="32" height="32" viewBox="0 0 256 256"><path fill="currentColor" d="M168 224a8 8 0 0 1-8 8H96a8 8 0 0 1 0-16h64a8 8 0 0 1 8 8Zm52.9-32a15.9 15.9 0 0 1-13.9 8H49a16 16 0 0 1-13.8-24.1c5.9-10.2 13-29.6 13-63.9v-8A79.9 79.9 0 0 1 128 24h.6c43.7.3 79.2 36.6 79.2 80.9v7.1c0 34.3 7.1 53.7 13 63.9a16.2 16.2 0 0 1 .1 16.1Zm-13.9-8c-6.9-12-15.2-34.1-15.2-72v-7.1c0-35.5-28.4-64.7-63.3-64.9h-.5a63.8 63.8 0 0 0-63.8 64v8c0 37.9-8.3 60-15.2 72Z"/></svg>
         <span>
           Notifications
         </span>
-        <div class="flex justify-center absolute top-0 left-7 px-2 text-base text-white bg-sky-500 rounded-full">
+        <div class="flex justify-center absolute top-0 left-7 px-2 text-base text-white bg-twitterGreen rounded-full">
           4
         </div>
       </a>
 
-      <a href="/messages" class="flex items-center gap-2 px-4 py-2 hover:bg-gray-700 rounded-full">
+      <a href="/messages" class="flex items-center gap-2 px-4 py-3 hover:bg-twitterLightDark rounded-full">
         <svg width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M5 5h13a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3m0 1c-.5 0-.94.17-1.28.47l7.78 5.03l7.78-5.03C18.94 6.17 18.5 6 18 6H5m6.5 6.71L3.13 7.28C3.05 7.5 3 7.75 3 8v9a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2V8c0-.25-.05-.5-.13-.72l-8.37 5.43Z"/></svg>
         <span>
           Messages
         </span>
       </a>
 
-      <a href="/messages" class="flex items-center gap-2 px-4 py-2 hover:bg-gray-700 rounded-full">
+      <a href="/bookmarks" class="flex items-center gap-2 px-4 py-3 hover:bg-twitterLightDark rounded-full">
         <svg width="32" height="32" viewBox="0 0 256 256"><path fill="currentColor" d="M184 36H72a12 12 0 0 0-12 12v176a3.9 3.9 0 0 0 2.1 3.5a3.8 3.8 0 0 0 4-.1l61.9-38.7l61.9 38.7a3.9 3.9 0 0 0 2.1.6a4.1 4.1 0 0 0 1.9-.5a3.9 3.9 0 0 0 2.1-3.5V48a12 12 0 0 0-12-12Zm4 180.8l-57.9-36.2a4 4 0 0 0-4.2 0L68 216.8V48a4 4 0 0 1 4-4h112a4 4 0 0 1 4 4Z"/></svg>
         <span>
           Bookmarks
         </span>
       </a>
 
-      <a href="/messages" class="flex items-center gap-2 px-4 py-2 hover:bg-gray-700 rounded-full">
+      <a href="/profile" class="flex items-center gap-2 px-4 py-3 hover:bg-twitterLightDark rounded-full">
         <svg width="32" height="32" viewBox="0 0 256 256"><path fill="currentColor" d="M230.2 213a118.3 118.3 0 0 0-70.5-54.6a70 70 0 1 0-63.4 0A118.3 118.3 0 0 0 25.8 213a5.9 5.9 0 0 0 2.2 8.2a6 6 0 0 0 8.2-2.2a106 106 0 0 1 183.6 0a6 6 0 0 0 5.2 3a6.4 6.4 0 0 0 3-.8a5.9 5.9 0 0 0 2.2-8.2ZM70 96a58 58 0 1 1 58 58a58 58 0 0 1-58-58Z"/></svg>
         <span>
           Profile
-        </span>
+        </span> 
       </a>
 
-      <button class="py-3 text-white bg-sky-500 rounded-full">
+      <a href="/more" class="flex items-center gap-2 px-4 py-3 hover:bg-twitterLightDark rounded-full">
+        <svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+
+        <span>
+          More
+        </span> 
+      </a>
+
+      <button class="py-3 text-white bg-twitterGreen hover:bg-twitterDarkGreen rounded-full font-semibold">
         Tweet
       </button>
 
@@ -99,8 +109,8 @@
       </div>
       <!-- right of tweet -->
       <div class="w-full">
-        <div class="flex">
-          <div class="flex">
+        <div class="flex items-center">
+          <div class="flex"> 
             <span class="flex items-center gap-2 font-bold">
               {{tweet["fullname"]}}
               % if tweet["verified"]:
@@ -120,7 +130,7 @@
           {{tweet["message"]}}
 
           % if tweet.get("message_image"): 
-          <img src="images/{{tweet['message_image']}}" class="w-full mt-4 max-h-96 rounded-lg object-contain">
+          <img src="images/{{tweet['message_image']}}" class="w-full mt-4 max-h-96 rounded-2xl object-contain">
           % end
         </div>
         <div class="flex justify-between mt-2">
@@ -183,7 +193,7 @@
           sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
           PageMaker including versions of Lorem Ipsum.
         </div>
-        <img src="images/5.jpg" class="w-full max-h-96 mt-4 rounded-lg object-contain">
+        <img src="images/5.jpg" class="w-full max-h-96 mt-4 rounded-2xl object-contain">
       </div>
       <!-- end right of tweet -->
     </div>
@@ -208,7 +218,7 @@
         </div>
         <div class="mt-4">
           But also the leap into electronic.
-          <img src="images/3.jpg" class="w-full max-h-96 mt-4 rounded-lg object-contain">
+          <img src="images/3.jpg" class="w-full max-h-96 mt-4 rounded-2xl object-contain">
         </div>
       </div>
       <!-- end right of tweet -->
@@ -270,7 +280,7 @@
           sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
           PageMaker including versions of Lorem Ipsum.
         </div>
-        <img src="images/4.jpeg" class="w-full max-h-96 mt-4 rounded-lg object-contain">
+        <img src="images/4.jpeg" class="w-full max-h-96 mt-4 rounded-2xl object-contain">
       </div>
       <!-- end right of tweet -->
     </div>
@@ -286,27 +296,28 @@
   <div class="w-full px-8 pb-8">
 
     <!-- search -->
-    <div class="sticky top-0 w-full py-4 bg-black">
+    <div class="sticky top-0 w-full py-4 bg-twitterDarkMode">
       <form class="">
         <svg width="32" height="32" viewBox="0 0 24 24" class="absolute top-6 left-2 text-gray-400">
           <path fill="currentColor"
             d="m18.9 20.3l-5.6-5.6q-.75.6-1.725.95Q10.6 16 9.5 16q-2.725 0-4.612-1.887Q3 12.225 3 9.5q0-2.725 1.888-4.613Q6.775 3 9.5 3t4.613 1.887Q16 6.775 16 9.5q0 1.1-.35 2.075q-.35.975-.95 1.725l5.625 5.625q.275.275.275.675t-.3.7q-.275.275-.7.275q-.425 0-.7-.275ZM9.5 14q1.875 0 3.188-1.312Q14 11.375 14 9.5q0-1.875-1.312-3.188Q11.375 5 9.5 5Q7.625 5 6.312 6.312Q5 7.625 5 9.5q0 1.875 1.312 3.188Q7.625 14 9.5 14Z" />
         </svg>
-        <input type="text" placeholder="Search Twitter" class="w-full h-12 pl-12 bg-gray-700 rounded-full">
+        <input type="text" placeholder="Search Twitter" class="w-full h-12 pl-12 bg-twitterLightDark rounded-full">
       </form>
     </div>
     <!-- end search -->
 
     <!-- trending -->
-    <div class="flex flex-col gap-4 w-full p-2 bg-gray-700 rounded-lg">
-      <div class="text-2xl font-bold">
+    <div class="flex flex-col gap-4 w-full  bg-twitterLessDark rounded-2xl  ">
+      <div class="text-2xl font-bold pt-4 px-4 ">
         Trends for you
       </div>
 
       % for trend in trends:
-        <div class="">
+        <div class="text-sm text-gray-400 hover:bg-twitterLightDark px-4">
+          Trender i Danmark
           <div class="flex">
-            <div class="text-white font-bold">
+            <div class="text-white text-lg font-bold">
             {{trend["title"]}}
             </div>
             <svg width="32" height="32" viewBox="0 0 24 24" class="ml-auto text-gray-500">
@@ -314,13 +325,13 @@
                 d="M6.75 12a.75.75 0 1 1-1.5 0a.75.75 0 0 1 1.5 0Zm6 0a.75.75 0 1 1-1.5 0a.75.75 0 0 1 1.5 0Zm6 0a.75.75 0 1 1-1.5 0a.75.75 0 0 1 1.5 0Z" />
             </svg>
           </div>
-          <div class="">
+          <div class="text-sm text-gray-400">
             {{ trend["total_hash"] }} Tweets
           </div>
         </div>
       % end
 
-      <a href="" class="text-sky-500">
+      <a href="" class="text-twitterGreen px-4 py-2 rounded-b-2xl hover:bg-twitterLightDark">
         Show more
       </a>
 
@@ -328,13 +339,13 @@
     <!-- end trending -->
 
     <!-- who to follow -->
-    <div class="sticky top-20 flex flex-col gap-4 w-full p-2 mt-4 bg-gray-700 rounded-lg">
-      <div class="text-2xl font-bold">
+    <div class="sticky top-20 flex flex-col gap-4 w-full  mt-4 bg-twitterLessDark  rounded-2xl">
+      <div class="text-2xl font-bold pt-4 px-4">
         Who to follow
       </div>
 
       <!-- person -->
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-4 px-4 py-1 hover:bg-twitterLightDark">
         <img src="thumbnails/1.jpg" class="w-12 h-12 rounded-full">
         <div class="">
           <div class="text-gray-200 font-bold">
@@ -351,7 +362,7 @@
       <!-- end person -->
 
       <!-- person -->
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-4 px-4 py-1 hover:bg-twitterLightDark">
         <img src="thumbnails/2.jpg" class="w-12 h-12 rounded-full">
         <div class="">
           <div class="text-gray-200 font-bold">
@@ -368,7 +379,7 @@
       <!-- end person -->
 
       <!-- person -->
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-4 px-4 py-1 hover:bg-twitterLightDark">
         <img src="thumbnails/3.jpg" class="w-12 h-12 rounded-full">
         <div class="">
           <div class="text-gray-200 font-bold">
@@ -386,7 +397,7 @@
 
 
       <!-- person -->
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-4 px-4 py-1 hover:bg-twitterLightDark">
         <img src="thumbnails/1.jpg" class="w-12 h-12 rounded-full">
         <div class="">
           <div class="text-gray-200 font-bold">
@@ -403,7 +414,7 @@
       <!-- end person -->
 
       <!-- person -->
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-4 px-4 py-1 hover:bg-twitterLightDark">
         <img src="thumbnails/2.jpg" class="w-12 h-12 rounded-full">
         <div class="">
           <div class="text-gray-200 font-bold">
@@ -421,7 +432,7 @@
 
 
 
-      <a href="" class="text-sky-500">
+      <a href="" class="text-twitterGreen px-4 py-2 hover:bg-twitterLightDark">
         Show more
       </a>
 
