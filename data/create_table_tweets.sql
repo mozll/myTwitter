@@ -27,3 +27,16 @@ INSERT INTO tweets VALUES(
   "0"
   );
 
+INSERT INTO tweets VALUES(
+  "8", 
+  "16",
+  "1676283561",
+  "Hello world",
+  "",
+  "0",
+  "0",
+  "0",
+  "0",
+  "0"
+  );
+
