@@ -108,14 +108,14 @@ def _(username):
     print("#"*30)
     print(f"user id:{user_id}")
     # With that id, look up/get the respectives tweets
-    tweets = db.execute("SELECT * FROM tweets WHERE user_fk=?", (user_id,)).fetchall()
+    # tweets = db.execute("SELECT * FROM tweets WHERE user_fk=?", (user_id,)).fetchall()
     print("#"*30)
-    print(tweets)
+    # print(tweets)
     print("#"*30)
     # pass the tweets to the view. Template it
     
     print(user) # {'id': '51602a9f7d82472b90ed1091248f6cb1', 'username': 'elonmusk', 'name': 'Elon', 'last_name': 'Musk', 'total_followers': '128900000', 'total_following': '177', 'total_tweets': '22700', 'avatar': '51602a9f7d82472b90ed1091248f6cb1.jpg'}
-    return template("profile", user=user)
+    return template("profile", user=user, trends=trends, tweets=tweets)
   except Exception as ex:
     print(ex)
     return "error"
