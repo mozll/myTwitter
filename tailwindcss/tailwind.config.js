@@ -12,6 +12,7 @@ module.exports = {
         "twitterLightDark" : "#273340", 
         "twitterRed" :"#F91880", 
         "twitterBlue" : "#0ea5e9",
+        "twitterYellow" : "#fdcb58",
       },
     },
   },

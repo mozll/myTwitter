@@ -17,5 +17,8 @@ INSERT INTO users VALUES("6268331d012247539998d7664bd05cc1","shakira","Shakira",
 INSERT INTO users VALUES("a22da1effb3d4f03a0f77f9aa8320203","Rihanna","Rihanna", "", "107000000", "980", "10600", "a22da1effb3d4f03a0f77f9aa8320203.jpg");
 INSERT INTO users VALUES("7e968791b6c24ed0a482416f0e769727","joeBiden","Joe", "Biden", "52486000", "323", "3210", "7e968791b6c24ed0a482416f0e769727.jpg");
 
+INSERT INTO users VALUES("d6389953261a48eba125fa54d8ce958e","dupreeh","Peter", "Rasmussen", "304800", "763", "9607", "d6389953261a48eba125fa54d8ce958e.png");
+
+
 
 
