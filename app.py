@@ -22,6 +22,7 @@ tweets = [
   Room for improvement - one step at a time!""","total_messages":"1","total_retweets":"2","total_likes":"3","total_dislikes":"4",},
   
   { "verified":1, "image_name":"1.jpg", "fullname":"Elon Musk", "username":"elonmusk","message":"Don’t worry, just some of my 👽 🛸 friends of mine stopping by …", "total_messages":"1","total_retweets":"2","total_likes":"3","total_dislikes":"4",},
+
   { "verified":1, "image_name":"1.jpg", "fullname":"Elon Musk", "username":"elonmusk","message":"","message_image":"Foaz7GYX0AU9unl.jpg","total_messages":"1","total_retweets":"2","total_likes":"3","total_dislikes":"4",},
 ]
 
@@ -91,6 +92,11 @@ def _(filename):
 @get("/thumbnails/<filename:re:.*\.jpg>")
 def _(filename):
   return static_file(filename, root="./thumbnails")
+
+##############################
+@get("/cover-image/<filename:re:.*\.jpg>")
+def _(filename):
+  return static_file(filename, root="./cover-image")
 
 ## TEST WITH NEW FOLDER NAME, IT WORKS
 
