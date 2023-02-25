@@ -24,7 +24,7 @@
           Trender i Danmark
           <div class="flex">
             <div class="text-white text-lg font-bold">
-            {{trend["title"]}}
+            {{trend["trend_title"]}}
             </div>
             <svg width="32" height="32" viewBox="0 0 24 24" class="ml-auto text-gray-500">
               <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
@@ -32,7 +32,7 @@
             </svg>
           </div>
           <div class="text-sm text-gray-400">
-            {{ trend["total_hash"] }} Tweets
+            {{ trend["trend_total_tweets"] }} Tweets
           </div>
         </div>
       % end
@@ -53,6 +53,7 @@
       <!-- person -->
       <div class="flex items-center gap-4 px-4 py-1 hover:bg-twitterLightDark">
         <img src="thumbnails/1.jpg" class="w-12 h-12 rounded-full">
+        <a href="/elonmusk">
         <div class="">
           <div class="text-gray-200 font-bold">
             Elon Musk
@@ -61,6 +62,7 @@
             @elonmusk
           </div>
         </div>
+      </a>
         <button class="ml-auto px-4 py-2 text-black text-base font-medium bg-gray-200 rounded-full">
           Follow
         </button>
@@ -70,6 +72,7 @@
       <!-- person -->
       <div class="flex items-center gap-4 px-4 py-1 hover:bg-twitterLightDark">
         <img src="thumbnails/2.jpg" class="w-12 h-12 rounded-full">
+        <a href="/joebiden">
         <div class="">
           <div class="text-gray-200 font-bold">
             Joe Biden
@@ -78,6 +81,7 @@
             @joebiden
           </div>
         </div>
+      </a>
         <button class="ml-auto px-4 py-2 text-black text-base font-medium bg-gray-200 rounded-full">
           Follow
         </button>
@@ -87,6 +91,7 @@
       <!-- person -->
       <div class="flex items-center gap-4 px-4 py-1 hover:bg-twitterLightDark">
         <img src="thumbnails/3.jpg" class="w-12 h-12 rounded-full">
+        <a href="/shakira">
         <div class="">
           <div class="text-gray-200 font-bold">
             Shakira
@@ -95,6 +100,45 @@
             @shakira
           </div>
         </div>
+      </a>
+        <button class="ml-auto px-4 py-2 text-black text-base font-medium bg-gray-200 rounded-full">
+          Follow
+        </button>
+      </div>
+      <!-- end person -->
+      
+        <!-- person -->
+        <div class="flex items-center gap-4 px-4 py-1 hover:bg-twitterLightDark">
+            <img src="thumbnails/4.png" class="w-12 h-12 rounded-full">
+          <a href="/Dupreeh">
+            <div class="">
+              <div class="text-gray-200 font-bold">
+                Peter Rasmussen
+              </div>
+              <div class="">
+                @Dupreeh
+              </div>
+            </div>
+          </a>
+          <button class="ml-auto px-4 py-2 text-black text-base font-medium bg-gray-200 rounded-full">
+            Follow
+          </button>
+        </div>
+        <!-- end person -->
+
+          <!-- person -->
+      <div class="flex items-center gap-4 px-4 py-1 hover:bg-twitterLightDark">
+        <img src="thumbnails/6.jpg" class="w-12 h-12 rounded-full">
+        <a href="/rihanna">
+        <div class="">
+          <div class="text-gray-200 font-bold">
+            Rihanna
+          </div>
+          <div class="">
+            @rihanna
+          </div>
+        </div>
+      </a>
         <button class="ml-auto px-4 py-2 text-black text-base font-medium bg-gray-200 rounded-full">
           Follow
         </button>
@@ -102,10 +146,10 @@
       <!-- end person -->
 
 
-
       <a href="" class="text-twitterGreen px-4 py-2 rounded-b-2xl  hover:bg-twitterLightDark">
         Show more
       </a>
+
 
     </div>
     <!-- end who to follow  -->

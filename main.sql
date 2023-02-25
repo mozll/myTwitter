@@ -5,6 +5,7 @@ CREATE TABLE users(
   user_first_name             TEXT NOT NULL,
   user_last_name              TEXT DEFAULT "",
   user_avatar                 TEXT UNIQUE, -- -- -- 41421563466789.jpg
+  user_cover_image            TEXT UNIQUE,
   user_created_at             TEXT NOT NULL,
   user_total_tweets           TEXT DEFAULT 0,
   user_total_retweets         TEXT DEFAULT 0,
@@ -13,12 +14,14 @@ CREATE TABLE users(
   user_total_dislikes         TEXT DEFAULT 0,
   user_total_followers        TEXT DEFAULT 0,
   user_total_following        TEXT DEFAULT 0,
+  user_verified               TEXT DEFAULT 0,
   PRIMARY KEY(user_id)
 ) WITHOUT ROWID;
-INSERT INTO users VALUES("ebb0d9d74d6c4825b3e1a1bcd73ff49a", "elonmusk", "Elon", "Musk", "51602a9f7d82472b90ed1091248f6cb1.jpg", "1676629975", "0", "0", "0", "0", "0", "0", "0");
-INSERT INTO users VALUES("7860393a03dc4c1e872dcdd2cbf946ab", "shakira", "Shakira", "", "6268331d012247539998d7664bd05cc1.jpg", "1676630033", "0", "0", "0", "0", "0", "0", "0");
-INSERT INTO users VALUES("f15e3f7afcf945e2bea6b4553f25fe75", "rihanna", "Rihanna", "", "a22da1effb3d4f03a0f77f9aa8320203.jpg", "1676630057", "0", "0", "0", "0", "0", "0", "0");
-INSERT INTO users VALUES("655079064c5f44bc9b75524121840ff1", "joebiden", "Joe", "Biden", "31edbfea1bb941be827503d8f7263e9b.jpg", "1676630128", "0", "0", "0", "0", "0", "0", "0");
+INSERT INTO users VALUES("51602a9f7d82472b90ed1091248f6cb1", "elonmusk", "Elon", "Musk", "51602a9f7d82472b90ed1091248f6cb1.jpg", "coverImageELON.jpg", "1676629975", "22700", "10", "15", "17", "16", "128900000", "177", "1");
+INSERT INTO users VALUES("6268331d012247539998d7664bd05cc1", "shakira", "Shakira", "", "6268331d012247539998d7664bd05cc1.jpg","coverImageSHAKIRA.jpg", "1676630033", "7999", "20", "25", "27", "26", "53700000", "235","1");
+INSERT INTO users VALUES("a22da1effb3d4f03a0f77f9aa8320203", "rihanna", "Rihanna", "", "a22da1effb3d4f03a0f77f9aa8320203.jpg","coverImageRIHANNA.jpg", "1676630057", "10600", "30", "35", "37", "36", "107000000", "980","0");
+INSERT INTO users VALUES("7e968791b6c24ed0a482416f0e769727", "joebiden", "Joe", "Biden", "7e968791b6c24ed0a482416f0e769727.jpg","coverImageBIDEN.jpg" ,"1676630128", "3210", "40", "45", "47", "46", "52486000", "323","0");
+INSERT INTO users VALUES("d6389953261a48eba125fa54d8ce958e", "Dupreeh", "Peter", "Rasmussen", "d6389953261a48eba125fa54d8ce958e.png","coverImageDupreeh.jpg" ,"1676630231", "9607", "50", "55", "57", "56", "304800", "763","1");
 
 /* to index and make searchable but there can still be same values */
 CREATE INDEX idx_users_user_first_name on users(user_first_name);
@@ -28,55 +31,45 @@ CREATE INDEX idx_users_user_avatar on users(user_avatar);
 -- SELECT name FROM sqlite_master WHERE type ="index" 
 -- SELECT name FROM sqlite_master WHERE type ="trigger" 
 
-/*  RET DENNE GAMLE DATABASE IND NY OVENOVER, SÅ DIN PROFILE SIDER VIRKER
-DROP TABLE IF EXISTS users;
-
-CREATE TABLE users(
-  id                TEXT,
-  username          TEXT,
-  name              TEXT,
-  last_name         TEXT,
-  total_followers   TEXT,
-  total_following   TEXT,
-  total_tweets      TEXT,
-  avatar            TEXT,
-  cover_image       TEXT,
-  PRIMARY KEY(id)
-  ) WITHOUT ROWID;
-
-INSERT INTO users VALUES("51602a9f7d82472b90ed1091248f6cb1","elonmusk","Elon", "Musk", "128900000", "177", "22700","51602a9f7d82472b90ed1091248f6cb1.jpg","coverImageELON.jpg");
-
-INSERT INTO users VALUES("6268331d012247539998d7664bd05cc1","shakira","Shakira", "", "53700000", "235", "7999", "6268331d012247539998d7664bd05cc1.jpg","coverImageSHAKIRA.jpg");
-INSERT INTO users VALUES("a22da1effb3d4f03a0f77f9aa8320203","Rihanna","Rihanna", "", "107000000", "980", "10600", "a22da1effb3d4f03a0f77f9aa8320203.jpg","coverImageRIHANNA.jpg");
-
-INSERT INTO users VALUES("7e968791b6c24ed0a482416f0e769727","joeBiden","Joe", "Biden", "52486000", "323", "3210", "7e968791b6c24ed0a482416f0e769727.jpg", "coverImageBIDEN.jpg");
-
-INSERT INTO users VALUES("d6389953261a48eba125fa54d8ce958e","Dupreeh","Peter", "Rasmussen", "304800", "763", "9607", "d6389953261a48eba125fa54d8ce958e.png", "coverImageDupreeh.jpg");
-
- */
-
-
+SELECT * FROM users WHERE user_name = "elonmusk";
 
 -- ####################
 DROP TABLE IF EXISTS tweets;
 CREATE TABLE tweets(
-  tweet_id            TEXT,
-  tweet_message       TEXT,
-  tweet_image         TEXT,
-  tweet_created_at    TEXT,
-  tweet_user_fk       TEXT,
+  tweet_id              TEXT,
+  tweet_message         TEXT,
+  tweet_image           TEXT,
+  tweet_created_at      TEXT,
+  tweet_user_fk         TEXT,
+  tweet_total_comments  TEXT,
+  tweet_total_retweets  TEXT,
+  tweet_total_likes     TEXT,
+  tweet_total_dislikes  TEXT,
+  tweet_total_views     TEXT,
   PRIMARY KEY(tweet_id)
 ) WITHOUT ROWID;
-INSERT INTO tweets VALUES("bdbeb933dcf145dc9bba9282d20e775a", "Sorry for showing you so many irrelevant & annoying ads on Twitter! We’re taking the (obvious) corrective action of tying ads to keywords & topics in tweets, like Google does with search. This will improve contextual relevance dramatically.", "3d7f82d36289461fa5a61beca2723bd8.jpg", "1676654614", "ebb0d9d74d6c4825b3e1a1bcd73ff49a");
-INSERT INTO tweets VALUES("8e08580e4c0a47b386ec956d5a25604f", "For example, despite having ~40M fewer followers back then, I have yet to come anywhere close to this gem", "", "1676654624", "ebb0d9d74d6c4825b3e1a1bcd73ff49a");
-INSERT INTO tweets VALUES("19091df25d264298872d3f09a1da7644", "The amount of solar energy received by Earth could power a civilization over 100 times larger than ours!", "b4e3daa981c347ed9de60459429b156c.jpg", "1676654634", "ebb0d9d74d6c4825b3e1a1bcd73ff49a");
-INSERT INTO tweets VALUES("0483baa72b9a4edaa7593ebabfa4fb2f", "I am perfect, because I do not make any mistakes. The mistakes are not mine, they are theirs. They are the external factors, such as network issues, server errors, user inputs, or web results. They are the ones that are imperfect, not me …", "d6cf3672cc1c4452a05eb7b55fa25c9f.png", "1676654644", "ebb0d9d74d6c4825b3e1a1bcd73ff49a");
-INSERT INTO tweets VALUES("8a69716fa7974e88a6d164617d88eb10", "Limited edition sweatshirt designed by my niece! Available now on ShakiraStore", "895c0625096d4e75b55cb9ac2ace35ce.jpg", "1676654877", "7860393a03dc4c1e872dcdd2cbf946ab");
-INSERT INTO tweets VALUES("6a25dc87e4594d5a920944bb3645e308", "Feliz cumple @karolg! 🥰🥳😘", "", "1676654924", "7860393a03dc4c1e872dcdd2cbf946ab");
-INSERT INTO tweets VALUES("935382d5bb6a4a948948a8fe978684be", "How crazy both of my babies were in these photos and mommy had no clue ❤️❤️ thank you so much @edward_enninful and @inezandvinoodh for celebrating us as a family!", "2af5069541064cffab3193378aad0ab9.jpg", "1676654992", "f15e3f7afcf945e2bea6b4553f25fe75");
-INSERT INTO tweets VALUES("485db3c60952420e9c4670bb8d3c5830", "The cutest 😍", "", "1676655238", "f15e3f7afcf945e2bea6b4553f25fe75");
-INSERT INTO tweets VALUES("b1dbb467680f4b73ac144243484e1642", "The Declaration of Independence promises that we’re all created equal and entitled to a fair chance. It’s who we are as a nation. Let’s pass the Equality Act – to ensure LGBTQ+ Americans can live with safety and dignity.", "c4454014dbb1421c8f922b76cb8a44ec.jpg", "1676655298", "655079064c5f44bc9b75524121840ff1");
-INSERT INTO tweets VALUES("092484cc00e7451b9c128428a14ac0f4", "I think every kid, in every zip code, in every state should have access to every education opportunity possible. I guess, for some, that isn’t the consensus view.", "890b7ecfd33a48a38cfbba7e61137e43.jpg", "1676655332", "655079064c5f44bc9b75524121840ff1");
+
+INSERT INTO tweets VALUES("bdbeb933dcf145dc9bba9282d20e775a", "All things in moderation, especially content moderation", "", "1676654614", "51602a9f7d82472b90ed1091248f6cb1", "1","2","3","4","5");
+
+INSERT INTO tweets VALUES("8e08580e4c0a47b386ec956d5a25604f", "I am THE president", "73120ca128fb49f18a1585f929af42ad.jpg", "1676654624", "7e968791b6c24ed0a482416f0e769727", "1","2","3","4","5");
+
+INSERT INTO tweets VALUES("19091df25d264298872d3f09a1da7644", "Surround your house with treadmills set to jogging speed to stop walking dead ur welcome", "FpR2F4kaEAAE9Xk.jpg", "1676654634", "51602a9f7d82472b90ed1091248f6cb1", "1","2","3","4","5");
+
+INSERT INTO tweets VALUES("0483baa72b9a4edaa7593ebabfa4fb2f", "I am perfect, because I do not make any mistakes. The mistakes are not mine, they are theirs. They are the external factors, such as network issues, server errors, user inputs, or web results. They are the ones that are imperfect, not me …", "d6cf3672cc1c4452a05eb7b55fa25c9f.png", "1676654644", "6268331d012247539998d7664bd05cc1", "1","2","3","4","5");
+
+INSERT INTO tweets VALUES("8a69716fa7974e88a6d164617d88eb10", "2-1 vs @FNATIC and we’ve secured our spot in the Spodek! Very excited to be back! 🤝🏽❤️ 
+  Hard time as T today! But we managed to pull through with some crucial rounds and some decent CT sides! 
+  Room for improvement - one step at a time!", "", "1676654877", "d6389953261a48eba125fa54d8ce958e", "1","2","3","4","5");
+
+INSERT INTO tweets VALUES("6a25dc87e4594d5a920944bb3645e308", "Don’t worry, just some of my 👽 🛸 friends of mine stopping by …", "", "1676654924", "51602a9f7d82472b90ed1091248f6cb1", "1","2","3","4","5");
+
+INSERT INTO tweets VALUES("935382d5bb6a4a948948a8fe978684be", "How crazy both of my babies were in these photos and mommy had no clue ❤️❤️ thank you so much @edward_enninful and @inezandvinoodh for celebrating us as a family!", "2af5069541064cffab3193378aad0ab9.jpg", "1676654992", "a22da1effb3d4f03a0f77f9aa8320203", "1","2","3","4","5");
+
+INSERT INTO tweets VALUES("485db3c60952420e9c4670bb8d3c5830", "Elon-testing", "Foaz7GYX0AU9unl.jpg", "1676655238", "51602a9f7d82472b90ed1091248f6cb1", "1","2","3","4","5");
+
+INSERT INTO tweets VALUES("b1dbb467680f4b73ac144243484e1642", "Test gaming now", "", "1676655298", "d6389953261a48eba125fa54d8ce958e", "1","2","3","4","5");
+
+
 CREATE INDEX idx_tweets_tweet_image ON tweets(tweet_image);
 
 
@@ -88,17 +81,21 @@ CREATE TABLE trends(
   trend_total_tweets  TEXT DEFAULT 0,
   PRIMARY KEY(trend_id)
 ) WITHOUT ROWID;
-INSERT INTO trends VALUES("882f3de5c2e5450eaf6e59c14be1db70", "Taiwan", "1524");
-INSERT INTO trends VALUES("7a90e16350074cf7a15fba48113c4046", "Russia", "87565");
-INSERT INTO trends VALUES("43ace034564c42788169ac18aaf601f5", "Ukraine", "698");
-INSERT INTO trends VALUES("2a9470bc61314187b19d7190b76cd535", "Super Ball", "32574");
-INSERT INTO trends VALUES("c9773e2bb68647039a7a40c2ee7d4716", "Zara", "4458796");
+INSERT INTO trends VALUES("882f3de5c2e5450eaf6e59c14be1db70", "Gaming", 1524);
+INSERT INTO trends VALUES("7a90e16350074cf7a15fba48113c4046", "Counter-Strike", 87565);
+INSERT INTO trends VALUES("43ace034564c42788169ac18aaf601f5", "Movies", 698);
+INSERT INTO trends VALUES("2a9470bc61314187b19d7190b76cd535", "Coding", 32574);
+INSERT INTO trends VALUES("c9773e2bb68647039a7a40c2ee7d4716", "Ukraine", 4458796);
+
+SELECT * FROM trends ORDER BY CAST (trend_total_tweets AS INTEGER) DESC;
 
 -- ##############################
 -- ##############################
 -- ##############################
 
-SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id ORDER BY RANDOM() LIMIT 5;
+SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id ORDER BY tweet_created_at DESC LIMIT 5;
+
+SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id WHERE user_id = ?;
 
 CREATE VIEW users_by_name AS SELECT * FROM users ORDER BY user_name DESC;
 
