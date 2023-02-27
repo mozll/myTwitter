@@ -19,6 +19,32 @@
   <!-- center -->
   <div class="min-h-screen h-full border-x border-gray-600">
     
+    <div>hey</div>
+    <form method="POST" onsubmit="validate(tweet); return false">
+      <input name="message" type="text" 
+      data-validate="str" data-min="{{tweet_min_len}}" data-max="{{tweet_max_len}}">
+      <button>tweet</button>
+    </form>
+
+    <script src="/js/validate.js"></script>
+
+
+    <script>
+        async function tweet() {
+            const frm = event.target /* the form */
+            const conn = await fetch("/tweet", {
+                method: "POST",
+                body: new FormData(frm)
+            })
+            const data = await conn.text()
+            console.log(data);
+        }
+    </script>
+
+
+
+
+
     % for tweet in tweets:
     <!-- tweet -->
     <div class="flex gap-4 p-4 border-t border-gray-600">
