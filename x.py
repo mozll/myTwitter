@@ -26,7 +26,7 @@ TWEET_MAX_LEN = 180
 
 
 def validate_tweet():
-    error = f"tweet must be {TWEET_MIN_LEN} to {TWEET_MAX_LEN} character"
-    if len(request.forms.get("message")) < TWEET_MIN_LEN: raise Exception(error)
-    if len(request.forms.get("message")) > TWEET_MAX_LEN: raise Exception(error)
+    error = f"message must be {TWEET_MIN_LEN} to {TWEET_MAX_LEN} character"
+    if len(request.forms.message) < TWEET_MIN_LEN: raise Exception(error)
+    if len(request.forms.message) > TWEET_MAX_LEN: raise Exception(error)
     return request.forms.get("message")

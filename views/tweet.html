@@ -36,15 +36,16 @@
                 method: "POST",
                 body: new FormData(frm)
             })
-            const data = await conn.text()
+            // const data = await conn.text() /* USED TO GET PLAIN TEXT */
+            const data = await conn.json() 
             console.log(data);
             const message = frm.querySelector("input[name='message']").value
             console.log(message);
             document.querySelector("#tweets").insertAdjacentHTML("afterbegin", 
-        `   <div class="tweet">
-            <div>4</div>
+        `<div class="tweet">
+            <div>${data.tweet_id}</div>
             <div>${message}</div>
-            </div>`)
+        </div>`)
         }
     </script>
 </body>

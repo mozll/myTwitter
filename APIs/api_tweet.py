@@ -21,9 +21,9 @@ def _():
         tweet_total_views = ""
         db.execute("INSERT INTO tweets VALUES(?,?,?,?,?,?,?,?,?,?)", (tweet_id, tweet_message, tweet_image, tweet_created_at,tweet_user_fk, tweet_total_comments, tweet_total_retweets, tweet_total_likes, tweet_total_dislikes,tweet_total_views))
         db.commit()
-        return "ok"
+        return {"info":"ok", "tweet_id":tweet_id}
     except Exception as ex:
         response.status = 400
-        print(ex)
+        return {"info":str(ex)}
     finally:
         if "db" in locals(): db.close()
