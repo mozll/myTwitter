@@ -84,6 +84,18 @@ def render_index():
 def _():
   return template("header")
 
+@get("/login")
+def _():
+  return template("login")
+
+@get("/logout")
+def _():
+    
+    response.set_cookie("user","", expires=0)
+    response.status = 303
+    response.set_header("Location", "/login")
+    return
+
 @get("/contact")
 def _():
   return template("contact-us")  
@@ -161,6 +173,13 @@ def _(username):
     print(ex)
     return "error"
   finally:
+    ## no caching code
+    # response.add_header("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
+    # response.add_header("Pragma", "no-cache")
+    # response.add_header("Expires", 0)
+
+    # user = request.get_cookie("user", secret="my-secret")
+
     if "db" in locals(): db.close()
 
 ############################################################
@@ -171,6 +190,9 @@ import views.tweet
 # APIs
 import APIs.api_tweet
 
+##############################
+import bridges.login
+##############################
 
 ##############################
 ##############################
