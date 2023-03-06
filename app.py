@@ -69,9 +69,17 @@ def render_index():
     db.row_factory = dict_factory
     tweets = db.execute("SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id ORDER BY tweet_created_at DESC").fetchall()
     
+    response.add_header("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
+    response.add_header("Pragma", "no-cache")
+    response.add_header("Expires", 0)
+
+    user_cookie = request.get_cookie("user_cookie", secret="my-secret")
+
+
+
     # """ {'tweet_id': '485db3c60952420e9c4670bb8d3c5830', 'tweet_message': 'The cutest 😍', 'tweet_image': '', 'tweet_created_at': '1676655238', 'tweet_user_fk': 'f15e3f7afcf945e2bea6b4553f25fe75', 'user_id': 'f15e3f7afcf945e2bea6b4553f25fe75', 'user_name': 'rihanna', 'user_first_name': 'Rihanna', 'user_last_name': '', 'user_avatar': 'a22da1effb3d4f03a0f77f9aa8320203.jpg', 'user_created_at': '1676630057', 'user_total_tweets': '0', 'user_total_retweets': '0', 'user_total_comments': '0', 'user_total_likes': '0', 'user_total_dislikes': '0', 'user_total_followers': '0', 'user_total_following': '0'}  """
 
-    return template("index", title="Twitter", tweets=tweets, trends=get_trends(), tweet_min_len=x.TWEET_MIN_LEN, tweet_max_len=x.TWEET_MAX_LEN)
+    return template("index", title="Twitter", tweets=tweets, trends=get_trends(), tweet_min_len=x.TWEET_MIN_LEN, tweet_max_len=x.TWEET_MAX_LEN, user_cookie=user_cookie)
   except Exception as ex:
     print(ex)
     return "error"
@@ -91,7 +99,7 @@ def _():
 @get("/logout")
 def _():
     
-    response.set_cookie("user","", expires=0)
+    response.set_cookie("user_cookie","", expires=0)
     response.status = 303
     response.set_header("Location", "/login")
     return
@@ -168,7 +176,15 @@ def _(username):
     # pass the tweets to the view. Template it
     
     print(user) # {'id': '51602a9f7d82472b90ed1091248f6cb1', 'username': 'elonmusk', 'name': 'Elon', 'last_name': 'Musk', 'total_followers': '128900000', 'total_following': '177', 'total_tweets': '22700', 'avatar': '51602a9f7d82472b90ed1091248f6cb1.jpg'}
-    return template("profile", user=user, trends=get_trends(), tweets=tweets)
+
+
+
+    
+
+    user_cookie = request.get_cookie("user_cookie", secret="my-secret")
+
+
+    return template("profile", user=user, trends=get_trends(), tweets=tweets, user_cookie=user_cookie)
   except Exception as ex:
     print(ex)
     return "error"
