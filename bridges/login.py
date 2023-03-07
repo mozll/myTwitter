@@ -27,13 +27,16 @@ def _():
         print(f"user: {user}") 
 
         if user:
-            # Create user object
+            # Create user object for the cookie
             user_obj = {
                 "user_id":user["user_id"],
-                "user_name":user["user_name"]
+                "user_name":user["user_name"],
+                "user_first_name":user["user_first_name"],
+                "user_last_name":user["user_last_name"],
+                "user_avatar":user["user_avatar"]
             }
 
-            # Redirect to home page
+            # Set cookie and redirect to home page
             response.set_cookie("user_cookie", user_obj, secret="my-secret", httponly=True)
             response.status = 303
             response.set_header("Location", "/")

@@ -69,17 +69,26 @@ def render_index():
     db.row_factory = dict_factory
     tweets = db.execute("SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id ORDER BY tweet_created_at DESC").fetchall()
     
+    
+
+    user_cookie = request.get_cookie("user_cookie", secret="my-secret")
+    user_obj = {} if not user_cookie else user_cookie
+
+    user_name = user_obj.get("user_name")
+    user_first_name = user_obj.get("user_first_name")
+    user_last_name = user_obj.get("user_last_name")
+    user_avatar = user_obj.get("user_avatar")
+
+
+
     response.add_header("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
     response.add_header("Pragma", "no-cache")
     response.add_header("Expires", 0)
 
-    user_cookie = request.get_cookie("user_cookie", secret="my-secret")
-
-
 
     # """ {'tweet_id': '485db3c60952420e9c4670bb8d3c5830', 'tweet_message': 'The cutest 😍', 'tweet_image': '', 'tweet_created_at': '1676655238', 'tweet_user_fk': 'f15e3f7afcf945e2bea6b4553f25fe75', 'user_id': 'f15e3f7afcf945e2bea6b4553f25fe75', 'user_name': 'rihanna', 'user_first_name': 'Rihanna', 'user_last_name': '', 'user_avatar': 'a22da1effb3d4f03a0f77f9aa8320203.jpg', 'user_created_at': '1676630057', 'user_total_tweets': '0', 'user_total_retweets': '0', 'user_total_comments': '0', 'user_total_likes': '0', 'user_total_dislikes': '0', 'user_total_followers': '0', 'user_total_following': '0'}  """
 
-    return template("index", title="Twitter", tweets=tweets, trends=get_trends(), tweet_min_len=x.TWEET_MIN_LEN, tweet_max_len=x.TWEET_MAX_LEN, user_cookie=user_cookie)
+    return template("index", title="Twitter", tweets=tweets, trends=get_trends(), tweet_min_len=x.TWEET_MIN_LEN, tweet_max_len=x.TWEET_MAX_LEN, user_cookie=user_cookie, user_name=user_name, user_first_name=user_first_name, user_last_name=user_last_name,  user_avatar=user_avatar)
   except Exception as ex:
     print(ex)
     return "error"

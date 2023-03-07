@@ -1,52 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 <body>
 
 
-    <form method="POST" onsubmit="validate(tweet); return false">
-        <input name="message" type="text" 
-        data-validate="str" data-min="{{tweet_min_len}}" data-max="{{tweet_max_len}}">
-        <button>tweet</button>
-    </form>
+  <form method="POST" onsubmit="validate(tweet); event.preventDefault()">
+    <input name="message" type="text"
+    data-validate="str" data-min="{{tweet_min_len}}" data-max="{{tweet_max_len}}">
+    <button>
+      Tweet
+    </button>
+  </form>
+
+  <section id="tweets">
+    {% for tweet in tweets %}
+      <div class="tweet">
+        <div>{{ tweet['tweet_id'] }}</div>
+        <div>{{ tweet['tweet_message'] }}</div>
+      </div>
+    {% end %}
+  </section>
 
 
-    <section id="tweets">
-        % for tweet in tweets:
-        <div class="tweet">
-            <div>{{tweet["tweet_id"]}}</div>
-            <div>{{tweet["tweet_message"]}}</div>
-        </div>
-        % end
-    </section>
+  <script src="/js/validate.js"></script>
 
-
-    <script src="/js/validate.js"></script>
-
-
-    <script>
-        async function tweet() {
-            const frm = event.target /* the form */
-            const conn = await fetch("/tweet", {
-                method: "POST",
-                body: new FormData(frm)
-            })
-            // const data = await conn.text() /* USED TO GET PLAIN TEXT */
-            const data = await conn.json() 
-            console.log(data);
-            const message = frm.querySelector("input[name='message']").value
-            console.log(message);
-            document.querySelector("#tweets").insertAdjacentHTML("afterbegin", 
+  <script>
+    async function tweet(event){
+    console.log("Tweet function called");
+    event.preventDefault(); // prevent form from submitting
+    const frm = event.target // the form
+    const conn = await fetch("/tweet", {
+    method: "POST",
+    body: new FormData(frm)
+      })
+    const data = await conn.json()
+    const message = frm.querySelector("input[name='message']").value
+    document.querySelector("#tweets").insertAdjacentHTML("afterbegin", 
         `<div class="tweet">
-            <div>${data.tweet_id}</div>
-            <div>${message}</div>
-        </div>`)
-        }
-    </script>
+          <div>${data.tweet_id}</div>
+          <div>${message}</div>  
+        </div>`
+      )
+      frm.reset(); // reset form
+    }
+  </script>
+
 </body>
 </html>
+

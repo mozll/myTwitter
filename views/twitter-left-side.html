@@ -77,11 +77,11 @@
 
     <div class="flex gap-4 items-center w-full mt-auto p-2 hover:bg-gray-800 rounded-xl">
       % if user_cookie:
-      <img src="thumbnails/5.jpg" class="w-12 h-12 rounded-full">
+      <img src="images/{{user_avatar}}" class="w-12 h-12 rounded-full">
       <div class="">
       
-        <div class="">Placeholder</div>
-        <div class="">@captainPlaceholder</div>
+        <div class="">{{ user_first_name}} {{ user_last_name}}</div>
+        <div class="">@{{ user_name }}</div>
       
       </div>
       <svg width="32" height="32" viewBox="0 0 24 24" class="ml-auto text-gray-500">
