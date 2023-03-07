@@ -9,7 +9,7 @@
 <body>
 
 
-  <form method="POST" onsubmit="validate(tweet); event.preventDefault()">
+  <form method="POST" onsubmit="validate(tweet); return false">
     <input name="message" type="text"
     data-validate="str" data-min="{{tweet_min_len}}" data-max="{{tweet_max_len}}">
     <button>
@@ -18,38 +18,36 @@
   </form>
 
   <section id="tweets">
-    {% for tweet in tweets %}
-      <div class="tweet">
-        <div>{{ tweet['tweet_id'] }}</div>
-        <div>{{ tweet['tweet_message'] }}</div>
-      </div>
-    {% end %}
+    % for tweet in tweets:
+    <div class="tweet">
+      <div>{{tweet["tweet_id"]}}</div>
+      <div>{{tweet["tweet_message"]}}</div>
+    </div>
+    % end
   </section>
 
 
   <script src="/js/validate.js"></script>
 
   <script>
-    async function tweet(event){
-    console.log("Tweet function called");
-    event.preventDefault(); // prevent form from submitting
-    const frm = event.target // the form
-    const conn = await fetch("/tweet", {
-    method: "POST",
-    body: new FormData(frm)
+    async function tweet(){
+      const frm = event.target // the form
+      const conn = await fetch("/tweet", {
+        method: "POST",
+        body: new FormData(frm)
       })
-    const data = await conn.json()
-    const message = frm.querySelector("input[name='message']").value
-    document.querySelector("#tweets").insertAdjacentHTML("afterbegin", 
-        `<div class="tweet">
+      // const data = await conn.text() // to get plain text
+      const data = await conn.json() // to get plain text
+      console.log(data)
+      const message = frm.querySelector("input[name='message']").value
+      console.log(message)
+      document.querySelector("#tweets").insertAdjacentHTML("afterbegin", 
+      `<div class="tweet">
           <div>${data.tweet_id}</div>
           <div>${message}</div>  
-        </div>`
-      )
-      frm.reset(); // reset form
+        </div>`)
     }
   </script>
 
 </body>
 </html>
-
