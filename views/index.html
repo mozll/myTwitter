@@ -18,17 +18,30 @@
 
   <!-- center -->
   <div class="min-h-screen h-full border-x border-gray-600">
+    
     % if user_cookie:
-    <div>hey</div>
-    <form method="POST" onsubmit="validate(tweet); return false">
-      <input name="message" type="text" 
-      data-validate="str" data-min="{{tweet_min_len}}" data-max="{{tweet_max_len}}">
+
+    <!-- TOP OF SITE AND ABOVE CREATE TWEET -->
+    <div class="sticky top-0 flex flex-col font-bold gap-4 p-4 bg-twitterDarkMode border-solid border-y-4 border-sky-500 
+     ">
+     Home
+    </div>
+    <!-- END OF TOP OF SITE -->
+
+    <!-- CREATING TWEET AREA -->
+    <div class="font-bold gap-4 p-4 border-t-8 border-gray-600">
+      <form method="POST" onsubmit="validate(tweet); return false">
+        <span class="flex items-center gap-2 font-bold">
+        <img src="images/{{user_avatar}}" class="w-12 h-12 rounded-full">
+        <input name="message" type="text" 
+        data-validate="str" data-min="{{tweet_min_len}}" data-max="{{tweet_max_len}}">
 
       <!--  SKAL FIXES TIL IKKE AT RELOAD HELE SIDEN -->
       <button onclick="window.location.reload()">Tweet</button>
-    </form>
+    </span>
+      </form>
 
-    <script src="/js/validate.js"></script>
+      <script src="/js/validate.js"></script>
 
 
     <script>
@@ -48,10 +61,10 @@
             // <div>${data.tweet_id}</div>
             // <div>${message}</div>  
             // </div>`) 
-           
 
         } 
     </script>
+    </div> <!-- END OF CREATING TWEET AREA -->
     % end
 
     <section id="tweets">
