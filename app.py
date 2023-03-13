@@ -220,6 +220,7 @@ import views.tweet
 ############################################################
 # APIs
 import APIs.api_tweet
+import APIs.api_sign_up
 
 ##############################
 import bridges.login

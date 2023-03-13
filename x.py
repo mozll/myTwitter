@@ -1,6 +1,7 @@
 from bottle import request
 import sqlite3
-import pathlib
+import pathlib 
+import re
 
 ##############################
 def dict_factory(cursor, row):
@@ -18,15 +19,30 @@ def db():
   finally:
     pass
 
-
-
-TWEET_MIN_LEN = 1
-TWEET_MAX_LEN = 180
-
-
+##############################
+TWEET_MIN_LEN = 2
+TWEET_MAX_LEN = 5
 
 def validate_tweet():
-    error = f"message must be {TWEET_MIN_LEN} to {TWEET_MAX_LEN} character"
-    if len(request.forms.message) < TWEET_MIN_LEN: raise Exception(error)
-    if len(request.forms.message) > TWEET_MAX_LEN: raise Exception(error)
-    return request.forms.get("message")
+  error = f"message min {TWEET_MIN_LEN} max {TWEET_MAX_LEN} characters"
+  if len(request.forms.message) < TWEET_MIN_LEN: raise Exception(error)
+  if len(request.forms.message) > TWEET_MAX_LEN: raise Exception(error)
+  return request.forms.get("message")
+
+
+##############################
+
+USER_NAME_MIN = 4
+USER_NAME_MAX = 15
+USER_NAME_REGEX = "^[a-zA-Z0-9_]*$"
+# english letters only and numbers from 0 to 9
+
+def validate_user_name():
+    print("*"*30)
+    print(request.forms.user_name)
+    error = f"user_name {USER_NAME_MIN} to {USER_NAME_MAX} english letters or numbers from 0 to 9"
+    request.forms.user_name = request.forms.user_name.strip()
+    if len(request.forms.user_name) < USER_NAME_MIN: raise Exception(error)
+    if len(request.forms.user_name) > USER_NAME_MAX: raise Exception(error)
+    if not re.match(USER_NAME_REGEX, request.forms.user_name): raise Exception(error)
+    return request.forms.user_name
