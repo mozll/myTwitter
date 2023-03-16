@@ -11,7 +11,7 @@
         <div>Elon Musk</div>
         <form>
             <input style="display:none" name="user_followee_id" type="text" value="1">
-            <button onclick="follow()" type="follow">Follow</button>
+            <button onclick="follow(event)" type="follow">Follow</button>
         </form>
     </div>
 
@@ -19,20 +19,20 @@
         <div>Shakira</div>
         <form>
             <input style="display:none" name="user_followee_id" type="text" value="2">
-            <button onclick="follow()" type="follow">Follow</button>
+            <button onclick="follow(event)" type="follow">Follow</button>
         </form>
     </div>
 
     <script>
-        async function follow() {
+        async function follow(event) {
             // console.log(event.); // CLICK
             // console.log(event.target); // button
             const form = event.target.form
             const conn = await fetch("api-follow", {
                 method: "POST",
                 body : new FormData(form)
-            })
-            const data = await conn.json()
+            });
+            const data = await conn.json();
             console.log(data);
         }
     </script>

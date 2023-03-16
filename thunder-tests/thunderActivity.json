@@ -1,1 +1,159 @@
-[]
+[
+  {
+    "_id": "3ac3ee06-8391-449d-bf3e-def9ccfc49f2",
+    "colId": "history",
+    "containerId": "",
+    "name": "https://smses.eu.pythonanywhere.com/",
+    "url": "https://smses.eu.pythonanywhere.com/?api-sign-up",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-03-16T13:49:13.995Z",
+    "modified": "2023-03-16T14:39:12.410Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "api-sign-up",
+        "value": "",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "d02db44e-1858-4b2e-a660-4a8a6d4bb9b3",
+    "colId": "history",
+    "containerId": "",
+    "name": "127.0.0.1/api-follow",
+    "url": "127.0.0.1/api-follow",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-03-16T13:50:21.408Z",
+    "modified": "2023-03-16T14:13:42.771Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "user_followee_id",
+          "value": "1234"
+        }
+      ]
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": ""
+      },
+      {
+        "type": "Content-Type",
+        "custom": "",
+        "action": "equal",
+        "value": "application/json"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "info"
+      }
+    ]
+  },
+  {
+    "_id": "e6406d21-f106-497d-a8c8-3a9459787356",
+    "colId": "history",
+    "containerId": "",
+    "name": "127.0.0.1/api-sendsms",
+    "url": "127.0.0.1/api-sendsms",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-03-16T14:10:14.643Z",
+    "modified": "2023-03-16T14:35:51.581Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "284c839c-d7f2-4d14-b9f6-c6c0cc5b84ab",
+    "colId": "history",
+    "containerId": "",
+    "name": "https://smses.eu.pythonanywhere.com/api-sendsms",
+    "url": "https://smses.eu.pythonanywhere.com/api-sendsms",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-03-16T14:49:34.747Z",
+    "modified": "2023-03-16T14:49:34.747Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "user_email",
+          "value": ""
+        },
+        {
+          "name": "user_password",
+          "value": ""
+        }
+      ]
+    },
+    "tests": []
+  },
+  {
+    "_id": "4ef1d767-a2d8-4380-9bec-97c2170ca7ce",
+    "colId": "history",
+    "containerId": "",
+    "name": "https://smses.eu.pythonanywhere.com/",
+    "url": "https://smses.eu.pythonanywhere.com/",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-03-16T14:51:02.703Z",
+    "modified": "2023-03-16T14:51:02.703Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "user_api_key",
+          "value": "sgweg43g3yg334h"
+        },
+        {
+          "name": "sms_message",
+          "value": "test"
+        },
+        {
+          "name": "sms_to_phone",
+          "value": ""
+        }
+      ]
+    },
+    "tests": []
+  },
+  {
+    "_id": "e221ad71-ed0d-4e92-b25e-46e35e15ebd0",
+    "colId": "history",
+    "containerId": "",
+    "name": "https://www.thunderclient.com/welcome",
+    "url": "https://www.thunderclient.com/welcome",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-03-16T14:51:34.039Z",
+    "modified": "2023-03-16T14:51:34.039Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  }
+]

@@ -1,2 +1,4 @@
 gitpython==3.1.27
 bottle==0.12.23
+bcrypt==3.2.2
+requests==2.28.2
