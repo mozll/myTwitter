@@ -3,6 +3,8 @@ import time
 import sqlite3
 import pathlib
 import json
+import bcrypt
+import x
 
 
 def dict_factory(cursor, row):
@@ -13,9 +15,14 @@ def dict_factory(cursor, row):
 def _():
     
     try:
-        
+        # # Validate
+        # user_email = x.validate_user_email()
+        # user_password = x.validate_user_password()
+
+
         # Retrieve login form data
         user_name = request.forms.get("user_name")
+        user_email = request.forms.get("user_email")
         user_password = request.forms.get("user_password")
         print(f"user_name: {user_name}, user_password: {user_password}") 
 
@@ -23,17 +30,18 @@ def _():
         db = sqlite3.connect(str(pathlib.Path(__file__).resolve().parent.parent) + "/twitter.db")
         db.row_factory = dict_factory
 
-        user = db.execute("SELECT * FROM users WHERE user_name=? AND user_password=?", (user_name, user_password)).fetchone()
+        user = db.execute("SELECT * FROM users WHERE user_email = ? LIMIT 1", (user_email,)).fetchone()
         print(f"user: {user}") 
 
-        if user:
+        if bcrypt.checkpw(user_password.encode("utf-8"), user["user_password"]):
             # Create user object for the cookie
             user_obj = {
                 "user_id":user["user_id"],
                 "user_name":user["user_name"],
                 "user_first_name":user["user_first_name"],
                 "user_last_name":user["user_last_name"],
-                "user_avatar":user["user_avatar"]
+                "user_email":user["user_email"],
+                # "user_avatar":user["user_avatar"]
             }
 
             # Set cookie and redirect to home page

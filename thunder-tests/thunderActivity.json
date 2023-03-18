@@ -147,13 +147,47 @@
     "colId": "history",
     "containerId": "",
     "name": "https://www.thunderclient.com/welcome",
-    "url": "https://www.thunderclient.com/welcome",
-    "method": "GET",
+    "url": "https://smses.eu.pythonanywhere.com/api-send-sms",
+    "method": "POST",
     "sortNum": 0,
     "created": "2023-03-16T14:51:34.039Z",
-    "modified": "2023-03-16T14:51:34.039Z",
+    "modified": "2023-03-17T22:48:02.819Z",
     "headers": [],
     "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "user_email",
+          "value": "test@test.com"
+        },
+        {
+          "name": "user_phone",
+          "value": "50504417"
+        },
+        {
+          "name": "user_password",
+          "value": "password"
+        },
+        {
+          "name": "user_confirm_password",
+          "value": "password"
+        },
+        {
+          "name": "user_api_key",
+          "value": "cba939465b59464dab217b6c7bc19176"
+        },
+        {
+          "name": "sms_message",
+          "value": "test"
+        },
+        {
+          "name": "sms_to_phone",
+          "value": "50504417"
+        }
+      ]
+    },
     "tests": []
   }
 ]

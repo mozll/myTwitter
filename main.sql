@@ -1,14 +1,18 @@
+-- PRAGMA journal_mode=WAL;
+
+
 DROP TABLE IF EXISTS users;
 CREATE TABLE users(
   user_id                     TEXT UNIQUE NOT NULL, -- 41421563466789
   user_name                   TEXT UNIQUE NOT NULL,
   user_first_name             TEXT NOT NULL,
   user_last_name              TEXT DEFAULT "",
+  user_email                  TEXT UNIQUE,
   user_avatar                 TEXT UNIQUE, -- -- -- 41421563466789.jpg
   user_cover_image            TEXT UNIQUE,
   user_created_at             TEXT NOT NULL,
   user_total_tweets           TEXT DEFAULT 0,
-  user_total_retweets         TEXT DEFAULT 0,
+  user_total_retweets         TEXT DEFAULT 0, 
   user_total_comments         TEXT DEFAULT 0,
   user_total_likes            TEXT DEFAULT 0,
   user_total_dislikes         TEXT DEFAULT 0,
@@ -18,11 +22,13 @@ CREATE TABLE users(
   user_password               TEXT NOT NULL,
   PRIMARY KEY(user_id)
 ) WITHOUT ROWID;
-INSERT INTO users VALUES("51602a9f7d82472b90ed1091248f6cb1", "elonmusk", "Elon", "Musk", "51602a9f7d82472b90ed1091248f6cb1.jpg", "coverImageELON.jpg", "1676629975", "22700", "10", "15", "17", "16", "128900000", "177", "1","123");
-INSERT INTO users VALUES("6268331d012247539998d7664bd05cc1", "shakira", "Shakira", "", "6268331d012247539998d7664bd05cc1.jpg","coverImageSHAKIRA.jpg", "1676630033", "7999", "20", "25", "27", "26", "53700000", "235","1","123");
-INSERT INTO users VALUES("a22da1effb3d4f03a0f77f9aa8320203", "rihanna", "Rihanna", "", "a22da1effb3d4f03a0f77f9aa8320203.jpg","coverImageRIHANNA.jpg", "1676630057", "10600", "30", "35", "37", "36", "107000000", "980","0","123");
-INSERT INTO users VALUES("7e968791b6c24ed0a482416f0e769727", "joebiden", "Joe", "Biden", "7e968791b6c24ed0a482416f0e769727.jpg","coverImageBIDEN.jpg" ,"1676630128", "3210", "40", "45", "47", "46", "52486000", "323","0","123");
-INSERT INTO users VALUES("d6389953261a48eba125fa54d8ce958e", "Dupreeh", "Peter", "Rasmussen", "d6389953261a48eba125fa54d8ce958e.png","coverImageDupreeh.jpg" ,"1676630231", "9607", "50", "55", "57", "56", "304800", "763","1","123");
+
+
+INSERT INTO users VALUES("51602a9f7d82472b90ed1091248f6cb1", "elonmusk", "Elon", "Musk", "elonmusk@gmail.com", "51602a9f7d82472b90ed1091248f6cb1.jpg", "coverImageELON.jpg", "1676629975", "22700", "10", "15", "17", "16", "128900000", "177", "1","123");
+INSERT INTO users VALUES("6268331d012247539998d7664bd05cc1", "shakira", "Shakira", "", "shakira@gmail.com", "6268331d012247539998d7664bd05cc1.jpg","coverImageSHAKIRA.jpg", "1676630033", "7999", "20", "25", "27", "26", "53700000", "235","1","123");
+INSERT INTO users VALUES("a22da1effb3d4f03a0f77f9aa8320203", "rihanna", "Rihanna", "", "rihanna@gmail.com", "a22da1effb3d4f03a0f77f9aa8320203.jpg","coverImageRIHANNA.jpg", "1676630057", "10600", "30", "35", "37", "36", "107000000", "980","0","123");
+INSERT INTO users VALUES("7e968791b6c24ed0a482416f0e769727", "joebiden", "Joe", "Biden", "joebiden@gmail.com", "7e968791b6c24ed0a482416f0e769727.jpg","coverImageBIDEN.jpg" ,"1676630128", "3210", "40", "45", "47", "46", "52486000", "323","0","123");
+INSERT INTO users VALUES("d6389953261a48eba125fa54d8ce958e", "Dupreeh", "Peter", "Rasmussen", "dupreeh@gmail.com", "d6389953261a48eba125fa54d8ce958e.png","coverImageDupreeh.jpg" ,"1676630231", "9607", "50", "55", "57", "56", "304800", "763","1","123");
 
 /* to index and make searchable but there can still be same values */
 CREATE INDEX idx_users_user_first_name on users(user_first_name);

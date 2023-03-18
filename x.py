@@ -21,7 +21,7 @@ def db():
 
 ##############################
 TWEET_MIN_LEN = 2
-TWEET_MAX_LEN = 5
+TWEET_MAX_LEN = 240
 
 def validate_tweet():
   error = f"message min {TWEET_MIN_LEN} max {TWEET_MAX_LEN} characters"
@@ -32,7 +32,7 @@ def validate_tweet():
 
 ##############################
 
-USER_NAME_MIN = 4
+USER_NAME_MIN = 2
 USER_NAME_MAX = 15
 USER_NAME_REGEX = "^[a-zA-Z0-9_]*$"
 # english letters only and numbers from 0 to 9
@@ -46,3 +46,14 @@ def validate_user_name():
     if len(request.forms.user_name) > USER_NAME_MAX: raise Exception(error)
     if not re.match(USER_NAME_REGEX, request.forms.user_name): raise Exception(error)
     return request.forms.user_name
+
+# def validate_user_email():  TODO: NOT SET UP OR DONE YET
+#     print("*"*30)
+#     print(request.forms.user_name)
+#     error = f"user_name {USER_NAME_MIN} to {USER_NAME_MAX} english letters or numbers from 0 to 9"
+#     request.forms.user_name = request.forms.user_name.strip()
+#     if len(request.forms.user_name) < USER_NAME_MIN: raise Exception(error)
+#     if len(request.forms.user_name) > USER_NAME_MAX: raise Exception(error)
+#     if not re.match(USER_NAME_REGEX, request.forms.user_name): raise Exception(error)
+#     return request.forms.user_name
+
