@@ -1,7 +1,7 @@
-## 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  TOKEN FROM GITHUB
+## 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  TOKEN FROM GITHUB
 
 
-# https://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@github.com/mozll/myTwitter.git
+# https://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@github.com/mozll/myTwitter.git
 
 from bottle import default_app, get, template, run, view, post, static_file, response, request
 import sqlite3
@@ -9,7 +9,6 @@ import pathlib
 import git
 import x
 
-# GIT TEST WEBHOOK
 
 # This data will come from the database
 # For now, we just hard coded the data
