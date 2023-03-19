@@ -8,8 +8,8 @@ CREATE TABLE users(
   user_first_name             TEXT NOT NULL,
   user_last_name              TEXT DEFAULT "",
   user_email                  TEXT UNIQUE,
-  user_avatar                 TEXT UNIQUE, -- -- -- 41421563466789.jpg
-  user_cover_image            TEXT UNIQUE,
+  user_avatar                 TEXT NOT NULL, /* SHOULD BE UNIQUE, TO PREVENT SAME NAME IMAGES */
+  user_cover_image            TEXT NOT NULL, /* SHOULD BE UNIQUE, TO PREVENT SAME NAME IMAGES */
   user_created_at             TEXT NOT NULL,
   user_total_tweets           TEXT DEFAULT 0,
   user_total_retweets         TEXT DEFAULT 0, 

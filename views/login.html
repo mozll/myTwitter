@@ -4,16 +4,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../app.css">
     <title>Login page</title>
 </head>
-<body>
-    <form method="POST" action="/login">
-        <input name="user_email" type="text" placeholder="user email">
-        <input name="user_password" type="password" placeholder="password">
-        <button>Login</button>
+<body class="w-full h-full bg-gradient-to-r from-twitterBlue to-cyan-400"> 
+    <div class="flex flex-row m-24 shadow-md drop-shadow-md"> <!-- BOTH SIDES -->
+    
 
+        <div class="flex-row w-full gap-4 py-20 px-5 bg-gray-100 rounded-l-lg"> <!-- LEFT SIDE -->
+        
+            <div>  <!-- TWITTER ICON --> 
+                <svg fill="currentColor" class="m-auto h-20 w-20 text-twitterBlue" viewBox="0 0 20 20">
+                <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+                </svg>
+            </div>
 
-        <a href="/sign-up">Sign up here</a>
+            <div class="m-auto pb-10 text-center">
+                <h1 class="text-lg font-bold">Welcome Back</h1>
+            </div>
+          
+            <div class="text-center">
+                <form method="POST" action="/login">
+                <input class="shadow p-2" name="user_email" type="text" placeholder="Email">
+                <input class="shadow p-2" name="user_password" type="password" placeholder="Password">
+        
+                <div class="flex-row">
+                    <button class="bg-twitterBlue text-white mt-5 px-10">Log in</button>
+                </div>
+            </div>
+
     </form>
+
+    <div class="text-center pt-10">
+    <p>Don't have an account yet?</p> <a class="text-twitterBlue" href="/sign-up">Sign up here</a>
+    </div>
+
+        </div> <!-- END OF LEFT SIDE -->
+
+    <div class="flex-row w-full gap-4 p-10 bg-twitterBlue text-white rounded-r-lg"> <!-- RIGHT SIDE -->
+<h1 class="font-bold">Join MyTwitter today and see whats happening in the world right now</h1>
+    </div>
+</div>
+
 </body>
 </html>
+
+
+

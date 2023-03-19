@@ -41,7 +41,7 @@ def _():
                 "user_first_name":user["user_first_name"],
                 "user_last_name":user["user_last_name"],
                 "user_email":user["user_email"],
-                # "user_avatar":user["user_avatar"]
+                "user_avatar":user["user_avatar"]
             }
 
             # Set cookie and redirect to home page
