@@ -3,12 +3,63 @@
 
 # https://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@github.com/mozll/myTwitter.git
 
-from bottle import default_app, get, template, run, view, post, static_file, response, request
+from bottle import default_app, get, post, template, run, view, static_file, response, request
+import os
 import sqlite3
 import pathlib
+import uuid
 import git
 import x
 
+import magic
+import mimetypes
+
+
+
+@post("/upload-picture")
+def _():
+  try:
+    the_picture = request.files.get("picture")
+#filename is the IMG_3490.jpg - it is simply the file name of the file we uploaded
+    name, ext = os.path.splitext(the_picture.filename) 
+
+    # print("#"*30)
+    # print(name)  IMG_3490
+    # print(ext)   .jpg
+
+    # How do you check mimetype
+
+    if ext not in (".png",".jpg",".jpeg"):
+      response.status = 400
+      return "Picture not allowed"
+    picture_name = str(uuid.uuid4().hex) # 4565
+    picture_name = picture_name + ext # 4565.png
+    the_picture.save(f"pictures/{picture_name}")
+
+# ASSIGNMENT -NOT DONE
+    # # read the mimetype 
+    # mt = mimetypes.guess_type(picture_name)[0]
+    # print(mt)
+    # # if it is not one that is allowed
+    # if mt:
+    #     response.status = 200
+    #     return "its ok - picture uploaded"
+    # else: 
+    #   print("Its not ok")
+    #   response.status = 400
+    #   return "its not ok picture not uploaded"
+
+    # # delete the pic
+    # # tell the user to stop being funny
+    # # if it is the real thing
+    # # respond with ok
+
+    return "picture uploaded"
+  
+  except Exception as e:
+    print(e)
+  finally:
+    pass
 
 # This data will come from the database
 # For now, we just hard coded the data

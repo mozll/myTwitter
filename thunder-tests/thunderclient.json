@@ -22,5 +22,30 @@
       ]
     },
     "tests": []
+  },
+  {
+    "_id": "21114cfd-69a1-4911-b298-520b8695b238",
+    "colId": "1259ee7a-8afe-4fae-9153-52b3b182130c",
+    "containerId": "",
+    "name": "upload picture",
+    "url": "127.0.0.1/upload-picture",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2023-03-20T07:43:37.022Z",
+    "modified": "2023-03-20T08:20:51.785Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [],
+      "files": [
+        {
+          "name": "picture",
+          "value": "..\\..\\..\\Users\\andre\\OneDrive\\Skrivebord\\sad.png"
+        }
+      ]
+    },
+    "tests": []
   }
 ]

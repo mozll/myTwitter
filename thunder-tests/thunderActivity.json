@@ -189,5 +189,324 @@
       ]
     },
     "tests": []
+  },
+  {
+    "_id": "eb2c18e0-80f4-4d7c-b73e-5f8e87b9d6b7",
+    "colId": "history",
+    "containerId": "",
+    "name": "https://smses.eu.pythonanywhere.com/api-forgot-password",
+    "url": "https://smses.eu.pythonanywhere.com/api-forgot-password",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-03-20T09:36:44.243Z",
+    "modified": "2023-03-20T09:36:44.243Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "b407dc92-4bf7-41e7-a647-70fe76be59e6",
+    "colId": "history",
+    "containerId": "",
+    "name": "https://smses.eu.pythonanywhere.com/api-sign-up",
+    "url": "https://smses.eu.pythonanywhere.com/api-sign-up",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-03-20T09:36:58.202Z",
+    "modified": "2023-03-20T09:37:35.725Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "user_email",
+          "value": "andreasoh_7@hotmail.com"
+        },
+        {
+          "name": "user_phone",
+          "value": "50504417"
+        },
+        {
+          "name": "user_password",
+          "value": "password"
+        },
+        {
+          "name": "user_confirm_password",
+          "value": "password"
+        }
+      ]
+    },
+    "tests": []
+  },
+  {
+    "_id": "321d62f8-1cd7-4c98-9262-82a4bba37a45",
+    "colId": "history",
+    "containerId": "",
+    "name": "https://smses.eu.pythonanywhere.com/api-login",
+    "url": "https://smses.eu.pythonanywhere.com/api-login",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-03-20T09:38:03.361Z",
+    "modified": "2023-03-20T09:38:03.361Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "user_email",
+          "value": "andreasoh_7@hotmail.com"
+        },
+        {
+          "name": "user_phone",
+          "value": "50504417"
+        },
+        {
+          "name": "user_password",
+          "value": "password"
+        },
+        {
+          "name": "user_confirm_password",
+          "value": "password"
+        }
+      ]
+    },
+    "tests": []
+  },
+  {
+    "_id": "21376044-f9fb-4185-8ee5-d9bbb68a059f",
+    "colId": "history",
+    "containerId": "",
+    "name": "https://smses.eu.pythonanywhere.com/api-verify-account",
+    "url": "https://smses.eu.pythonanywhere.com/api-verify-account",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-03-20T09:38:12.441Z",
+    "modified": "2023-03-20T09:46:28.103Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "user_email",
+          "value": "andreasoh_7@hotmail.com",
+          "isDisabled": true
+        },
+        {
+          "name": "user_phone",
+          "value": "50504417",
+          "isDisabled": true
+        },
+        {
+          "name": "user_password",
+          "value": "password",
+          "isDisabled": true
+        },
+        {
+          "name": "user_confirm_password",
+          "value": "password",
+          "isDisabled": true
+        },
+        {
+          "name": "user_api_key",
+          "value": "8e1472ebb69046c7af11a1d191092426"
+        },
+        {
+          "name": "user_verification_key",
+          "value": "8134"
+        },
+        {
+          "name": "sms_message",
+          "value": "Does it work now",
+          "isDisabled": true
+        },
+        {
+          "name": "sms_to_phone",
+          "value": "50504417",
+          "isDisabled": true
+        }
+      ]
+    },
+    "tests": []
+  },
+  {
+    "_id": "7355fbbf-e4cf-4a76-99fa-34e18574e8d5",
+    "colId": "history",
+    "containerId": "",
+    "name": "https://smses.eu.pythonanywhere.com/api-send-sms",
+    "url": "https://smses.eu.pythonanywhere.com/api-send-sms",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-03-20T09:39:23.815Z",
+    "modified": "2023-03-20T09:41:00.798Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "user_email",
+          "value": "andreasoh_7@hotmail.com",
+          "isDisabled": true
+        },
+        {
+          "name": "user_phone",
+          "value": "50504417",
+          "isDisabled": true
+        },
+        {
+          "name": "user_password",
+          "value": "password",
+          "isDisabled": true
+        },
+        {
+          "name": "user_confirm_password",
+          "value": "password",
+          "isDisabled": true
+        },
+        {
+          "name": "user_api_key",
+          "value": "8e1472ebb69046c7af11a1d191092426"
+        },
+        {
+          "name": "user_verification_key",
+          "value": "8134",
+          "isDisabled": true
+        },
+        {
+          "name": "sms_message",
+          "value": "Does it work now"
+        },
+        {
+          "name": "sms_to_phone",
+          "value": "50504417"
+        }
+      ]
+    },
+    "tests": []
+  },
+  {
+    "_id": "3782f678-f99b-42cc-9606-a5fff594a6a8",
+    "colId": "history",
+    "containerId": "",
+    "name": "https://smses.eu.pythonanywhere.com/api-get-sent-smses",
+    "url": "https://smses.eu.pythonanywhere.com/api-get-sent-smses",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-03-20T09:44:40.186Z",
+    "modified": "2023-03-20T09:45:02.054Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "user_email",
+          "value": "andreasoh_7@hotmail.com",
+          "isDisabled": true
+        },
+        {
+          "name": "user_phone",
+          "value": "50504417",
+          "isDisabled": true
+        },
+        {
+          "name": "user_password",
+          "value": "password",
+          "isDisabled": true
+        },
+        {
+          "name": "user_confirm_password",
+          "value": "password",
+          "isDisabled": true
+        },
+        {
+          "name": "user_api_key",
+          "value": "8e1472ebb69046c7af11a1d191092426"
+        },
+        {
+          "name": "user_verification_key",
+          "value": "8134",
+          "isDisabled": true
+        },
+        {
+          "name": "sms_message",
+          "value": "Does it work now",
+          "isDisabled": true
+        },
+        {
+          "name": "sms_to_phone",
+          "value": "50504417",
+          "isDisabled": true
+        }
+      ]
+    },
+    "tests": []
+  },
+  {
+    "_id": "960c6785-2fda-4038-81db-354eb672adb6",
+    "colId": "history",
+    "containerId": "",
+    "name": "https://smses.eu.pythonanywhere.com/api-get-received-smses",
+    "url": "https://smses.eu.pythonanywhere.com/api-get-received-smses",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-03-20T09:45:29.539Z",
+    "modified": "2023-03-20T09:45:29.539Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "user_email",
+          "value": "andreasoh_7@hotmail.com",
+          "isDisabled": true
+        },
+        {
+          "name": "user_phone",
+          "value": "50504417",
+          "isDisabled": true
+        },
+        {
+          "name": "user_password",
+          "value": "password",
+          "isDisabled": true
+        },
+        {
+          "name": "user_confirm_password",
+          "value": "password",
+          "isDisabled": true
+        },
+        {
+          "name": "user_api_key",
+          "value": "8e1472ebb69046c7af11a1d191092426"
+        },
+        {
+          "name": "user_verification_key",
+          "value": "8134",
+          "isDisabled": true
+        },
+        {
+          "name": "sms_message",
+          "value": "Does it work now",
+          "isDisabled": true
+        },
+        {
+          "name": "sms_to_phone",
+          "value": "50504417",
+          "isDisabled": true
+        }
+      ]
+    },
+    "tests": []
   }
 ]
