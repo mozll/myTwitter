@@ -23,12 +23,12 @@ def _():
         user_name = x.validate_user_name()
         # user_avatar = str(uuid.uuid4()).replace("-","")
         # user_cover_image = str(uuid.uuid4()).replace("-","")
-        db = x.db()
+        # db = x.db()
         user_first_name = request.forms.get("user_first_name")
         user_last_name = request.forms.get("user_last_name")
         user_email = request.forms.get("user_email")
         user_password = request.forms.get("user_password").encode("utf-8")
-        print(f"user_name: {user_name}, user_password: {user_password}") 
+        # print(f"user_name: {user_name}, user_password: {user_password}") 
 
         user = {
             "user_id":user_id,
@@ -49,13 +49,13 @@ def _():
             "user_verified":"0",
             "user_password": bcrypt.hashpw(user_password, salt)
         }
-        print(user) 
+        # print(user) 
 
         values = ""
         for key in user:
             values = values + f":{key},"
         values = values.rstrip(",")
-        print(values)
+        # print(values)
 
 # Connect to the SQLITE Database
         db = sqlite3.connect(str(pathlib.Path(__file__).resolve().parent.parent) + "/twitter.db")
@@ -73,7 +73,7 @@ def _():
         return "Sign-up successful"
 
     except Exception as ex:
-        print(f"Exception: {ex}")
+        # print(f"Exception: {ex}")
         response.status = 303
         response.set_header("Location", "/sign-up")
         return {"info":str(ex)} # cast to string

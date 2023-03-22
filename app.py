@@ -167,6 +167,13 @@ def _():
     response.set_header("Location", "/login")
     return
 
+@get("/forgot-password")
+def _():
+  return template("forgot-password")
+@get("/reset-password")
+def _():
+  return template("reset-password")
+
 @get("/contact")
 def _():
   return template("contact-us")  
@@ -279,6 +286,7 @@ import APIs.api_tweet
 import APIs.api_sign_up
 import APIs.api_follow
 import APIs.api_sendsms
+import APIs.api_forgot_password
 
 ##############################
 import bridges.login

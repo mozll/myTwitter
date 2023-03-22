@@ -508,5 +508,19 @@
       ]
     },
     "tests": []
+  },
+  {
+    "_id": "75885548-1725-4d46-a8c4-69db7d85736a",
+    "colId": "history",
+    "containerId": "",
+    "name": "127.0.0.1/api_forgot_password",
+    "url": "127.0.0.1/api-forgot-password",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-03-22T12:45:33.368Z",
+    "modified": "2023-03-22T12:47:44.649Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
