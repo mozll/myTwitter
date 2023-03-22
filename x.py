@@ -64,3 +64,7 @@ def validate_user_email():  # TODO: NOT SET UP OR DONE YET
     if not re.match(USER_EMAIL_REGEX, request.forms.user_email): raise Exception(error)
     return request.forms.user_email
 
+
+
+EMAIL_FROM = "cynicalmopp@gmail.com"
+EMAIL_SECRET = "tgudjtryjmohahrm"

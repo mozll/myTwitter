@@ -47,7 +47,8 @@ def _():
             "user_total_followers": "0",
             "user_total_following": "0",
             "user_verified":"0",
-            "user_password": bcrypt.hashpw(user_password, salt)
+            "user_password": bcrypt.hashpw(user_password, salt),
+            "user_password_reset_key": ""
         }
         # print(user) 
 

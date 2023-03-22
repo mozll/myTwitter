@@ -9,6 +9,7 @@ from email.mime.multipart import MIMEMultipart
 def _():
 	try:
 		user_email = x.validate_user_email()
+		print(user_email)
 		user_password_reset_key = str(uuid.uuid4()).replace("-","")
 		db = x.db()
 		rows_affected = db.execute(f"""
