@@ -47,13 +47,20 @@ def validate_user_name():
     if not re.match(USER_NAME_REGEX, request.forms.user_name): raise Exception(error)
     return request.forms.user_name
 
-# def validate_user_email():  TODO: NOT SET UP OR DONE YET
+##############################
+
+USER_EMAIL_MIN = 5
+USER_EMAIL_MAX = 60
+USER_EMAIL_REGEX = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+# english letters only and numbers from 0 to 9
+
+def validate_user_email():  # TODO: NOT SET UP OR DONE YET
 #     print("*"*30)
 #     print(request.forms.user_name)
-#     error = f"user_name {USER_NAME_MIN} to {USER_NAME_MAX} english letters or numbers from 0 to 9"
-#     request.forms.user_name = request.forms.user_name.strip()
-#     if len(request.forms.user_name) < USER_NAME_MIN: raise Exception(error)
-#     if len(request.forms.user_name) > USER_NAME_MAX: raise Exception(error)
-#     if not re.match(USER_NAME_REGEX, request.forms.user_name): raise Exception(error)
-#     return request.forms.user_name
+    error = f"Invalid email. Must be {USER_EMAIL_MIN} - {USER_EMAIL_MAX} characters long and in the format user@example.com"
+    request.forms.user_email = request.forms.user_email.strip()
+    if len(request.forms.user_email) < USER_EMAIL_MIN: raise Exception(error)
+    if len(request.forms.user_email) > USER_EMAIL_MAX: raise Exception(error)
+    if not re.match(USER_EMAIL_REGEX, request.forms.user_email): raise Exception(error)
+    return request.forms.user_email
 
