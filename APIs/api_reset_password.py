@@ -1,6 +1,6 @@
 from bottle import post, request, response
 
-@post('/api-reset-password')
+@post('/reset-password')
 def _():
     try:
         return {'info':'Ok'}

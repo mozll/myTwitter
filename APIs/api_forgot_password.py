@@ -5,7 +5,7 @@ import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-@post("/api-forgot-password")
+@post("/forgot-password")
 def _():
 	try:
 		user_email = x.validate_user_email()
