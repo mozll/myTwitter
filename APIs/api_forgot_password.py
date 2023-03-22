@@ -21,7 +21,7 @@ def _():
 		db.commit()	
 
 		message = MIMEMultipart("alternative")
-		message["Subject"] = "smses password reset"
+		message["Subject"] = "RESET YOUR MyTwitter password!"
 		message["From"] = x.EMAIL_FROM
 		message["To"] = user_email
 
