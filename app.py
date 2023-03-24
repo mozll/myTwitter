@@ -14,7 +14,7 @@ import x
 # import magic
 import mimetypes
 
-#test
+#testing
 
 @post("/upload-picture")
 def _():
