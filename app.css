@@ -557,12 +557,13 @@ video {
   margin: 0.5rem;
 }
 
-.m-24 {
-  margin: 6rem;
-}
-
 .m-auto {
   margin: auto;
+}
+
+.my-auto {
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .-mt-20 {
@@ -597,6 +598,10 @@ video {
   margin-top: auto;
 }
 
+.block {
+  display: block;
+}
+
 .flex {
   display: flex;
 }
@@ -623,10 +628,6 @@ video {
 
 .h-6 {
   height: 1.5rem;
-}
-
-.h-auto {
-  height: auto;
 }
 
 .h-full {
@@ -673,10 +674,6 @@ video {
   width: 100%;
 }
 
-.max-w-full {
-  max-width: 100%;
-}
-
 .max-w-screen-xl {
   max-width: 1280px;
 }
@@ -691,6 +688,18 @@ video {
 
 .flex-col {
   flex-direction: column;
+}
+
+.place-content-center {
+  place-content: center;
+}
+
+.place-items-center {
+  place-items: center;
+}
+
+.content-center {
+  align-content: center;
 }
 
 .items-center {
@@ -846,14 +855,22 @@ video {
   --tw-gradient-to: #22d3ee;
 }
 
+.bg-cover {
+  background-size: cover;
+}
+
+.bg-center {
+  background-position: center;
+}
+
 .object-contain {
   -o-object-fit: contain;
      object-fit: contain;
 }
 
-.object-cover {
-  -o-object-fit: cover;
-     object-fit: cover;
+.object-fill {
+  -o-object-fit: fill;
+     object-fit: fill;
 }
 
 .p-2 {
@@ -917,6 +934,11 @@ video {
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+
+.py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 .pb-10 {
@@ -1068,6 +1090,11 @@ video {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
+.hover\:bg-blue-500:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+}
+
 .hover\:bg-gray-800:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
@@ -1081,6 +1108,10 @@ video {
 .hover\:bg-twitterLightDark:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(39 51 64 / var(--tw-bg-opacity));
+}
+
+.hover\:to-black:hover {
+  --tw-gradient-to: #000;
 }
 
 .hover\:text-twitterBlue:hover {
@@ -1101,4 +1132,14 @@ video {
 .hover\:text-twitterYellow:hover {
   --tw-text-opacity: 1;
   color: rgb(253 203 88 / var(--tw-text-opacity));
+}
+
+.focus\:bg-blue-600:focus {
+  --tw-bg-opacity: 1;
+  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
+}
+
+.focus\:bg-blue-800:focus {
+  --tw-bg-opacity: 1;
+  background-color: rgb(30 64 175 / var(--tw-bg-opacity));
 }

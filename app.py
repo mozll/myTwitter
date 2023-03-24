@@ -11,7 +11,7 @@ import uuid
 import git
 import x
 
-import magic
+# import magic
 import mimetypes
 
 
