@@ -2,6 +2,7 @@ from bottle import request
 import sqlite3
 import pathlib 
 import re
+import secret
 
 ##############################
 def dict_factory(cursor, row):
@@ -67,4 +68,4 @@ def validate_user_email():  # TODO: NOT SET UP OR DONE YET
 
 
 EMAIL_FROM = "cynicalmopp@gmail.com"
-EMAIL_SECRET = "tgudjtryjmohahrm"
+EMAIL_SECRET = secret.email_secret
