@@ -26,7 +26,8 @@ def _():
         # db = x.db()
         user_first_name = request.forms.get("user_first_name")
         user_last_name = request.forms.get("user_last_name")
-        user_email = request.forms.get("user_email")
+        user_email = x.validate_user_email()
+        # user_email = request.forms.get("user_email")
         user_password = request.forms.get("user_password").encode("utf-8")
         # print(f"user_name: {user_name}, user_password: {user_password}") 
 
@@ -76,7 +77,7 @@ def _():
     except Exception as ex:
         # print(f"Exception: {ex}")
         response.status = 303
-        response.set_header("Location", "/sign-up")
+        # response.set_header("Location", "/sign-up")
         return {"info":str(ex)} # cast to string
 
     finally:

@@ -40,7 +40,7 @@ USER_NAME_REGEX = "^[a-zA-Z0-9_]*$"
 def validate_user_name():
     # print("*"*30)
     # print(request.forms.user_name)
-    error = f"user_name {USER_NAME_MIN} to {USER_NAME_MAX} english letters or numbers from 0 to 9"
+    error = f"Invalid username. It must be {USER_NAME_MIN} to {USER_NAME_MAX} characters long, and only english letters or numbers from 0 to 9"
     request.forms.user_name = request.forms.user_name.strip()
     if len(request.forms.user_name) < USER_NAME_MIN: raise Exception(error)
     if len(request.forms.user_name) > USER_NAME_MAX: raise Exception(error)
