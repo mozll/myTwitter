@@ -1,7 +1,7 @@
-## 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  TOKEN FROM GITHUB
+## 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 TOKEN FROM GITHUB
 
 
-# https://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@github.com/mozll/myTwitter.git
+# https://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@github.com/mozll/myTwitter.git
 
 from bottle import default_app, get, post, template, run, view, static_file, response, request
 import os
@@ -14,7 +14,7 @@ import x
 # import magic
 import mimetypes
 
-#testing
+#testing webhook
 
 @post("/upload-picture")
 def _():
