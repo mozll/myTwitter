@@ -66,6 +66,20 @@ def validate_user_email():  # TODO: NOT SET UP OR DONE YET
     return request.forms.user_email
 
 
+USER_PASSWORD_MIN = 2
+USER_PASSWORD_MAX = 15
+USER_PASSWORD_REGEX = "^[a-zA-Z0-9_]*$"
+
+def validate_new_password():
+  error = f"Invalid new password. Must be {USER_PASSWORD_MIN} - {USER_PASSWORD_MAX} long, and only english letters or numbers from 0 to 9"
+  request.forms.user_new_password
+  if len(request.forms.user_new_password) < USER_EMAIL_MIN: raise Exception(error)
+  if len(request.forms.user_new_password) > USER_EMAIL_MAX: raise Exception(error)
+  if not re.match(USER_PASSWORD_REGEX, request.forms.user_new_password): raise Exception(error)
+  return request.forms.user_new_password
+
+
+
 
 EMAIL_FROM = "cynicalmopp@gmail.com"
 EMAIL_SECRET = secret.email_secret
