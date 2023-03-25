@@ -63,15 +63,15 @@ def _():
 		return {
 			"info" : "Check your email to reset your password"
 		}
-	except Exception as e:
-		print(e)
+	except Exception as ex:
+		print(ex)
 		if "db" in locals(): db.rollback()
-		try: # Controlled exception, usually comming from the x file
-			response.status = e.args[0]
-			return {"info":e.args[1]}
+		try: # Controlled exception, usually coming from the x file
+			response.status = ex.args[0]
+			return {"info":ex.args[1]}
 		except: # Something unknown went wrong		
 			# unknown scenario
 			response.status = 500
-			return {"info":str(e)}
+			return {"info":str(ex)}
 	finally:
 		if "db" in locals(): db.close()
