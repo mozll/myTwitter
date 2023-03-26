@@ -174,6 +174,10 @@ def _():
 def _():
   return template("reset-password")
 
+@get("/activate-user")
+def _():
+  return template("activate-user")
+
 @get("/contact")
 def _():
   return template("contact-us")  
@@ -288,6 +292,7 @@ import APIs.api_follow
 import APIs.api_sendsms
 import APIs.api_forgot_password
 import APIs.api_reset_password
+import APIs.api_activate_user
 
 ##############################
 import bridges.login

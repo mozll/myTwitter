@@ -33,7 +33,7 @@ def _():
         user = db.execute("SELECT * FROM users WHERE user_email = ? LIMIT 1", (user_email,)).fetchone()
         print(f"user: {user}") 
 
-        if bcrypt.checkpw(user_password.encode("utf-8"), user["user_password"]):
+        if bcrypt.checkpw(user_password.encode("utf-8"), user["user_password"]) and user["user_active"] == "1":
             # Create user object for the cookie
             user_obj = {
                 "user_id":user["user_id"],
