@@ -1,13 +1,17 @@
 from bottle import post, request, response
 import x
+import bcrypt
+
+salt = bcrypt.gensalt()
 
 @post('/reset-password')
 def _():
     try: ## Useren med 'denne reset key' skal have ændret sit password til denne værdi, fra en form
         # user_new_password = x.validate_new_password()
         # print(user_new_password)
-        user_new_password = request.forms.user_new_password
-        user_password_reset_key = request.forms.user_password_reset_key
+        user_new_password = request.forms.get("user_new_password").encode("utf-8")
+        # user_new_password = bcrypt.hashpw(user_new_password, salt)
+        user_password_reset_key = request.forms.get("user_password_reset_key")
         print(user_password_reset_key)
 
         db = x.db()
@@ -15,7 +19,7 @@ def _():
         UPDATE users
         SET user_password = ?
         WHERE user_password_reset_key = ?
-        """,(user_new_password, user_password_reset_key))
+        """,(bcrypt.hashpw(user_new_password, salt), user_password_reset_key))
         
         if not rows_affected: raise Exception(400, "invalid info")
         db.commit()

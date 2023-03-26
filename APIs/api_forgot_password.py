@@ -29,7 +29,7 @@ def _():
 		text = f"""\
 		Hi,
 		To reset your password, send a POST request to:
-		https://mozel.eu.pythonanywhere.com/api-reset-password
+		https://mozel.eu.pythonanywhere.com/reset-password
 		and use the user_password_reset_key: {user_password_reset_key}
 		"""
 		html = f"""\
@@ -37,7 +37,7 @@ def _():
 		<body>
 			Hi,
 			To reset your password, send a POST request to:
-			https://mozel.eu.pythonanywhere.com/api-reset-password
+			https://mozel.eu.pythonanywhere.com/reset-password
 			and use the user_password_reset_key: {user_password_reset_key}
 		</body>
 		</html>
