@@ -178,6 +178,16 @@ def _():
 def _():
   return template("activate-user")
 
+@get("/deactivate-user")
+def _():
+  return template("deactivate-user")
+
+# @get("/send-deactivate-key")  VIRKER IKKE
+# def _():
+#     response.status = 303
+#     response.set_header("Location", "/deactivate-user")
+#     return 
+
 @get("/contact")
 def _():
   return template("contact-us")  
@@ -293,6 +303,8 @@ import APIs.api_sendsms
 import APIs.api_forgot_password
 import APIs.api_reset_password
 import APIs.api_activate_user
+import APIs.api_deactivate_user
+import APIs.api_send_deactivate_key
 
 ##############################
 import bridges.login
