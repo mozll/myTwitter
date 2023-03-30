@@ -1,5 +1,11 @@
 -- PRAGMA journal_mode=WAL;
+PRAGMA foreign_keys;
+PRAGMA foreign_keys = true;
 
+
+-- SELECT MAX (user_total_tweets) FROM users -- Selects user with most tweets
+
+-- DELETE ON CASCADE -- Deletes everything the user is referencing aswell, if the user is deletied then, in the phones table, where the user is connected, his number gets deleted aswell
 
 DROP TABLE IF EXISTS users;
 CREATE TABLE users(
@@ -11,13 +17,13 @@ CREATE TABLE users(
   user_avatar                 TEXT NOT NULL, /* SHOULD BE UNIQUE, TO PREVENT SAME NAME IMAGES */
   user_cover_image            TEXT NOT NULL, /* SHOULD BE UNIQUE, TO PREVENT SAME NAME IMAGES */
   user_created_at             TEXT NOT NULL,
-  user_total_tweets           TEXT DEFAULT 0,
-  user_total_retweets         TEXT DEFAULT 0, 
-  user_total_comments         TEXT DEFAULT 0,
-  user_total_likes            TEXT DEFAULT 0,
-  user_total_dislikes         TEXT DEFAULT 0,
-  user_total_followers        TEXT DEFAULT 0,
-  user_total_following        TEXT DEFAULT 0,
+  user_total_tweets           INTEGER DEFAULT 0,  /* int(5) */
+  user_total_retweets         INTEGER DEFAULT 0, 
+  user_total_comments         INTEGER DEFAULT 0,
+  user_total_likes            INTEGER DEFAULT 0,
+  user_total_dislikes         INTEGER DEFAULT 0,
+  user_total_followers        INTEGER DEFAULT 0,
+  user_total_following        INTEGER DEFAULT 0,
   user_verified               TEXT DEFAULT 0,
   user_active                 TEXT DEFAULT 0,
   user_activation_key         TEXT DEFAULT "",
@@ -63,7 +69,8 @@ CREATE TABLE tweets(
   tweet_total_likes     TEXT,
   tweet_total_dislikes  TEXT,
   tweet_total_views     TEXT,
-  PRIMARY KEY(tweet_id)
+  PRIMARY KEY(tweet_id),
+  FOREIGN KEY(tweet_user_fk) REFERENCES users(user_id)
 ) WITHOUT ROWID;
 
 INSERT INTO tweets VALUES("bdbeb933dcf145dc9bba9282d20e775a", "All things in moderation, especially content moderation", "", "1676654614", "51602a9f7d82472b90ed1091248f6cb1", "1","2","3","4","5");
@@ -85,6 +92,14 @@ INSERT INTO tweets VALUES("935382d5bb6a4a948948a8fe978684be", "How crazy both of
 INSERT INTO tweets VALUES("485db3c60952420e9c4670bb8d3c5830", "Elon-testing", "Foaz7GYX0AU9unl.jpg", "1676655238", "51602a9f7d82472b90ed1091248f6cb1", "1","2","3","4","5");
 
 INSERT INTO tweets VALUES("b1dbb467680f4b73ac144243484e1642", "Test gaming now", "", "1676655298", "d6389953261a48eba125fa54d8ce958e", "1","2","3","4","5");
+
+
+
+
+INSERT INTO tweets VALUES("b1dbb467680f4b73ac144243484e1444","Hey","", "1","xxx", "1","2","3","4","5");
+
+
+SELECT * FROM tweets;
 
 
 CREATE INDEX idx_tweets_tweet_image ON tweets(tweet_image);
@@ -114,6 +129,8 @@ SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id ORDER BY tweet_create
 
 SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id WHERE user_id = ?;
 
+
+DROP VIEW IF EXISTS users_by_name;
 CREATE VIEW users_by_name AS SELECT * FROM users ORDER BY user_name DESC;
 
 SELECT * FROM users_by_name LIMIT 1;
@@ -128,7 +145,7 @@ SELECT * FROM users_by_name LIMIT 1;
 
 SELECT * FROM users JOIN tweets ON user_id = tweet_user_fk;
 
-CREATE VIEW users_and_tweets AS SELECT * FROM users JOIN tweets ON user_id = tweet_user_fk;
+-- CREATE VIEW users_and_tweets AS SELECT * FROM users JOIN tweets ON user_id = tweet_user_fk;
 
 SELECT * FROM users_and_tweets ORDER BY user_first_name DESC;
 
@@ -145,9 +162,9 @@ BEGIN
     WHERE user_id = NEW.tweet_user_fk;
 END;
 
-if a user deletes a tweet
+-- if a user deletes a tweet
 
-if a tweet is deleted the total tweets of the users is automatically deleted
+-- if a tweet is deleted the total tweets of the users is automatically deleted
 
 DROP TRIGGER IF EXISTS decrement_user_total_tweets;
 CREATE TRIGGER decrement_user_total_tweets AFTER DELETE ON tweets
@@ -160,12 +177,12 @@ END;
 SELECT user_name, user_total_tweets from users;
 
 
-INSERT INTO tweets VALUES(
-  "3ad7c99a108b4b0d91a8c2e20dfc9c9a", 
-  "Hi", 
-  "",
-  "1677162587",
-  "ebb0d9d74d6c4825b3e1a1bcd73ff49a"
-);
+-- INSERT INTO tweets VALUES(
+--   "3ad7c99a108b4b0d91a8c2e20dfc9c9a", 
+--   "Hi", 
+--   "",
+--   "1677162587",
+--   "ebb0d9d74d6c4825b3e1a1bcd73ff49a"
+-- );
 
 DELETE FROM tweets WHERE tweet_id = "3ad7c99a108b4b0d91a8c2e20dfc9c9a";
