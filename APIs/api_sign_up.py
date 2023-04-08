@@ -33,6 +33,7 @@ def _():
         # user_email = request.forms.get("user_email")
         user_activation_key = str(uuid.uuid4()).replace("-","")
         user_deactivation_key = ""
+        user_gold_key = ""
         user_password = request.forms.get("user_password").encode("utf-8")
         # print(f"user_name: {user_name}, user_password: {user_password}") 
 
@@ -58,6 +59,8 @@ def _():
             "user_active":"0",
             "user_activation_key":user_activation_key,
             "user_deactivation_key":user_deactivation_key,
+            "user_gold":"0",
+            "user_gold_key":user_gold_key,
             "user_password": bcrypt.hashpw(user_password, salt),
             "user_password_reset_key": ""
         }

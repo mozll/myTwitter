@@ -182,6 +182,11 @@ def _():
 def _():
   return template("deactivate-user")
 
+@get("/goldify-user")
+def _():
+  return template("goldify-user")
+
+
 # @get("/send-deactivate-key")  VIRKER IKKE
 # def _():
 #     response.status = 303
@@ -305,6 +310,7 @@ import APIs.api_reset_password
 import APIs.api_activate_user
 import APIs.api_deactivate_user
 import APIs.api_send_deactivate_key
+import APIs.api_goldify_user
 
 ##############################
 import bridges.login
