@@ -128,7 +128,7 @@ def _():
             )
 
         response.status = 303
-        response.set_header("Location", "/login")
+        response.set_header("Location", "/activate-user")
 
         return {
             "Sign-up successful - check your email for activation link"
