@@ -26,7 +26,6 @@ def _():
 
         return {'info':'Ok, user should be active now'}
     
-
     except Exception as ex:
         print(ex)
         if 'db' in locals(): db.rollback()

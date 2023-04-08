@@ -45,6 +45,7 @@ def _():
             "user_first_name": user_first_name,
             "user_last_name": user_last_name,
             "user_email": user_email,
+            "user_phone":"0",
             "user_avatar":"egg3442e1f6463624338504cd021bf23aef84411x.jpg",
             "user_cover_image":"3d41c7550f67429cb7590d62ab0eca2d.jpg",
             "user_created_at": int(time.time()),

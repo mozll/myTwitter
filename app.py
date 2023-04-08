@@ -311,6 +311,7 @@ import APIs.api_activate_user
 import APIs.api_deactivate_user
 import APIs.api_send_deactivate_key
 import APIs.api_goldify_user
+import APIs.api_send_gold_key
 
 ##############################
 import bridges.login

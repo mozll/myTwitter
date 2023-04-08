@@ -17,9 +17,13 @@ def _():
         if not rows_affected: raise Exception(400, "invalid info")
 
         db.commit()
-
+        
+        
+        response.status = 303
+        response.set_header("Location", "/")
         
         return {'info':'You are now a gold user'}
+    
     except Exception as ex:
         if 'db' in locals(): db.rollback()
         print(ex)

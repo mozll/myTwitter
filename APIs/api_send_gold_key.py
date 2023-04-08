@@ -5,6 +5,11 @@ import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
+from twilio.rest import Client
+
+
+
+
 @post('/send-gold-key')
 def _():
     try:
@@ -16,62 +21,55 @@ def _():
         print("#######################################")
         print(user_obj.get("user_email"))
         
-        rows_affected = db.execute(f"""
+
+        
+
+ 
+ 
+        account_sid = "ACecb93b361a8d0891f97586c794d8a025"
+        account_token = "78e585b8a58662063c37122194c3f848"
+
+        client = Client(account_sid, account_token)
+        
+        user_phone = request.forms.get("user_phone")
+        print("##########TEST")
+        message = client.messages.create(
+        from_='+15075195097',
+        body=f"""Hi,
+        To golden your user, enter this key {user_gold_key}
+        """,
+        # media_url ="https://cdn.cnn.com/cnnnext/dam/assets/221208163103-20221208-twitter-verification-cost-light-super-tease.jpg"
+        to=f"+45{user_phone}"
+)
+
+        
+
+        print(message.sid)
+
+
+        gold_key_updated = db.execute(f"""
             UPDATE users
             SET user_gold_key = ?
             WHERE user_email = ?
             """,(user_gold_key, user_obj.get("user_email"))).rowcount
         
+        user_phone_updated = db.execute(f"""
+            UPDATE users
+            SET user_phone = ?
+            WHERE user_email = ?
+            """,(user_phone, user_obj.get("user_email"))).rowcount
+        
 
-        if not rows_affected: raise Exception(400,"user not found")
+        if not gold_key_updated & user_phone_updated: raise Exception(400,"user not found")
 
         db.commit()
 
-        message = MIMEMultipart("alternative")
-        message["Subject"] = "Deactivate your account"
-        message["From"] = x.EMAIL_FROM
-        message["To"] = user_obj.get("user_email")
-
-        # Create the plain-text and HTML version of your message
-        text = f"""\
-        Hi,
-        To deactivate your user, send a POST request to:
-        https://mozel.eu.pythonanywhere.com/deactivate-user
-        and use the deactivation key: {user_gold_key}
-        """
-        html = f"""\
-        <html>
-        <body>
-            Hi,
-            To deactivate your user, send a POST request to:
-            https://mozel.eu.pythonanywhere.com/deactivate-user
-            and use the deactivation key: {user_gold_key}
-        </body>
-        </html>
-        """
-
-        # Turn these into plain/html MIMEText objects
-        part1 = MIMEText(text, "plain")
-        part2 = MIMEText(html, "html")
-
-        # Add HTML/plain-text parts to MIMEMultipart message
-        # The email client will try to render the last part first
-        message.attach(part1)
-        message.attach(part2)
-
-        # Create secure connection with server and send email
-        context = ssl.create_default_context()
-        with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
-            server.login(x.EMAIL_FROM, x.EMAIL_SECRET)
-            server.sendmail(
-                x.EMAIL_FROM, user_obj.get("user_email"), message.as_string()
-            )
 
         response.status = 303
-        response.set_header("Location", "/deactivate-user")
+        response.set_header("Location", "/goldify-user")
 
         return {
-            "info" : "Check your email to deactivate your account"
+            "info" : "Check your phone to golden your account"
         }
 
     except Exception as ex:
