@@ -312,6 +312,7 @@ import APIs.api_deactivate_user
 import APIs.api_send_deactivate_key
 import APIs.api_goldify_user
 import APIs.api_send_gold_key
+import APIs.api_search
 
 ##############################
 import bridges.login
@@ -340,3 +341,7 @@ try:
 except Exception as ex:
   print("Running local server")
   run(host="127.0.0.1", port=80, debug=True, reloader=True)
+
+
+
+##############################

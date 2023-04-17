@@ -650,5 +650,19 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "206160f4-7f15-4f4b-8d79-f8efa60017c9",
+    "colId": "history",
+    "containerId": "",
+    "name": "127.0.0.1/search",
+    "url": "127.0.0.1/search",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-04-17T11:11:07.282Z",
+    "modified": "2023-04-17T11:11:07.282Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
