@@ -1,6 +1,8 @@
--- PRAGMA journal_mode=WAL;
+PRAGMA journal_mode=WAL;
+-- PRAGMA read_uncommitted = false
+PRAGMA read_committed = true;
 -- PRAGMA foreign_keys;
--- PRAGMA foreign_keys = true;
+PRAGMA foreign_keys = true;
 
 
 -- SELECT MAX (user_total_tweets) FROM users -- Selects user with most tweets
@@ -133,6 +135,9 @@ SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id ORDER BY tweet_create
 SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id WHERE user_id = ?;
 
 
+SELECT * FROM users LEFT JOIN tweets ON tweet_user_fk = user_id where user_id = ?;
+
+
 DROP VIEW IF EXISTS users_by_name;
 CREATE VIEW users_by_name AS SELECT * FROM users ORDER BY user_name DESC;
 
@@ -189,3 +194,21 @@ SELECT user_name, user_total_tweets from users;
 -- );
 
 DELETE FROM tweets WHERE tweet_id = "3ad7c99a108b4b0d91a8c2e20dfc9c9a";
+
+
+BEGIN TRANSACTION;
+
+UPDATE users SET user_total_tweets = user_total_tweets + 1 WHERE user_id = '51602a9f7d82472b90ed1091248f6cb1';
+INSERT INTO tweets (tweet_id, tweet_message, tweet_created_at, tweet_user_fk)
+VALUES ('bdbeb933dcf145dc9bba9282d20e775a', 'This is a tweet', '2023-05-09', '51602a9f7d82472b90ed1091248f6cb1');
+
+COMMIT;
+
+
+DROP IF EXISTS
+CREATE TABLE orders (
+id TEXT,
+customer_id INTEGER REFERENCES customers(id),
+order_date TEXT,
+PRIMARY KEY(id)
+)
