@@ -1,7 +1,8 @@
 from bottle import post, response, request
 import uuid
 import x
-import smtplib, ssl, shortuuid
+import smtplib, ssl
+# import shortuuid
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
