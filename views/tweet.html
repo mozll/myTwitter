@@ -9,7 +9,7 @@
 <body>
 
 
-  <form method="POST" onsubmit="validate(tweet); return false">
+  <form method="POST" onsubmit="validate(tweet); return true">
     <input name="message" type="text"
     data-validate="str" data-min="{{tweet_min_len}}" data-max="{{tweet_max_len}}">
     <button>

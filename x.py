@@ -25,20 +25,11 @@ def db():
 TWEET_MIN_LEN = 2
 TWEET_MAX_LEN = 240
 
-# def validate_tweet():
-#   error = f"message min {TWEET_MIN_LEN} max {TWEET_MAX_LEN} characters"
-#   if len(request.forms.message) < TWEET_MIN_LEN: raise Exception(error)
-#   if len(request.forms.message) > TWEET_MAX_LEN: raise Exception(error)
-#   return request.forms.get("message")
-class TweetValidationException(Exception):
-    pass
-
 def validate_tweet():
-    error = f"Message must be between {TWEET_MIN_LEN} and {TWEET_MAX_LEN} characters."
-    tweet_message = request.forms.get("message")
-    if len(tweet_message) < TWEET_MIN_LEN or len(tweet_message) > TWEET_MAX_LEN:
-        raise TweetValidationException(error)
-    return tweet_message
+  error = f"message min {TWEET_MIN_LEN} max {TWEET_MAX_LEN} characters"
+  if len(request.forms.message) < TWEET_MIN_LEN: raise Exception(error)
+  if len(request.forms.message) > TWEET_MAX_LEN: raise Exception(error)
+  return request.forms.get("message")
 
 
 ##############################
