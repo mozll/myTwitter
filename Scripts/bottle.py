@@ -1,4 +1,4 @@
-#!C:\codingProjects\2023_1_Web_Development-main\Scripts\python.exe
+#!C:\codingProjects\myTwitter-PC\Scripts\python.exe
 # -*- coding: utf-8 -*-
 """
 Bottle is a fast and simple micro-framework for small web applications. It
