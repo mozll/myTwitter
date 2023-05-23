@@ -1,4 +1,4 @@
-""" 
+
 from bottle import get, template
 import x
 
@@ -8,9 +8,9 @@ tweets = [
   {"tweet_id":"3", "tweet_message":"c"}
 ]
 
-@get("/tweet")
+@get("/api_tweet")
 def _():
   return template("tweet", 
                   tweet_min_len=x.TWEET_MIN_LEN, 
                   tweet_max_len=x.TWEET_MAX_LEN, 
-                  tweets=tweets) """
+                  tweets=tweets)

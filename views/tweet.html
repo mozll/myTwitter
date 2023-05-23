@@ -32,7 +32,7 @@
   <script>
     async function tweet(){
       const frm = event.target // the form
-      const conn = await fetch("/tweet", {
+      const conn = await fetch("/api_tweet", {
         method: "POST",
         body: new FormData(frm)
       })
