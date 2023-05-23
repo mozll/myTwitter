@@ -15,7 +15,6 @@ import x
 # import magic
 import mimetypes
 
-#testing webhook .
 
 @post("/upload-picture")
 def _():
