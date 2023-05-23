@@ -11,3 +11,19 @@ INSERT INTO posts VALUES(
 
 -- SELECT * FROM posts WHERE posts MATCH "are OR message";
 SELECT * FROM posts WHERE posts MATCH "are NOT trying";
+
+
+
+
+DROP TABLE IF EXISTS tweets;
+CREATE VIRTUAL TABLE tweets USING FTS5(
+tweet_id,
+tweet_message
+);
+
+INSERT INTO tweets VALUES
+(1, "this is my first tweet"),
+(2, "Computer games are great and so are movies"),
+(3, "Counter-strike is good but what is better?");
+
+SELECT * FROM tweets WHERE tweets MATCH 'games OR "counter-strike"';

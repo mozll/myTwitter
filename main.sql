@@ -1,13 +1,8 @@
-PRAGMA journal_mode=WAL;
--- PRAGMA read_uncommitted = false
-PRAGMA read_committed = true;
--- PRAGMA foreign_keys;
-PRAGMA foreign_keys = true;
-
-
--- SELECT MAX (user_total_tweets) FROM users -- Selects user with most tweets
-
--- DELETE ON CASCADE -- Deletes everything the user is referencing aswell, if the user is deletied then, in the phones table, where the user is connected, his number gets deleted aswell
+-- PRAGMA journal_mode=WAL;
+-- -- PRAGMA read_uncommitted = false
+-- PRAGMA read_committed = true;
+-- -- PRAGMA foreign_keys;
+-- PRAGMA foreign_keys = true;
 
 DROP TABLE IF EXISTS users;
 CREATE TABLE users(
@@ -120,8 +115,8 @@ CREATE TABLE trends(
 ) WITHOUT ROWID;
 INSERT INTO trends VALUES("882f3de5c2e5450eaf6e59c14be1db70", "Gaming", 1524);
 INSERT INTO trends VALUES("7a90e16350074cf7a15fba48113c4046", "Counter-Strike", 87565);
-INSERT INTO trends VALUES("43ace034564c42788169ac18aaf601f5", "Movies", 698);
-INSERT INTO trends VALUES("2a9470bc61314187b19d7190b76cd535", "Coding", 32574);
+INSERT INTO trends VALUES("43ace034564c42788169ac18aaf601f5", "Movies", 924);
+INSERT INTO trends VALUES("2a9470bc61314187b19d7190b76cd535", "Coding", 22574);
 INSERT INTO trends VALUES("c9773e2bb68647039a7a40c2ee7d4716", "Ukraine", 4458796);
 
 SELECT * FROM trends ORDER BY CAST (trend_total_tweets AS INTEGER) DESC;
@@ -138,12 +133,56 @@ SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id WHERE user_id = ?;
 SELECT * FROM users LEFT JOIN tweets ON tweet_user_fk = user_id where user_id = ?;
 
 
-DROP VIEW IF EXISTS users_by_name;
+/* 
+DROP PROCEDURE get_users()
+
+DELIMITER //
+CREATE PROCEDURE get_users()
+BEGIN
+  SELECT * FROM users;
+END
+DELIMITER ;
+
+CALL get_users();
+
+DELIMITER //
+CREATE PROCEDURE find_user(IN id TEXT)
+BEGIN
+  SELECT *
+  FROM users
+  WHERE user_id = id;
+END
+DELIMITER ;
+
+CALL find_user("51602a9f7d82472b90ed1091248f6cb1"); */
+
+/* DROP VIEW IF EXISTS users_by_name;
 CREATE VIEW users_by_name AS SELECT * FROM users ORDER BY user_name DESC;
 
 SELECT * FROM users_by_name LIMIT 1;
 
+CREATE VIEW users_first_name_and_email AS
+SELECT user_first_name, user_email
+FROM users
 
+SELECT * FROM users_first_name_and_email
+
+DROP VIEW IF EXISTS users_and_tweets;
+CREATE VIEW users_and_tweets AS
+SELECT users.user_name, tweets.tweet_message
+FROM users
+JOIN tweets ON users.user_id = tweets.tweet_user_fk;
+
+SELECT * FROM users_and_tweets
+
+DROP VIEW IF EXISTS popular_trends;
+CREATE VIEW popular_trends AS
+SELECT trend_title, trend_total_tweets
+FROM trends
+WHERE trend_total_tweets > 3000;
+
+SELECT * FROM popular_trends;
+ */
 
 /* all the tweets with all the users, in a view, join command
 
@@ -151,18 +190,18 @@ SELECT * FROM users_by_name LIMIT 1;
 -- create the view that contains the join command
 -- the name of the view: users_and_tweets */
 
-SELECT * FROM users JOIN tweets ON user_id = tweet_user_fk;
+-- SELECT * FROM users JOIN tweets ON user_id = tweet_user_fk;
 
--- CREATE VIEW users_and_tweets AS SELECT * FROM users JOIN tweets ON user_id = tweet_user_fk;
+-- -- CREATE VIEW users_and_tweets AS SELECT * FROM users JOIN tweets ON user_id = tweet_user_fk;
 
-SELECT * FROM users_and_tweets ORDER BY user_first_name DESC;
-
-
+-- SELECT * FROM users_and_tweets ORDER BY user_first_name DESC;
 
 
 
 
-DROP TRIGGER IF EXISTS increment_user_total_tweets;
+
+
+/* DROP TRIGGER IF EXISTS increment_user_total_tweets;
 CREATE TRIGGER increment_user_total_tweets AFTER INSERT ON tweets
 BEGIN
     UPDATE users
@@ -174,6 +213,11 @@ END;
 
 -- if a tweet is deleted the total tweets of the users is automatically deleted
 
+-- SELECT MAX (user_total_tweets) FROM users -- Selects user with most tweets
+
+-- DELETE ON CASCADE -- Deletes everything the user is referencing aswell, if the user is deletied then, in the phones table, where the user is connected, his number gets deleted aswell
+
+
 DROP TRIGGER IF EXISTS decrement_user_total_tweets;
 CREATE TRIGGER decrement_user_total_tweets AFTER DELETE ON tweets
 BEGIN
@@ -182,7 +226,7 @@ BEGIN
     WHERE user_id = OLD.tweet_user_fk;
 END;
 
-SELECT user_name, user_total_tweets from users;
+SELECT user_name, user_total_tweets from users; */
 
 
 -- INSERT INTO tweets VALUES(
@@ -192,7 +236,7 @@ SELECT user_name, user_total_tweets from users;
 --   "1677162587",
 --   "ebb0d9d74d6c4825b3e1a1bcd73ff49a"
 -- );
-
+/* 
 DELETE FROM tweets WHERE tweet_id = "3ad7c99a108b4b0d91a8c2e20dfc9c9a";
 
 
@@ -212,3 +256,38 @@ customer_id INTEGER REFERENCES customers(id),
 order_date TEXT,
 PRIMARY KEY(id)
 )
+
+DROP IF EXISTS
+CREATE TABLE tweets (
+tweet_id TEXT,
+tweet_message TEXT,
+user_id TEXT REFERENCES users(user_id),
+PRIMARY KEY(user_id)
+)
+
+SELECT user_name FROM users
+UNION
+SELECT trend_title FROM trends
+
+
+SELECT tweet_user_fk, COUNT(*) AS tweet_count
+FROM tweets
+GROUP BY tweet_user_fk
+HAVING COUNT(*) > 10;
+
+DROP IF EXISTS
+CREATE TABLE tweets(
+tweet_id TEXT,
+tweet_message TEXT,
+user_id TEXT,
+PRIMARY KEY (tweet_id),
+FOREIGN KEY(user_id) REFERENCES users(user_id) ON DELETE CASCADE
+)
+
+CREATE TABLE tweets (
+  tweet_id TEXT,
+  tweet_message TEXT,
+  user_id TEXT,
+  PRIMARY KEY (tweet_id),
+  FOREIGN KEY (user_id) REFERENCES users(user_id)
+); */
