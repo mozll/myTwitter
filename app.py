@@ -1,8 +1,9 @@
-## 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 TOKEN FROM GITHUB
+#TEST WEBHOOK...
 
-#TEST WEBHOOK
 
-# https://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@github.com/mozll/myTwitter.git
+# https://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@github.com/mozll/myTwitter.git
+
+
 
 from bottle import default_app, get, post, template, run, view, static_file, response, request
 import os
