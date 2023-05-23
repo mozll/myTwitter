@@ -130,12 +130,12 @@ def render_index():
     user_first_name = user_obj.get("user_first_name")
     user_last_name = user_obj.get("user_last_name")
     user_avatar = user_obj.get("user_avatar")
-
+    user_total_followers = user_obj.get("user_total_followers")
 
 
     # """ {'tweet_id': '485db3c60952420e9c4670bb8d3c5830', 'tweet_message': 'The cutest 😍', 'tweet_image': '', 'tweet_created_at': '1676655238', 'tweet_user_fk': 'f15e3f7afcf945e2bea6b4553f25fe75', 'user_id': 'f15e3f7afcf945e2bea6b4553f25fe75', 'user_name': 'rihanna', 'user_first_name': 'Rihanna', 'user_last_name': '', 'user_avatar': 'a22da1effb3d4f03a0f77f9aa8320203.jpg', 'user_created_at': '1676630057', 'user_total_tweets': '0', 'user_total_retweets': '0', 'user_total_comments': '0', 'user_total_likes': '0', 'user_total_dislikes': '0', 'user_total_followers': '0', 'user_total_following': '0'}  """
 
-    return template("index", title="Twitter", tweets=tweets, trends=get_trends(), tweet_min_len=x.TWEET_MIN_LEN, tweet_max_len=x.TWEET_MAX_LEN, user_cookie=user_cookie, user_name=user_name, user_first_name=user_first_name, user_last_name=user_last_name, user_avatar=user_avatar)
+    return template("index", title="Twitter", tweets=tweets, trends=get_trends(), tweet_min_len=x.TWEET_MIN_LEN, tweet_max_len=x.TWEET_MAX_LEN, user_cookie=user_cookie, user_name=user_name, user_first_name=user_first_name, user_last_name=user_last_name, user_avatar=user_avatar, user_total_followers=user_total_followers)
   except Exception as ex:
     print(ex)
     return "error"
