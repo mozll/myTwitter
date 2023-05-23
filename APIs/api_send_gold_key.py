@@ -1,9 +1,10 @@
 from bottle import post, response, request
 import uuid
 import x
-import smtplib, ssl
+import smtplib, ssl, shortuuid
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+
 
 from twilio.rest import Client
 
@@ -13,7 +14,8 @@ from twilio.rest import Client
 @post('/send-gold-key')
 def _():
     try:
-        user_gold_key = str(uuid.uuid4()).replace("-","")
+        # user_gold_key = str(uuid.uuid4()).replace("-","")
+        user_gold_key = str(shortuuid.ShortUUID().random(length=6))
         user_cookie = request.get_cookie("user_cookie", secret="my-secret")
         user_obj = {} if not user_cookie else user_cookie
 
