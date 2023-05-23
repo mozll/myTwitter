@@ -1,6 +1,6 @@
 ## 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 TOKEN FROM GITHUB
 
-#TEST WEBHOOK.
+#TEST WEBHOOK
 
 # https://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@github.com/mozll/myTwitter.git
 
