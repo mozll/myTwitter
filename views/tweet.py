@@ -8,7 +8,7 @@ tweets = [
   {"tweet_id":"3", "tweet_message":"c"}
 ]
 
-@get("/api_tweet")
+@get("/tweet")
 def _():
   return template("tweet", 
                   tweet_min_len=x.TWEET_MIN_LEN, 
