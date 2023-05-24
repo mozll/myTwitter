@@ -10,8 +10,6 @@ from email.mime.multipart import MIMEMultipart
 from twilio.rest import Client
 
 
-
-
 @post('/send-gold-key')
 def _():
     try:
@@ -24,7 +22,6 @@ def _():
         print("#######################################")
         print(user_obj.get("user_email"))
         
- 
         account_sid = "ACecb93b361a8d0891f97586c794d8a025"
         account_token = "78e585b8a58662063c37122194c3f848"
 

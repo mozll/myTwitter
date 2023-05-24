@@ -11,23 +11,24 @@
     <div class="h-screen flex">
         <div class="m-auto flex-col gap-4 w-2/5 py-20 px-50 bg-gray-100 rounded-lg shadow-md drop-shadow-md"> <!-- LEFT SIDE -->   
             <div class="m-auto pb-10 text-center">
-                <h1 class="text-2xl font-bold px-4">To become a <span class="text-yellow-500 font-extrabold">gold</span> user, type in the code you received by sms</h1>
+                <h1 class="text-2xl font-bold px-4">To become a <span class="text-yellow-500 font-extrabold">gold</span> user, type in your gold key from your sms</h1>
             </div>
             <div class="text-center">
+
+                <form method="POST" action="/send-gold-key">
+                    <input class="shadow p-2 m-2" name="user_phone" type="text" placeholder="Your phone number">
+                    <button class="bg-twitterBlue text-white p-2">Send my gold key</button>
+                </form>
             
+
                 <form method="POST" action="/goldify-user" >
                     <!-- <input class="shadow p-2 m-2" name="user_password_reset_key" type="text" placeholder="Your reset key"> -->
                     <input class="shadow p-2 m-2" name="user_gold_key" type="text" placeholder="Your gold key">
 
-                <div class="flex-row">
-                    <button class="bg-yellow-500 hover:bg-amber-500 focus:bg-yellow-600 text-white mb-2 mt-5 px-10">Goldify my user!</button>
-                </div>
+                    <button class="bg-yellow-500 hover:bg-amber-500 focus:bg-yellow-600 font-bold text-white p-2">Goldify my user!</button>
                 </form>
 
-                <form method="POST" action="/send-gold-key">
-                    <input class="shadow p-2 m-2" name="user_phone" type="text" placeholder="Your phone number">
-                    <button class="bg-black text-white p-4">Send me my gold key</button>
-                </form>
+                
                 
             <a class="text-twitterBlue" href="/">Back to myTwitter</a>
             </div>
