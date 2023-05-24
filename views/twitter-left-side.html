@@ -59,14 +59,7 @@
         </span> 
       </a>
 
-      <a href="/goldify-user" class="flex items-center gap-2 px-4 py-3 hover:bg-twitterLightDark rounded-full">
-        <svg width="32" height="32" viewBox="0 0 256 256"><path fill="currentColor" d="M230.2 213a118.3 118.3 0 0 0-70.5-54.6a70 70 0 1 0-63.4 0A118.3 118.3 0 0 0 25.8 213a5.9 5.9 0 0 0 2.2 8.2a6 6 0 0 0 8.2-2.2a106 106 0 0 1 183.6 0a6 6 0 0 0 5.2 3a6.4 6.4 0 0 0 3-.8a5.9 5.9 0 0 0 2.2-8.2ZM70 96a58 58 0 1 1 58 58a58 58 0 0 1-58-58Z"/></svg>
-        <span class="text-yellow-400 font-extrabold">
-          Become a gold user
-        </span> 
-      </a>
       
-
       <a href="/more" class="flex items-center gap-2 px-4 py-3 hover:bg-twitterLightDark rounded-full">
         <svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -76,6 +69,15 @@
           More
         </span> 
       </a>
+
+
+      <a href="/goldify-user" class="flex items-center gap-2 px-4 py-3 bg-yellow-500 hover:bg-amber-500 focus:bg-yellow-600 rounded-full">
+        <svg width="32" height="32" viewBox="0 0 24 24" class="text- text-white"><path fill="currentColor" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12Z"/></svg>
+        <span class="font-bold">
+          Twitter gold
+        </span> 
+      </a>
+
 
       <button class="py-3 mt-4 text-white bg-twitterGreen hover:bg-twitterDarkGreen rounded-full font-semibold">
         Tweet
@@ -92,16 +94,18 @@
         <div class="">@{{ user_name }}</div>
       
       </div>
-      <svg width="32" height="32" viewBox="0 0 24 24" class="ml-auto text-gray-500">
+      <svg width="32" height="32" viewBox="0 0 24 24" class="ml-auto bg-red-300 text-gray-500">
         <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
           d="M6.75 12a.75.75 0 1 1-1.5 0a.75.75 0 0 1 1.5 0Zm6 0a.75.75 0 1 1-1.5 0a.75.75 0 0 1 1.5 0Zm6 0a.75.75 0 1 1-1.5 0a.75.75 0 0 1 1.5 0Z" />
       </svg>
       
 
     <form method="POST" action="/send-deactivate-key">
-    <span class=" text-red-500 bg-black text-base px-3 py-1 font-semibold ">
-      <button>Deactivate</button>
+    <span>
+      <button class="text-red-500 bg-black px-3 py-1 font-semibold ">Deactivate user</button>
     </span>
+
+    
   </form>    
       % end       
     </div>
