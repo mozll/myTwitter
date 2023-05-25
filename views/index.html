@@ -29,16 +29,43 @@
     <!-- END OF TOP OF SITE -->
 
     <!-- CREATING TWEET AREA -->
-    <div class="font-bold gap-4 p-4">
+    <div class="font-normal gap-4 p-4">
       <form method="POST" onsubmit="validate(tweet); return false">
-        <span class="flex items-center gap-2 font-bold">
-        <img src="images/{{user_avatar}}" class="w-12 h-12 rounded-full">
-        <input name="message" type="text" 
+        <span class="flex items-center gap-2 mb-2">
+        <img src="images/{{user_avatar}}" class="w-12 h-12 rounded-full ml-1">
+        <input class="text-white bg-twitterDarkMode ml-2" name="message" type="text" placeholder="Whats happening?"
         data-validate="str" data-min="{{tweet_min_len}}" data-max="{{tweet_max_len}}">
 
       <!--  SKAL FIXES TIL IKKE AT RELOAD HELE SIDEN -->
-      <button onclick="window.location.reload()">Tweet</button>
+      
     </span>
+    <div class="flex justify-between gap-2 items-center ml-1">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 25 25" stroke-width="1.5" stroke="currentColor" class="hover:bg-twitterLightDark mt-2 w-6 h-6 text-twitterGreen rounded-full ml-16">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 25 25" stroke-width="1.5" stroke="currentColor" class="hover:bg-twitterLightDark mt-2 w-6 h-6  text-twitterGreen rounded-full">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12.75 8.25v7.5m6-7.5h-3V12m0 0v3.75m0-3.75H18M9.75 9.348c-1.03-1.464-2.698-1.464-3.728 0-1.03 1.465-1.03 3.84 0 5.304 1.03 1.464 2.699 1.464 3.728 0V12h-1.5M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" />
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hover:bg-twitterLightDark mt-2 w-6 h-6  text-twitterGreen rounded-full">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hover:bg-twitterLightDark mt-2 w-6 h-6  text-twitterGreen rounded-full">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z" />
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hover:bg-twitterLightDark mt-2 w-6 h-6  text-twitterGreen rounded-full">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hover:bg-twitterLightDark mt-2 w-6 h-6  text-twitterGreen rounded-full">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+    </svg>
+    
+    
+    
+   
+    <button class="flex mr-0 mx-auto bg-twitterGreen hover:bg-twitterDarkGreen rounded-full py-1 px-4 font-medium" onclick="window.location.reload()">Tweet</button>
+  </div>
+
       </form>
 
       <script src="/js/validate.js"></script>
@@ -77,7 +104,7 @@
     <!-- tweet -->
     <div class="flex gap-4 p-4 border-t border-gray-600">
       <div class="">
-        <a href="/{{tweet['user_name']}}"> <img src="images/{{tweet['user_avatar']}}" class="w-12 h-12 rounded-full"> </a>
+        <a href="/{{tweet['user_name']}}"> <img src="images/{{tweet['user_avatar']}}" class="w-12 h-12 ml-1 mr-4 bg-red-300 rounded-full"> </a>
       </div>
       <!-- right of tweet -->
       <div class="w-full">
@@ -116,7 +143,7 @@
           <img src="images/{{tweet['tweet_image']}}" class="w-full mt-4 max-h-96 rounded-2xl object-contain">
           % end
         </div>
-        <div class="flex justify-between mt-2">
+        <div class="flex justify-between mt-3">
           <div class="flex gap-2 items-center">
             <svg width="20" height="20" viewBox="0 0 256 256" class="text-gray-400 hover:text-twitterBlue"><path fill="currentColor" d="M128 232.4a15.9 15.9 0 0 1-13.7-7.7L99.5 200H40a16 16 0 0 1-16-16V56a16 16 0 0 1 16-16h176a16 16 0 0 1 16 16v128a16 16 0 0 1-16 16h-59.5l-6.8-4.1l6.8 4.1l-14.8 24.7a15.9 15.9 0 0 1-13.7 7.7ZM40 56v128h59.5a16.1 16.1 0 0 1 13.7 7.8l14.8 24.6l14.8-24.6a16.1 16.1 0 0 1 13.7-7.8H216V56Z"/></svg>
             <span class="text-sm text-gray-400">
