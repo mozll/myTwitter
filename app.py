@@ -189,12 +189,31 @@ def _():
 
 @get("/edit-user")
 def _():
-  return template("edit-user")
-# @get("/send-deactivate-key")  VIRKER IKKE
-# def _():
-#     response.status = 303
-#     response.set_header("Location", "/deactivate-user")
-#     return 
+  try:
+    # db = sqlite3.connect("/home/fulldemo/mysite/twitter.db")
+    db = sqlite3.connect(str(pathlib.Path(__file__).parent.resolve())+"/twitter.db")
+    db.row_factory = dict_factory
+
+    user_cookie = request.get_cookie("user_cookie", secret="my-secret")
+    user_obj = {} if not user_cookie else user_cookie
+
+    user_name = user_obj.get("user_name")
+    user_first_name = user_obj.get("user_first_name")
+    user_last_name = user_obj.get("user_last_name")
+    user_email = user_obj.get("user_email")
+
+    return template("edit-user", user_cookie=user_cookie, user_name=user_name, user_first_name=user_first_name, user_last_name=user_last_name, user_email=user_email)
+  except Exception as ex:
+    print(ex)
+    return "error"
+  finally:
+
+    response.add_header("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
+    response.add_header("Pragma", "no-cache")
+    response.add_header("Expires", 0)
+
+    if "db" in locals(): db.close()
+
 
 @get("/contact")
 def _():

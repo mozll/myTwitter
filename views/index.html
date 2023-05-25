@@ -98,14 +98,16 @@
             </span>
             <span class="ml-4 text-gray-400">
               <a href="/{{tweet['user_name']}}">
-                <strong>@</strong>{{tweet["user_name"]}}
+                @{{tweet["user_name"]}}
               </a>
             </span>
           </div>
+          
           <svg width="32" height="32" viewBox="0 0 24 24" class="ml-auto text-gray-500">
             <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
               d="M6.75 12a.75.75 0 1 1-1.5 0a.75.75 0 0 1 1.5 0Zm6 0a.75.75 0 1 1-1.5 0a.75.75 0 0 1 1.5 0Zm6 0a.75.75 0 1 1-1.5 0a.75.75 0 0 1 1.5 0Z" />
           </svg>
+
         </div>
         <div class="">
           {{tweet["tweet_message"]}}

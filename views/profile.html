@@ -19,9 +19,9 @@
 <!-- ICON NAME AND NUMBER OF TWEETS -->
  <div class="min-h-screen h-full border-x border-gray-600">
   <div class="flex items-center px-3 bg-twitterDarkMode sticky top-0 w-full z-10">
-    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+    <a href="/"><svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
     <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75"/>
-    </svg>
+    </svg></a>
       <div class="flex-row text-2xl font-bold p-4">
         <div class="flex justify-between">
           {{ user["user_first_name"] }} {{ user["user_last_name"] }}
@@ -47,7 +47,6 @@
  <!--  PROFILE ICONS AND FOLLOW -->
   <div class="flex flex-row w-full justify-end text-2xl font-bold px-4 pt-3 pb-10">
       
-    
 
     <div class="px-2 ">
     <svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -105,7 +104,7 @@
         <div class="flex"> 
           <span class="flex items-center gap-2 font-bold">
             {{tweet["user_first_name"]}} {{tweet["user_last_name"]}}
-            % if tweet["user_verified"] == "1":
+            % if user["user_total_followers"] > 10: 
               <svg width="20" height="20" viewBox="0 0 24 24" class="text-sky-500"><path fill="currentColor" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12Z"/></svg>
             % end
           </span>

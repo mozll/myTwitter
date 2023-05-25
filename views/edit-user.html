@@ -15,43 +15,30 @@
             </div>
             <div class="text-center">
             
-                        <form method="POST" action="/edit-user-name" >
+                        <form method="POST" action="/edit-user" >
                     <!-- <input class="shadow p-2 m-2" name="user_password_reset_key" type="text" placeholder="Your reset key"> -->
-                    <div class="flex-row">     
-                    <h2 class="font-bold">Username</h2>
-                        <input class="shadow p-2 m-2" name="user_name" type="text" placeholder="Your username">
-                        <button class="bg-twitterBlue hover:bg-blue-500 focus:bg-blue-800 text-white mb-6 py-2 px-5 rounded-f">Change my username</button>
+                        <div class="flex-row">     
+                        <h2 class="font-bold">Username</h2>
+                        <input class="shadow p-2 m-2" name="user_name" type="text" placeholder="Your username" value="{{user_name}}">
+                        <!-- <button class="bg-twitterBlue hover:bg-blue-500 focus:bg-blue-800 text-white mb-6 py-2 px-5 rounded-f">Change my username</button> -->
                         </div>
-                        </form>
 
-                        <form method="POST" action="/edit-first-name" ></form>
                         <div class="flex-row">
                         <h2 class="font-bold">First name</h2>
-                        <input class="shadow p-2 m-2" name="user_first_name" type="text" placeholder="Your first name">                     
-                        <button class="bg-twitterBlue hover:bg-blue-500 focus:bg-blue-800 text-white mb-6 py-2 px-5 rounded-f">Change my first name</button>
+                        <input class="shadow p-2 m-2" name="user_first_name" type="text" placeholder="Your first name" value="{{user_first_name}}">                     
                         </div>
-                        </form>   
 
-                        <form method="POST" action="/edit-last-name" ></form>
                         <div class="flex-row">
                         <h2 class="font-bold">Last name</h2>
-                        <input class="shadow p-2 m-2" name="user_last_name" type="text" placeholder="Your last name">    
-                        <button class="bg-twitterBlue hover:bg-blue-500 focus:bg-blue-800 text-white mb-6 py-2 px-5 rounded-f">Change my last name</button>
+                        <input class="shadow p-2 m-2" name="user_last_name" type="text" placeholder="Your last name" value="{{user_last_name}}">    
                         </div>
-                         </form>
 
-                        <!-- <div class="flex-row">
-                        <h2 class="font-bold">Email</h2>
-                        <input class="shadow p-2 m-2" name="user_email" type="text" placeholder="Your email">                       
-                        <button class="bg-twitterBlue hover:bg-blue-500 focus:bg-blue-800 text-white mb-6 py-2 px-5 rounded-f">Change my email</button>
-                        </div> -->
-
-                        <form method="POST" action="/edit-user-passwrd" >
                         <div class="flex-row">
-                        <h2 class="font-bold">Password</h2>
-                        <input class="shadow p-2 m-2" name="user_password" type="text" placeholder="Your password">
-                        <button class="bg-twitterBlue hover:bg-blue-500 focus:bg-blue-800 text-white mb-6 py-2 px-5 rounded-f">Change my password</button>
+                        <h2 class="font-bold">Email</h2>
+                        <input class="shadow p-2 m-2" name="user_email" type="text" placeholder="Your email" value="{{user_email}}">                       
+
                         </div>
+                        <button class="bg-twitterBlue hover:bg-blue-500 focus:bg-blue-800 text-white mb-6 py-2 px-5 rounded-f">Update my user</button>
                     </form>
 
 
