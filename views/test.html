@@ -11,7 +11,8 @@
         <div>Elon Musk</div>
         <form>
             <input style="display:none" name="user_followee_id" type="text" value="1">
-            <button onclick="follow(event)" type="follow">Follow</button>
+            <button class="followbtn" onclick="toggleFollow(event)" type="follow">Follow</button>
+            <input style="display:none" name="action" type="text" value="follow">
         </form>
     </div>
 
@@ -19,23 +20,47 @@
         <div>Shakira</div>
         <form>
             <input style="display:none" name="user_followee_id" type="text" value="2">
-            <button onclick="follow(event)" type="follow">Follow</button>
+            <button class="followbtn" onclick="toggleFollow(event)" type="follow">Follow</button>
+            <input style="display:none" name="action" type="text" value="follow">
         </form>
     </div>
 
     <script>
-        async function follow(event) {
-            // console.log(event.); // CLICK
-            // console.log(event.target); // button
-            const form = event.target.form
-            const conn = await fetch("api-follow", {
-                method: "POST",
-                body : new FormData(form)
-            });
-            const data = await conn.json();
-            console.log(data);
+        async function toggleFollow(event) {
+            event.preventDefault(); // Prevent form submission
+            
+            const button = event.target;
+            const form = event.target.closest('form');
+            const formData = new FormData(form);
+            
+            if (button.textContent === 'Follow') {
+                button.textContent = 'Following';
+                formData.set('action', 'follow');
+            } else {
+                button.textContent = 'Follow';
+                formData.set('action', 'unfollow');
+            }
+            
+            try {
+                const response = await fetch("api-follow", {
+                    method: "POST",
+                    body: formData
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Follow request failed');
+                }
+                
+                const data = await response.json();
+                if (formData.get('action') === 'unfollow') {
+                    console.log(`You unfollowed user with id: ${formData.get('user_followee_id')}`);
+                } else {
+                    console.log(`You now follow user with id: ${formData.get('user_followee_id')}`);
+                }
+            } catch (error) {
+                console.error(error);
+            }
         }
     </script>
-
 </body>
 </html>

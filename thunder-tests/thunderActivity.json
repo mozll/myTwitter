@@ -28,45 +28,10 @@
     "method": "POST",
     "sortNum": 0,
     "created": "2023-03-16T13:50:21.408Z",
-    "modified": "2023-03-16T14:13:42.771Z",
+    "modified": "2023-05-27T17:17:14.874Z",
     "headers": [],
     "params": [],
-    "body": {
-      "type": "formdata",
-      "raw": "",
-      "form": [
-        {
-          "name": "user_followee_id",
-          "value": "1234"
-        }
-      ]
-    },
-    "tests": [
-      {
-        "type": "res-code",
-        "custom": "",
-        "action": "equal",
-        "value": "200"
-      },
-      {
-        "type": "res-body",
-        "custom": "",
-        "action": "isjson",
-        "value": ""
-      },
-      {
-        "type": "Content-Type",
-        "custom": "",
-        "action": "equal",
-        "value": "application/json"
-      },
-      {
-        "type": "res-body",
-        "custom": "",
-        "action": "contains",
-        "value": "info"
-      }
-    ]
+    "tests": []
   },
   {
     "_id": "e6406d21-f106-497d-a8c8-3a9459787356",

@@ -94,7 +94,7 @@ def _():
 ########################
 @get("/js/<filename>")
 def _(filename):
-  return static_file(filename, "js")
+  return static_file(filename, root="./js")
 #########################
 
 def get_trends():
@@ -292,7 +292,6 @@ def _(username):
     print(user) # {'id': '51602a9f7d82472b90ed1091248f6cb1', 'username': 'elonmusk', 'name': 'Elon', 'last_name': 'Musk', 'total_followers': '128900000', 'total_following': '177', 'total_tweets': '22700', 'avatar': '51602a9f7d82472b90ed1091248f6cb1.jpg'}
 
 
-
     user_cookie = request.get_cookie("user_cookie", secret="my-secret")
     user_obj = {} if not user_cookie else user_cookie
 
@@ -300,7 +299,6 @@ def _(username):
     user_first_name = user_obj.get("user_first_name")
     user_last_name = user_obj.get("user_last_name")
     user_avatar = user_obj.get("user_avatar")
-
 
 
     return template("profile", user=user, trends=get_trends(), tweets=tweets, user_cookie=user_cookie, user_name=user_name, user_first_name=user_first_name, user_last_name=user_last_name,  user_avatar=user_avatar)

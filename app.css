@@ -715,6 +715,10 @@ video {
   width: 100%;
 }
 
+.w-auto {
+  width: auto;
+}
+
 .max-w-screen-xl {
   max-width: 1280px;
 }
@@ -1231,4 +1235,9 @@ video {
 .focus\:bg-yellow-600:focus {
   --tw-bg-opacity: 1;
   background-color: rgb(202 138 4 / var(--tw-bg-opacity));
+}
+
+.focus\:outline-none:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }

@@ -33,7 +33,7 @@
       <form method="POST" onsubmit="validate(tweet); return false">
         <span class="flex items-center gap-2 mb-2">
         <img src="images/{{user_avatar}}" class="w-12 h-12 rounded-full ml-1">
-        <input class="text-white bg-twitterDarkMode ml-2" name="message" type="text" placeholder="Whats happening?"
+        <input class="text-white bg-twitterDarkMode ml-2 w-full focus:outline-none" name="message" type="text" placeholder="Whats happening?"
         data-validate="str" data-min="{{tweet_min_len}}" data-max="{{tweet_max_len}}">
 
       <!--  SKAL FIXES TIL IKKE AT RELOAD HELE SIDEN -->

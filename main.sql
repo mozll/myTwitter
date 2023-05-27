@@ -199,8 +199,6 @@ SELECT * FROM popular_trends;
 
 
 
-
-
 /* DROP TRIGGER IF EXISTS increment_user_total_tweets;
 CREATE TRIGGER increment_user_total_tweets AFTER INSERT ON tweets
 BEGIN
