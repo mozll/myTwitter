@@ -14,9 +14,10 @@ from twilio.rest import Client
 @post('/send-gold-key')
 def _():
     try:
-        unique_id = str(uuid.uuid4()).replace("-","")
+        unique_id = str(uuid.uuid4()).replace("-","").encode('utf-8')
         hashed_id = hashlib.md5(unique_id).hexdigest()
         user_gold_key = hashed_id[:6]
+        print(user_gold_key)
         # user_gold_key = str(uuid.uuid4()).replace("-","")
 
 
