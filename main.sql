@@ -136,6 +136,10 @@ SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id WHERE user_id = ?;
 
 SELECT * FROM users LEFT JOIN tweets ON tweet_user_fk = user_id where user_id = ?;
 
+SELECT * FROM tweets
+
+DELETE FROM tweets WHERE tweet_user_fk = "ff9726dd907348df898df3bf8363d1b4";
+
 
 /* 
 DROP PROCEDURE get_users()

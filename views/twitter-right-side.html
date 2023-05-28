@@ -48,6 +48,7 @@
     <!-- end trending -->
 
     <!-- who to follow -->
+    % if user_cookie:
     <div class="sticky top-20 flex flex-col gap-4 w-full  mt-4 bg-twitterLessDark  rounded-2xl">
       <div class="text-2xl font-bold pt-4 px-4">
         Who to follow
@@ -66,9 +67,11 @@
           </div>
         </div>
       </a>
-        <button class="ml-auto px-4 py-2 text-black text-base font-medium bg-gray-200 rounded-full">
-          Follow
-        </button>
+      <form>
+        <input style="display:none" name="user_followee_id" type="text" value="1">
+        <button id="follow-btn-1" class="followbtn ml-auto px-4 py-2 text-black text-base font-medium bg-gray-200 rounded-full" onclick="toggleFollow(event)" type="follow" data-following="false">Follow</button>
+        <input style="display:none" name="action" type="text" value="follow">
+    </form>
       </div>
       <!-- end person -->
 
@@ -85,9 +88,11 @@
           </div>
         </div>
       </a>
-        <button class="ml-auto px-4 py-2 text-black text-base font-medium bg-gray-200 rounded-full">
-          Follow
-        </button>
+      <form>
+        <input style="display:none" name="user_followee_id" type="text" value="2">
+        <button id="follow-btn-2" class="followbtn mr-1 ml-2 px-4 py-2 text-black text-base font-medium bg-gray-200 rounded-full" onclick="toggleFollow(event)" type="follow" data-following="false">Follow</button>
+        <input style="display:none" name="action" type="text" value="follow">
+    </form>
       </div>
       <!-- end person -->
 
@@ -104,9 +109,11 @@
           </div>
         </div>
       </a>
-        <button class="ml-auto px-4 py-2 text-black text-base font-medium bg-gray-200 rounded-full">
-          Follow
-        </button>
+      <form>
+        <input style="display:none" name="user_followee_id" type="text" value="3">
+        <button id="follow-btn-3" class="followbtn mr-1 ml-5 px-4 py-2 text-black text-base font-medium bg-gray-200 rounded-full" onclick="toggleFollow(event)" type="follow" data-following="false">Follow</button>
+        <input style="display:none" name="action" type="text" value="follow">
+    </form>
       </div>
       <!-- end person -->
       
@@ -123,9 +130,11 @@
               </div>
             </div>
           </a>
-          <button class="ml-auto px-4 py-2 text-black text-base font-medium bg-gray-200 rounded-full">
-            Follow
-          </button>
+          <form>
+            <input style="display:none" name="user_followee_id" type="text" value="4">
+            <button id="follow-btn-4" class="followbtn flex mr-5 px-4 py-2 text-black text-base font-medium bg-gray-200 rounded-full" onclick="toggleFollow(event)" type="follow" data-following="false">Follow</button>
+            <input style="display:none" name="action" type="text" value="follow">
+        </form>
         </div>
         <!-- end person -->
 
@@ -142,21 +151,83 @@
           </div>
         </div>
       </a>
-        <button class="ml-auto px-4 py-2 text-black text-base font-medium bg-gray-200 rounded-full">
-          Follow
-        </button>
+      <form>
+        <input style="display:none" name="user_followee_id" type="text" value="5">
+        <button id="follow-btn-5" class="followbtn mr-2 ml-5 px-4 py-2 text-black text-base font-medium bg-gray-200 rounded-full" onclick="toggleFollow(event)" type="follow" data-following="false">Follow</button>
+        <input style="display:none" name="action" type="text" value="follow">
+    </form>
       </div>
       <!-- end person -->
 
 
+      <script>
+        async function toggleFollow(event) {
+            event.preventDefault(); // Prevent form submission
+        
+            const button = event.target;
+            const form = event.target.closest('form');
+            const formData = new FormData(form);
+        
+            const isFollowing = button.dataset.following === 'true'; // Get the current follow state
+        
+            if (isFollowing) {
+                button.textContent = 'Follow';
+                button.dataset.following = 'false';
+                formData.set('action', 'unfollow');
+            } else {
+                button.textContent = 'Following';
+                button.dataset.following = 'true';
+                formData.set('action', 'follow');
+            }
+        
+            try {
+                const response = await fetch("api-follow", {
+                    method: "POST",
+                    body: formData
+                });
+        
+                if (!response.ok) {
+                    throw new Error('Follow request failed');
+                }
+        
+                const data = await response.json();
+                if (formData.get('action') === 'unfollow') {
+                    console.log(`You unfollowed user with id: ${formData.get('user_followee_id')}`);
+                } else {
+                    console.log(`You now follow user with id: ${formData.get('user_followee_id')}`);
+                }
+        
+                // Store the follow state in localStorage
+                localStorage.setItem(button.id, button.dataset.following);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        
+        // Restore follow state on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const followButtons = document.querySelectorAll('.followbtn');
+            followButtons.forEach(button => {
+                const isFollowing = localStorage.getItem(button.id) === 'true';
+                button.dataset.following = isFollowing.toString();
+                button.textContent = isFollowing ? 'Following' : 'Follow';
+            });
+        });
+        
+            </script>
+
+      <!-- ############ -->
       <a href="" class="text-twitterGreen px-4 py-2 rounded-b-2xl  hover:bg-twitterLightDark">
         Show more
       </a>
 
 
     </div>
+    % end
     <!-- end who to follow  -->
 
 
   </div>
   <!-- end right -->
+
+  
