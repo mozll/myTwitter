@@ -11,7 +11,8 @@
         <div>Elon Musk</div>
         <form>
             <input style="display:none" name="user_followee_id" type="text" value="1">
-            <button class="followbtn" onclick="toggleFollow(event)" type="follow">Follow</button>
+            <button id="follow-btn-1" class="followbtn" onclick="toggleFollow(event)" type="follow" data-following="false">Follow</button>
+
             <input style="display:none" name="action" type="text" value="follow">
         </form>
     </div>
@@ -20,47 +21,65 @@
         <div>Shakira</div>
         <form>
             <input style="display:none" name="user_followee_id" type="text" value="2">
-            <button class="followbtn" onclick="toggleFollow(event)" type="follow">Follow</button>
+            <button id="follow-btn-2" class="followbtn" onclick="toggleFollow(event)" type="follow" data-following="false">Follow</button>
             <input style="display:none" name="action" type="text" value="follow">
         </form>
     </div>
 
     <script>
-        async function toggleFollow(event) {
-            event.preventDefault(); // Prevent form submission
-            
-            const button = event.target;
-            const form = event.target.closest('form');
-            const formData = new FormData(form);
-            
-            if (button.textContent === 'Follow') {
-                button.textContent = 'Following';
-                formData.set('action', 'follow');
-            } else {
-                button.textContent = 'Follow';
-                formData.set('action', 'unfollow');
-            }
-            
-            try {
-                const response = await fetch("api-follow", {
-                    method: "POST",
-                    body: formData
-                });
-                
-                if (!response.ok) {
-                    throw new Error('Follow request failed');
-                }
-                
-                const data = await response.json();
-                if (formData.get('action') === 'unfollow') {
-                    console.log(`You unfollowed user with id: ${formData.get('user_followee_id')}`);
-                } else {
-                    console.log(`You now follow user with id: ${formData.get('user_followee_id')}`);
-                }
-            } catch (error) {
-                console.error(error);
-            }
+async function toggleFollow(event) {
+    event.preventDefault(); // Prevent form submission
+
+    const button = event.target;
+    const form = event.target.closest('form');
+    const formData = new FormData(form);
+
+    const isFollowing = button.dataset.following === 'true'; // Get the current follow state
+
+    if (isFollowing) {
+        button.textContent = 'Follow';
+        button.dataset.following = 'false';
+        formData.set('action', 'unfollow');
+    } else {
+        button.textContent = 'Following';
+        button.dataset.following = 'true';
+        formData.set('action', 'follow');
+    }
+
+    try {
+        const response = await fetch("api-follow", {
+            method: "POST",
+            body: formData
+        });
+
+        if (!response.ok) {
+            throw new Error('Follow request failed');
         }
+
+        const data = await response.json();
+        if (formData.get('action') === 'unfollow') {
+            console.log(`You unfollowed user with id: ${formData.get('user_followee_id')}`);
+        } else {
+            console.log(`You now follow user with id: ${formData.get('user_followee_id')}`);
+        }
+
+        // Store the follow state in localStorage
+        localStorage.setItem(button.id, button.dataset.following);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+// Restore follow state on page load
+document.addEventListener('DOMContentLoaded', () => {
+    const followButtons = document.querySelectorAll('.followbtn');
+    followButtons.forEach(button => {
+        const isFollowing = localStorage.getItem(button.id) === 'true';
+        button.dataset.following = isFollowing.toString();
+        button.textContent = isFollowing ? 'Following' : 'Follow';
+    });
+});
+
     </script>
 </body>
 </html>

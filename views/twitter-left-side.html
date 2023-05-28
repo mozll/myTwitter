@@ -79,9 +79,14 @@
       </a>
 
 
-      <button class="py-3 mt-4 text-white bg-twitterGreen hover:bg-twitterDarkGreen rounded-full font-semibold">
+      <button onclick="scrollToTop()" class="py-3 mt-4 text-white bg-twitterGreen hover:bg-twitterDarkGreen rounded-full font-semibold">
         Tweet
       </button>
+      <script>
+        function scrollToTop() {
+          window.scrollTo({top:0, behavior:"smooth"});
+        }
+      </script>
       % end
     </div>
 

@@ -16,8 +16,8 @@ def _():
     
     try:
         # # Validate
-        # user_email = x.validate_user_email()
-        # user_password = x.validate_user_password()
+        user_email = x.validate_user_email()
+        user_password = x.validate_user_password()
 
 
         # Retrieve login form data

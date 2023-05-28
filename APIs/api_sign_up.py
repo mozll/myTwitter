@@ -24,6 +24,7 @@ def _():
         ## Retrieve sign up form data
         user_id = str(uuid.uuid4()).replace("-","")
         user_name = x.validate_user_name()
+        user_password = x.validate_user_password()
         # user_avatar = str(uuid.uuid4()).replace("-","")
         # user_cover_image = str(uuid.uuid4()).replace("-","")
         # db = x.db()

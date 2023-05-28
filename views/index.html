@@ -80,17 +80,17 @@
             })
             const data = await conn.json()
             console.log("data",data);
-            const message = frm.querySelector("input[name='message']").value
-            console.log(message)  
-            document.querySelector("#tweets").insertAdjacentHTML("afterbegin")
-            
             // const message = form.querySelector("input[name='message']").value
-            // console.log(message)
-            // document.querySelector("#tweets").insertAdjacentHTML("afterbegin", 
-            // `<div class="tweet">
-            // <div>${data.tweet_id}</div>
-            // <div>${message}</div>  
-            // </div>`) 
+            // console.log(message)  
+            // document.querySelector("#tweets").insertAdjacentHTML("afterbegin")
+            
+            const message = form.querySelector("input[name='message']").value
+            console.log(message)
+            document.querySelector("#tweets").insertAdjacentHTML("afterbegin", 
+            `<div class="tweet">
+            <div>${data.tweet_id}</div>
+            <div>${message}</div>  
+            </div>`) 
 
         } 
     </script>
