@@ -76,6 +76,7 @@ def _():
         response.set_header("Location", "/goldify-user")
 
         return {
+            "gold_key": user_gold_key,
             "info" : "Check your phone to golden your account"
         }
 

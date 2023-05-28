@@ -46,6 +46,10 @@ INSERT INTO users VALUES("a22da1effb3d4f03a0f77f9aa8320203", "rihanna", "Rihanna
 INSERT INTO users VALUES("7e968791b6c24ed0a482416f0e769727", "joebiden", "Joe", "Biden", "joebiden@gmail.com","", "7e968791b6c24ed0a482416f0e769727.jpg","coverImageBIDEN.jpg" ,"1676630128", "3210", "40", "45", "47", "46", "52486000", "323","0","0","","","1","0","123", "");
 INSERT INTO users VALUES("d6389953261a48eba125fa54d8ce958e", "Dupreeh", "Peter", "Rasmussen", "dupreeh@gmail.com","", "d6389953261a48eba125fa54d8ce958e.png","coverImageDupreeh.jpg" ,"1676630231", "9607", "50", "55", "57", "56", "304800", "763","1","0","","","","0","123", "");
 
+-- UPDATE users SET user_gold = 1 
+-- WHERE user_name = "Mozeltov";
+
+
 /* to index and make searchable but there can still be same values */
 CREATE INDEX idx_users_user_first_name on users(user_first_name);
 CREATE INDEX idx_users_user_last_name on users(user_last_name);
