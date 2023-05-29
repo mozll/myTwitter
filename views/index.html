@@ -68,32 +68,11 @@
 
       </form>
 
-      <script src="/js/validate.js"></script>
 
 
-    <script>
-        async function tweet() {
-            const form = event.target /* the form */
-            const conn = await fetch("/tweet", {
-                method: "POST",
-                body: new FormData(form)
-            })
-            const data = await conn.json()
-            console.log("data",data);
-            // const message = form.querySelector("input[name='message']").value
-            // console.log(message)  
-            // document.querySelector("#tweets").insertAdjacentHTML("afterbegin")
-            
-            const message = form.querySelector("input[name='message']").value
-            console.log(message)
-            document.querySelector("#tweets").insertAdjacentHTML("afterbegin", 
-            `<div class="tweet">
-            <div>${data.tweet_id}</div>
-            <div>${message}</div>  
-            </div>`) 
+      
 
-        } 
-    </script>
+
 
 
     </div> <!-- END OF CREATING TWEET AREA -->
@@ -178,6 +157,33 @@
     % end
   </section>
     
+      <script src="/js/validate.js"></script>
+
+
+    <script>
+        async function tweet() {
+            const form = event.target /* the form */
+            const conn = await fetch("/tweet", {
+                method: "POST",
+                body: new FormData(form)
+            })
+            const data = await conn.json()
+            console.log("data",data);
+            // const message = form.querySelector("input[name='message']").value
+            // console.log(message)  
+            // document.querySelector("#tweets").insertAdjacentHTML("afterbegin")
+            
+            const message = form.querySelector("input[name='message']").value
+            console.log(message)
+            document.querySelector("#tweets").insertAdjacentHTML("afterbegin", 
+            `<div class="tweet">
+            <div>${data.tweet_id}</div>
+            <div>${message}</div>  
+            </div>`) 
+
+        } 
+    </script>
+
     <!-- tweet -->  <!-- ######## 2 HARD CODED TWEETS ####### -->
     <!-- <div class="flex gap-4 p-4 border-t border-gray-600">
       <div class="">
