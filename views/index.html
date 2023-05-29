@@ -8,6 +8,7 @@
   <title>
     {{title}}
   </title>
+  <script src="../js/validate.js"></script>
 </head>
 <body class="grid grid-cols-[100fr_150fr_100fr] w-full h-full text-gray-200 text-lg bg-twitterDarkMode font-light overflow-hidden overflow-y-scroll max-w-screen-xl m-auto">
 
@@ -27,10 +28,11 @@
      Home
     </div>
     <!-- END OF TOP OF SITE -->
+    
 
     <!-- CREATING TWEET AREA -->
     <div class="font-normal gap-4 p-4">
-      <form method="POST" onsubmit="validate(tweet); return false">
+      <form method="POST" onsubmit="validate(tweet); window.location.reload(); return false">
         <span class="flex items-center gap-2 mb-2">
         <img src="images/{{user_avatar}}" class="w-12 h-12 rounded-full ml-1">
         <input class="text-white bg-twitterDarkMode ml-2 w-full focus:outline-none" name="message" type="text" placeholder="Whats happening?"
@@ -63,7 +65,7 @@
     
     
    
-    <button class="flex mr-0 mx-auto bg-twitterGreen hover:bg-twitterDarkGreen rounded-full py-1 px-4 font-medium" onclick="window.location.reload()">Tweet</button>
+    <button class="flex mr-0 mx-auto bg-twitterGreen hover:bg-twitterDarkGreen rounded-full py-1 px-4 font-medium" onclick="">Tweet</button>
   </div>
 
       </form>
@@ -157,9 +159,8 @@
     % end
   </section>
     
-      <script src="../js/validate.js"></script>
-
-
+      
+  
     <script>
         async function tweet() {
             const form = event.target /* the form */
