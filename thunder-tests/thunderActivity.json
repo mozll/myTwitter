@@ -629,5 +629,19 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "123f8c7b-8420-4f12-96f8-647a4e3278e1",
+    "colId": "history",
+    "containerId": "",
+    "name": "127.0.0.1/follow-user",
+    "url": "127.0.0.1/follow-user",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-05-29T12:48:48.905Z",
+    "modified": "2023-05-29T12:48:48.905Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]

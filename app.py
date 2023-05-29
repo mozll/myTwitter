@@ -323,7 +323,7 @@ import views.tweet
 # APIs
 import APIs.api_tweet
 import APIs.api_sign_up
-import APIs.api_follow
+import APIs.api_follow_user
 # import APIs.api_sendsms
 import APIs.api_forgot_password
 import APIs.api_reset_password

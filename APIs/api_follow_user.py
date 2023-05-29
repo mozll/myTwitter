@@ -1,6 +1,6 @@
 from bottle import post, request, response
 
-@post("/api-follow")
+@post("/follow-user")
 def _():
 	try:
 		# TODO: get user from cookie

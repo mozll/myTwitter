@@ -65,7 +65,7 @@
     % if user_cookie:
     <form>
     <input style="display:none" name="user_followee_id" type="text" value="{{user['user_id']}}">
-    <button id="follow-btn-6" class="followbtn mr-2 ml-2 px-4 py-2 text-black text-base font-medium bg-gray-200 rounded-full" onclick="toggleFollow(event)" type="follow" data-following="false">Follow</button>
+    <button id="follow-btn-{{user['user_id']}}" class="followbtn mr-2 ml-2 px-4 py-2 text-black text-base font-medium bg-gray-200 rounded-full" onclick="toggleFollow(event)" type="follow" data-following="false">Follow</button>
     <input style="display:none" name="action" type="text" value="follow">
     </form>
   </div>
@@ -91,7 +91,7 @@
         }
     
         try {
-            const response = await fetch("api-follow", {
+            const response = await fetch("follow-user", {
                 method: "POST",
                 body: formData
             });
