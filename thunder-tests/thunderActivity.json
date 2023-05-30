@@ -643,5 +643,139 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "312a1b93-b24b-4b6d-91b5-03dacad7defc",
+    "colId": "history",
+    "containerId": "",
+    "name": "127.0.0.1/admin",
+    "url": "127.0.0.1/admin",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-05-30T11:58:01.859Z",
+    "modified": "2023-05-30T11:58:01.859Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "e3a81910-ce31-4530-8e43-399a754dec06",
+    "colId": "history",
+    "containerId": "",
+    "name": "127.0.0.1/admi",
+    "url": "127.0.0.1/admi",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-05-30T11:58:04.579Z",
+    "modified": "2023-05-30T11:58:04.579Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "4d31fd3f-ee08-4a0d-a6dd-a48927a276bc",
+    "colId": "history",
+    "containerId": "",
+    "name": "127.0.0.1/adm",
+    "url": "127.0.0.1/adm",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-05-30T11:58:06.523Z",
+    "modified": "2023-05-30T11:58:06.523Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "a26f9f36-ed71-468a-b3f7-6983a04daf55",
+    "colId": "history",
+    "containerId": "",
+    "name": "127.0.0.1/admij",
+    "url": "127.0.0.1/admij",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-05-30T11:58:09.360Z",
+    "modified": "2023-05-30T11:58:09.360Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "2f212b99-57b3-49ae-aa88-d283541b3025",
+    "colId": "history",
+    "containerId": "",
+    "name": "127.0.0.1/delete-user",
+    "url": "127.0.0.1/delete-user",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-05-30T19:38:04.515Z",
+    "modified": "2023-05-30T19:38:04.515Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "c45d4fcd-3c9d-44ef-a2d6-d7a0a2b515f0",
+    "colId": "history",
+    "containerId": "",
+    "name": "127.0.0.1/delete-user",
+    "url": "127.0.0.1/delete-user",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-05-30T19:41:46.241Z",
+    "modified": "2023-05-30T19:41:46.241Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "49d52ce8-7a50-45e5-8dea-d8a329baf900",
+    "colId": "history",
+    "containerId": "",
+    "name": "127.0.0.1/delete-user?user_id=7e968791b6c24ed0a482416f0e769727",
+    "url": "127.0.0.1/delete-user?user_id=7e968791b6c24ed0a482416f0e769727",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-05-30T19:45:48.725Z",
+    "modified": "2023-05-30T19:45:48.725Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "user_id",
+        "value": "7e968791b6c24ed0a482416f0e769727",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "bc88b93c-c17d-415e-833e-f77e0aad320a",
+    "colId": "history",
+    "containerId": "",
+    "name": "127.0.0.1/delete-user?user_id",
+    "url": "127.0.0.1/delete-user?user_id",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-05-30T19:46:56.553Z",
+    "modified": "2023-05-30T19:46:56.553Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "user_id",
+        "value": "",
+        "isPath": false
+      }
+    ],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "user_id",
+          "value": "7e968791b6c24ed0a482416f0e769727"
+        }
+      ]
+    },
+    "tests": []
   }
 ]

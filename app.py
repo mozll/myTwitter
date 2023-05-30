@@ -222,6 +222,36 @@ def _():
 def _():
   return template("about-us")  
 
+
+
+@get("/admin-panel")
+def _():
+  try:
+    user_cookie = request.get_cookie("user_cookie", secret="my-secret")
+    # print("##########",user_cookie.get("user_admin"))
+    user_admin = user_cookie.get("user_admin")
+    if user_admin != 1:
+      return
+
+    db = sqlite3.connect(str(pathlib.Path(__file__).parent.resolve())+"/twitter.db")
+    db.row_factory = dict_factory
+    users = db.execute("SELECT * FROM users").fetchall()
+    user_names = db.execute("SELECT user_name from users").fetchall()
+    
+    return template("admin-panel", users=users, user_names=user_names)  
+  except Exception as ex:
+    print(ex)
+    return "error"
+  finally:
+    response.add_header("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
+    response.add_header("Pragma", "no-cache")
+    response.add_header("Expires", 0)
+    if "db" in locals(): db.close()
+
+
+
+
+
 @get("/test")
 def _():
   return template("test")
@@ -335,6 +365,8 @@ import APIs.api_goldify_user
 import APIs.api_send_gold_key
 import APIs.api_search
 import APIs.api_edit_user
+import APIs.api_delete_user
+
 
 ##############################
 import bridges.login

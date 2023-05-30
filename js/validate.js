@@ -1,5 +1,5 @@
 // ##############################
-function validate(callback){
+function validate(callback) {
     const form = event.target
     // const validate_error = "rgba(240, 130, 240, 0.2)"
     const validate_error = "rgba(253, 63, 100, 1)"

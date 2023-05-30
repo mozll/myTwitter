@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin panel</title>
+    <link rel="stylesheet" href="/app.css">
+</head>
+
+<body>
+    <button class="flex bg-twitterGreen hover:bg-twitterDarkGreen rounded-full py-1 px-4 font-medium text-white">
+        Back
+    </button>
+
+    This is the myTwitter admin page
+    % for user in users:
+
+        <form class="user flex my-4" method="post" onsubmit="deleteUser(); return false">
+            <input type="hidden" name="user_id" value="{{user['user_id']}}">
+            <p class="mx-2">{{user["user_first_name"]}} {{user["user_last_name"]}}</p>
+            <p>@{{user["user_name"]}}</p>
+            <button class="flex bg-red-500 hover:bg-red-900 rounded-full py-1 px-4 mx-2 font-medium text-white">Delete</button>
+        </form>
+    % end
+
+    <script>
+        async function deleteUser() {
+            const formRemove = event.target.remove();
+            const form = event.target /* the form */
+            const conn = await fetch("/delete-user", {
+                method: "POST",
+                body: new FormData(form)
+            })
+            const data = await conn.json()
+            
+            
+        }
+    </script>
+</body>
+</html>

@@ -32,7 +32,7 @@
 
     <!-- CREATING TWEET AREA -->
     <div class="font-normal gap-4 p-4">
-      <form method="POST" onsubmit="validate(tweet); window.location.reload(); return false">
+      <form method="POST" onsubmit="validate(createTweet); window.location.reload(); return false">
         <span class="flex items-center gap-2 mb-2">
         <img src="images/{{user_avatar}}" class="w-12 h-12 rounded-full ml-1">
         <input class="text-white bg-twitterDarkMode ml-2 w-full focus:outline-none" name="message" type="text" placeholder="Whats happening?"
@@ -117,7 +117,7 @@
           </svg>
 
         </div>
-        <div class="">
+        <div class="text-base font-normal">
           {{tweet["tweet_message"]}}
 
           % if tweet.get("tweet_image"): 
@@ -162,7 +162,7 @@
       
   
     <script>
-        async function tweet() {
+        async function createTweet() {
             const form = event.target /* the form */
             const conn = await fetch("/tweet", {
                 method: "POST",
@@ -170,17 +170,15 @@
             })
             const data = await conn.json()
             console.log("data",data);
+
             // const message = form.querySelector("input[name='message']").value
-            // console.log(message)  
-            // document.querySelector("#tweets").insertAdjacentHTML("afterbegin")
-            
-            const message = form.querySelector("input[name='message']").value
-            console.log(message)
-            document.querySelector("#tweets").insertAdjacentHTML("afterbegin", 
-            `<div class="tweet">
-            <div>${data.tweet_id}</div>
-            <div>${message}</div>  
-            </div>`) 
+            // console.log(message)
+            // document.querySelector("#tweets").insertAdjacentHTML("afterbegin", 
+            // `<div class="tweet">
+            // <div>${data.tweet_id}</div>
+            // <div>${message}</div>  
+            // </div>`) 
+            // ############################### SHOULD AT LATER DATE REMOVE window.location.reload(); FROM FORM AND INPUT STYLING ON TWEET IN ABOVE CODE SO IT SHOWS NEW TWEET WITHOUT RELOADING ############################# also ofc remove above commented code
 
         } 
     </script>

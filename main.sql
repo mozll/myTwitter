@@ -30,6 +30,7 @@ CREATE TABLE users(
   user_gold_key               TEXT DEFAULT "0",
   user_password               TEXT NOT NULL,
   user_password_reset_key     TEXT DEFAULT "",
+  user_admin                  INTEGER DEFAULT "",
   PRIMARY KEY(user_id)
 ) WITHOUT ROWID;
 
@@ -40,11 +41,11 @@ CREATE TABLE users(
 
 
 
-INSERT INTO users VALUES("51602a9f7d82472b90ed1091248f6cb1", "elonmusk", "Elon", "Musk", "elonmusk@gmail.com","", "51602a9f7d82472b90ed1091248f6cb1.jpg", "coverImageELON.jpg", "1676629975", "22700", "10", "15", "17", "16", "128900000", "177", "1","0","","","1","0","123", "");
-INSERT INTO users VALUES("6268331d012247539998d7664bd05cc1", "shakira", "Shakira", "", "shakira@gmail.com","", "6268331d012247539998d7664bd05cc1.jpg","coverImageSHAKIRA.jpg", "1676630033", "7999", "20", "25", "27", "26", "53700000", "235","1","0","","","","0","123", "");
-INSERT INTO users VALUES("a22da1effb3d4f03a0f77f9aa8320203", "rihanna", "Rihanna", "", "rihanna@gmail.com","", "a22da1effb3d4f03a0f77f9aa8320203.jpg","coverImageRIHANNA.jpg", "1676630057", "10600", "30", "35", "37", "36", "9", "980","0","0","","","","0","123", "");
-INSERT INTO users VALUES("7e968791b6c24ed0a482416f0e769727", "joebiden", "Joe", "Biden", "joebiden@gmail.com","", "7e968791b6c24ed0a482416f0e769727.jpg","coverImageBIDEN.jpg" ,"1676630128", "3210", "40", "45", "47", "46", "52486000", "323","0","0","","","1","0","123", "");
-INSERT INTO users VALUES("d6389953261a48eba125fa54d8ce958e", "Dupreeh", "Peter", "Rasmussen", "dupreeh@gmail.com","", "d6389953261a48eba125fa54d8ce958e.png","coverImageDupreeh.jpg" ,"1676630231", "9607", "50", "55", "57", "56", "304800", "763","1","0","","","","0","123", "");
+INSERT INTO users VALUES("51602a9f7d82472b90ed1091248f6cb1", "elonmusk", "Elon", "Musk", "elonmusk@gmail.com","", "51602a9f7d82472b90ed1091248f6cb1.jpg", "coverImageELON.jpg", "1676629975", "22700", "10", "15", "17", "16", "128900000", "177", "1","0","","","1","0","123", "","0");
+INSERT INTO users VALUES("6268331d012247539998d7664bd05cc1", "shakira", "Shakira", "", "shakira@gmail.com","", "6268331d012247539998d7664bd05cc1.jpg","coverImageSHAKIRA.jpg", "1676630033", "7999", "20", "25", "27", "26", "53700000", "235","1","0","","","","0","123", "","0");
+INSERT INTO users VALUES("a22da1effb3d4f03a0f77f9aa8320203", "rihanna", "Rihanna", "", "rihanna@gmail.com","", "a22da1effb3d4f03a0f77f9aa8320203.jpg","coverImageRIHANNA.jpg", "1676630057", "10600", "30", "35", "37", "36", "9", "980","0","0","","","","0","123", "","0");
+INSERT INTO users VALUES("7e968791b6c24ed0a482416f0e769727", "joebiden", "Joe", "Biden", "joebiden@gmail.com","", "7e968791b6c24ed0a482416f0e769727.jpg","coverImageBIDEN.jpg" ,"1676630128", "3210", "40", "45", "47", "46", "52486000", "323","0","0","","","1","0","123", "","0");
+INSERT INTO users VALUES("d6389953261a48eba125fa54d8ce958e", "Dupreeh", "Peter", "Rasmussen", "dupreeh@gmail.com","", "d6389953261a48eba125fa54d8ce958e.png","coverImageDupreeh.jpg" ,"1676630231", "9607", "50", "55", "57", "56", "304800", "763","1","0","","","","0","123", "","0");
 
 -- UPDATE users SET user_gold = 1 
 -- WHERE user_name = "Mozeltov";
@@ -59,6 +60,10 @@ CREATE INDEX idx_users_user_avatar on users(user_avatar);
 -- SELECT name FROM sqlite_master WHERE type ="trigger" 
 
 SELECT * FROM users WHERE user_name = "elonmusk";
+
+UPDATE users 
+SET user_admin = 1
+WHERE user_name = "admin"
 
 -- ####################
 DROP TABLE IF EXISTS tweets;
@@ -138,7 +143,9 @@ SELECT * FROM users LEFT JOIN tweets ON tweet_user_fk = user_id where user_id = 
 
 SELECT * FROM tweets
 
-DELETE FROM tweets WHERE tweet_user_fk = "ff9726dd907348df898df3bf8363d1b4";
+-- DELETE FROM tweets WHERE tweet_user_fk = "57cbc6f561844bf6a323a6b0fdace576";
+
+-- DELETE FROM users where user_id = ?;
 
 
 /* 

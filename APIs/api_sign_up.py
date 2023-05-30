@@ -64,7 +64,8 @@ def _():
             "user_gold":"0",
             "user_gold_key":user_gold_key,
             "user_password": bcrypt.hashpw(user_password, salt),
-            "user_password_reset_key": ""
+            "user_password_reset_key": "",
+            "user_admin": "0"
         }
         # print(user) 
 
