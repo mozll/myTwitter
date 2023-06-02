@@ -7,6 +7,7 @@ def _():
         # user_new_password = x.validate_new_password()
 
         user_activation_key = request.forms.get("user_activation_key")
+        user_activation_key = user_activation_key.replace(" ","") ## removing extra spaces from input
         print(user_activation_key)
 
         db = x.db()

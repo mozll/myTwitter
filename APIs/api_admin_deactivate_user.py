@@ -1,12 +1,12 @@
 from bottle import post, request, response
 import x
 
-@post('/delete-user')
+@post('/admin-deactivate-user')
 def _():
     try:
         db = x.db()
         user_id = request.forms.get("user_id")
-        db.execute("DELETE FROM users WHERE user_id = ?", (user_id,))
+        db.execute("UPDATE users SET user_active = 0 WHERE user_id = ?", (user_id,))
         db.commit()
 
         return {'info':'Ok'}

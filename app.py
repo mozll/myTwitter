@@ -365,7 +365,9 @@ import APIs.api_goldify_user
 import APIs.api_send_gold_key
 import APIs.api_search
 import APIs.api_edit_user
-import APIs.api_delete_user
+import APIs.api_admin_delete_user
+import APIs.api_admin_deactivate_user
+import APIs.api_admin_activate_user
 
 
 ##############################

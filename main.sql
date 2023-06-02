@@ -59,11 +59,11 @@ CREATE INDEX idx_users_user_avatar on users(user_avatar);
 -- SELECT name FROM sqlite_master WHERE type ="index" 
 -- SELECT name FROM sqlite_master WHERE type ="trigger" 
 
-SELECT * FROM users WHERE user_name = "elonmusk";
+-- SELECT * FROM users WHERE user_name = "elonmusk";
 
-UPDATE users 
-SET user_admin = 1
-WHERE user_name = "admin"
+-- UPDATE users 
+-- SET user_admin = 1
+-- WHERE user_name = "admin"
 
 -- ####################
 DROP TABLE IF EXISTS tweets;
@@ -73,11 +73,11 @@ CREATE TABLE tweets(
   tweet_image           TEXT,
   tweet_created_at      TEXT,
   tweet_user_fk         TEXT,
-  tweet_total_comments  TEXT,
-  tweet_total_retweets  TEXT,
-  tweet_total_likes     TEXT,
-  tweet_total_dislikes  TEXT,
-  tweet_total_views     TEXT,
+  tweet_total_comments  INTEGER,
+  tweet_total_retweets  INTEGER,
+  tweet_total_likes     INTEGER,
+  tweet_total_dislikes  INTEGER,
+  tweet_total_views     INTEGER,
   PRIMARY KEY(tweet_id),
   FOREIGN KEY(tweet_user_fk) REFERENCES users(user_id)
 ) WITHOUT ROWID;
@@ -105,10 +105,10 @@ INSERT INTO tweets VALUES("b1dbb467680f4b73ac144243484e1642", "Test gaming now",
 
 
 
-INSERT INTO tweets VALUES("b1dbb467680f4b73ac144243484e1444","Hey","", "1","xxx", "1","2","3","4","5");
+-- INSERT INTO tweets VALUES("b1dbb467680f4b73ac144243484e1444","Hey","", "1","xxx", "1","2","3","4","5");
 
 
-SELECT * FROM tweets;
+-- SELECT * FROM tweets;
 
 
 CREATE INDEX idx_tweets_tweet_image ON tweets(tweet_image);
@@ -128,20 +128,20 @@ INSERT INTO trends VALUES("43ace034564c42788169ac18aaf601f5", "Movies", 924);
 INSERT INTO trends VALUES("2a9470bc61314187b19d7190b76cd535", "Coding", 22574);
 INSERT INTO trends VALUES("c9773e2bb68647039a7a40c2ee7d4716", "Ukraine", 4458796);
 
-SELECT * FROM trends ORDER BY CAST (trend_total_tweets AS INTEGER) DESC;
+-- SELECT * FROM trends ORDER BY CAST (trend_total_tweets AS INTEGER) DESC;
 
 -- ##############################
 -- ##############################
 -- ##############################
 
-SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id ORDER BY tweet_created_at DESC LIMIT 5;
+-- SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id ORDER BY tweet_created_at DESC LIMIT 5;
 
-SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id WHERE user_id = ?;
+-- SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id WHERE user_id = ?;
 
 
-SELECT * FROM users LEFT JOIN tweets ON tweet_user_fk = user_id where user_id = ?;
+-- SELECT * FROM users LEFT JOIN tweets ON tweet_user_fk = user_id where user_id = ?;
 
-SELECT * FROM tweets
+-- SELECT * FROM tweets
 
 -- DELETE FROM tweets WHERE tweet_user_fk = "57cbc6f561844bf6a323a6b0fdace576";
 
