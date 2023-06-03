@@ -39,8 +39,6 @@ CREATE TABLE users(
 -- SET user_password = test
 -- WHERE user_password_reset_key = 496d2114264b42dfa29ebaae924ba239
 
-
-
 INSERT INTO users VALUES("51602a9f7d82472b90ed1091248f6cb1", "elonmusk", "Elon", "Musk", "elonmusk@gmail.com","", "51602a9f7d82472b90ed1091248f6cb1.jpg", "coverImageELON.jpg", "1676629975", "22700", "10", "15", "17", "16", "128900000", "177", "1","0","","","1","0","123", "","0");
 INSERT INTO users VALUES("6268331d012247539998d7664bd05cc1", "shakira", "Shakira", "", "shakira@gmail.com","", "6268331d012247539998d7664bd05cc1.jpg","coverImageSHAKIRA.jpg", "1676630033", "7999", "20", "25", "27", "26", "53700000", "235","1","0","","","","0","123", "","0");
 INSERT INTO users VALUES("a22da1effb3d4f03a0f77f9aa8320203", "rihanna", "Rihanna", "", "rihanna@gmail.com","", "a22da1effb3d4f03a0f77f9aa8320203.jpg","coverImageRIHANNA.jpg", "1676630057", "10600", "30", "35", "37", "36", "9", "980","0","0","","","","0","123", "","0");
@@ -64,6 +62,7 @@ CREATE INDEX idx_users_user_avatar on users(user_avatar);
 -- UPDATE users 
 -- SET user_admin = 1
 -- WHERE user_name = "admin"
+
 
 -- ####################
 DROP TABLE IF EXISTS tweets;
@@ -103,8 +102,6 @@ INSERT INTO tweets VALUES("485db3c60952420e9c4670bb8d3c5830", "Elon-testing", "F
 INSERT INTO tweets VALUES("b1dbb467680f4b73ac144243484e1642", "Test gaming now", "", "1676655298", "d6389953261a48eba125fa54d8ce958e", "1","2","3","4","5");
 
 
-
-
 -- INSERT INTO tweets VALUES("b1dbb467680f4b73ac144243484e1444","Hey","", "1","xxx", "1","2","3","4","5");
 
 
@@ -112,6 +109,7 @@ INSERT INTO tweets VALUES("b1dbb467680f4b73ac144243484e1642", "Test gaming now",
 
 
 CREATE INDEX idx_tweets_tweet_image ON tweets(tweet_image);
+
 
 
 
@@ -128,11 +126,25 @@ INSERT INTO trends VALUES("43ace034564c42788169ac18aaf601f5", "Movies", 924);
 INSERT INTO trends VALUES("2a9470bc61314187b19d7190b76cd535", "Coding", 22574);
 INSERT INTO trends VALUES("c9773e2bb68647039a7a40c2ee7d4716", "Ukraine", 4458796);
 
+
+UPDATE users SET user_total_followers = user_total_followers + 1 WHERE user_id = "8bde9794f6c8433baa4517732182fc69";
+
+
 -- SELECT * FROM trends ORDER BY CAST (trend_total_tweets AS INTEGER) DESC;
 
 -- ##############################
+
+-- DROP TABLE IF EXISTS follows;
+-- CREATE TABLE follows(
+--   follow_user_followee   TEXT REFERENCES user(user_id),
+--   follow_user_follower   TEXT REFERENCES user(user_id)
+-- ) WITHOUT ROWID;
+
+
+
 -- ##############################
 -- ##############################
+
 
 -- SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id ORDER BY tweet_created_at DESC LIMIT 5;
 

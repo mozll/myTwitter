@@ -154,7 +154,7 @@
       <form>
         <input style="display:none" name="user_followee_id" type="text" value="a22da1effb3d4f03a0f77f9aa8320203">
         <button id="follow-btn-a22da1effb3d4f03a0f77f9aa8320203" class="followbtn mr-2 ml-5 px-4 py-2 text-black text-base font-medium bg-gray-200 rounded-full" onclick="toggleFollow(event)" type="follow" data-following="false">Follow</button>
-        <input style="display:none" name="action" type="text" value="follow">
+        <input style="display:none" name="followInput" type="text" value="follow">
     </form>
       </div>
       <!-- end person -->
@@ -173,11 +173,13 @@
             if (isFollowing) {
                 button.textContent = 'Follow';
                 button.dataset.following = 'false';
-                formData.set('action', 'unfollow');
+                formData.set('followInput', 'unfollow');
+
             } else {
                 button.textContent = 'Following';
                 button.dataset.following = 'true';
-                formData.set('action', 'follow');
+                formData.set('followInput', 'follow');
+
             }
         
             try {
