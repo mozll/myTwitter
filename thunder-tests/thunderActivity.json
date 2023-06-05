@@ -781,5 +781,43 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "0eeb8db4-83e0-4240-9ea9-419bff8b3f3f",
+    "colId": "history",
+    "containerId": "",
+    "name": "127.0.0.1/like-tweet",
+    "url": "127.0.0.1/like-tweet",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-06-05T14:40:24.330Z",
+    "modified": "2023-06-05T18:52:50.727Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "tweet_id",
+          "value": "485db3c60952420e9c4670bb8d3c5830"
+        }
+      ]
+    },
+    "tests": []
+  },
+  {
+    "_id": "fba85217-abf8-4b01-9c87-29a0952073da",
+    "colId": "history",
+    "containerId": "",
+    "name": "127.0.0.1/like-twee",
+    "url": "127.0.0.1/like-twee",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-06-05T14:41:28.388Z",
+    "modified": "2023-06-05T14:41:28.388Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]

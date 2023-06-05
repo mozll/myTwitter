@@ -4,22 +4,21 @@ import x
 @post("/follow-user")
 def _():
 	try:
-		# TODO: get user from cookie
-		# user = request.get_cookie("user", secret="XXXXXXXX")
+		# get user from cookie
 		user_cookie = request.get_cookie("user_cookie", secret="my-secret")
 		user_obj = {} if not user_cookie else user_cookie
 
 
-		# TODO: get user id from the user from the cookie
+		# get user id from the user from the cookie
 		user_obj.get("user_id")
 
-		# TODO: Validate the followeer's id
+		# Validate the followeer's id
 		# validate(user_obj.get("user_id"))
 
-		# TODO: Connect to the database
+		# Connect to the database
 		db = x.db()
 
-		# TODO: Insert into followers table
+		# Insert into followers table
 		user_followee_id = request.forms.get("user_followee_id")
 		
 		if request.forms.get("followInput") == "unfollow":

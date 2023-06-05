@@ -565,6 +565,11 @@ video {
   margin: auto;
 }
 
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
 .mx-4 {
   margin-left: 1rem;
   margin-right: 1rem;
@@ -754,6 +759,10 @@ video {
 
 .max-w-screen-xl {
   max-width: 1280px;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
 }
 
 .grid-cols-\[100fr_150fr_100fr\] {
@@ -959,6 +968,11 @@ video {
   padding: 1rem;
 }
 
+.px-0 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
 .px-10 {
   padding-left: 2.5rem;
   padding-right: 2.5rem;
@@ -1024,11 +1038,6 @@ video {
   padding-bottom: 1rem;
 }
 
-.px-0 {
-  padding-left: 0px;
-  padding-right: 0px;
-}
-
 .pb-10 {
   padding-bottom: 2.5rem;
 }
@@ -1075,10 +1084,6 @@ video {
 
 .pt-5 {
   padding-top: 1.25rem;
-}
-
-.pl-0 {
-  padding-left: 0px;
 }
 
 .text-center {
@@ -1176,6 +1181,11 @@ video {
 .text-twitterGreen {
   --tw-text-opacity: 1;
   color: rgb(0 186 124 / var(--tw-text-opacity));
+}
+
+.text-twitterRed {
+  --tw-text-opacity: 1;
+  color: rgb(249 24 128 / var(--tw-text-opacity));
 }
 
 .text-white {
@@ -1289,12 +1299,27 @@ video {
   background-color: rgb(30 64 175 / var(--tw-bg-opacity));
 }
 
+.focus\:bg-twitterYellow:focus {
+  --tw-bg-opacity: 1;
+  background-color: rgb(253 203 88 / var(--tw-bg-opacity));
+}
+
 .focus\:bg-yellow-600:focus {
   --tw-bg-opacity: 1;
   background-color: rgb(202 138 4 / var(--tw-bg-opacity));
 }
 
+.focus\:text-black:focus {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
+}
+
+.active\:bg-twitterRed:active {
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 24 128 / var(--tw-bg-opacity));
 }
