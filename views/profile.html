@@ -62,11 +62,13 @@
     </svg>
 
   </div>   
-    % if user_cookie:
+
     <form>
+      % if user_cookie:
     <input style="display:none" name="user_followee_id" type="text" value="{{user['user_id']}}">
     <button id="follow-btn-{{user['user_id']}}" class="followbtn mr-2 ml-2 px-4 py-2 text-black text-base font-medium bg-gray-200 rounded-full" onclick="toggleFollow(event)" type="follow" data-following="false">Follow</button>
     <input style="display:none" name="action" type="text" value="follow">
+        % end
     </form>
   </div>
 
@@ -125,7 +127,7 @@
     });
     
     </script>
-    % end
+
 
  <!-- END PROFILE ICONS AND FOLLOW -->
 
@@ -195,7 +197,9 @@
         % end
       </div>
       <div class="flex justify-between mt-2">
+        % if user_cookie:
         <div class="flex gap-2 items-center">
+          
           <svg width="20" height="20" viewBox="0 0 256 256" class="text-gray-400 hover:text-twitterBlue"><path fill="currentColor" d="M128 232.4a15.9 15.9 0 0 1-13.7-7.7L99.5 200H40a16 16 0 0 1-16-16V56a16 16 0 0 1 16-16h176a16 16 0 0 1 16 16v128a16 16 0 0 1-16 16h-59.5l-6.8-4.1l6.8 4.1l-14.8 24.7a15.9 15.9 0 0 1-13.7 7.7ZM40 56v128h59.5a16.1 16.1 0 0 1 13.7 7.8l14.8 24.6l14.8-24.6a16.1 16.1 0 0 1 13.7-7.8H216V56Z"/></svg>
           <span class="text-sm text-gray-400">
             {{tweet["tweet_total_comments"]}}
@@ -221,6 +225,7 @@
         </div>
         <svg width="20" height="20" viewBox="0 0 256 256" class="text-gray-400   "><path fill="currentColor" d="M176 162a37.9 37.9 0 0 0-28.3 12.7l-48.9-31.5a37.7 37.7 0 0 0 0-30.4l48.9-31.5A38 38 0 1 0 138 56a36.6 36.6 0 0 0 3.2 15.2l-48.9 31.5a38 38 0 1 0 0 50.6l48.9 31.5A36.6 36.6 0 0 0 138 200a38 38 0 1 0 38-38Zm0-132a26 26 0 1 1-26 26a26.1 26.1 0 0 1 26-26ZM64 154a26 26 0 1 1 26-26a26.1 26.1 0 0 1-26 26Zm112 72a26 26 0 1 1 26-26a26.1 26.1 0 0 1-26 26Z"/></svg>
         <svg width="24" height="24" viewBox="0 0 512 512" class=""><path fill="currentColor" d="M128 496H48V304h80Zm224 0h-80V208h80Zm112 0h-80V96h80Zm-224 0h-80V16h80Z"/></svg>
+        % end
       </div>
     </div>
     <!-- end right of tweet -->

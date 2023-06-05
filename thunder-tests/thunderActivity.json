@@ -545,19 +545,9 @@
     "method": "POST",
     "sortNum": 0,
     "created": "2023-03-30T12:02:00.104Z",
-    "modified": "2023-03-30T12:02:00.104Z",
+    "modified": "2023-06-05T10:01:00.384Z",
     "headers": [],
     "params": [],
-    "body": {
-      "type": "formdata",
-      "raw": "",
-      "form": [
-        {
-          "name": "message",
-          "value": "one"
-        }
-      ]
-    },
     "tests": []
   },
   {
@@ -776,6 +766,20 @@
         }
       ]
     },
+    "tests": []
+  },
+  {
+    "_id": "64931258-f0c4-4dbf-8cb7-81f68e5b49a9",
+    "colId": "history",
+    "containerId": "",
+    "name": "127.0.0.1/searc",
+    "url": "127.0.0.1/searc",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-06-05T10:00:51.151Z",
+    "modified": "2023-06-05T10:00:51.151Z",
+    "headers": [],
+    "params": [],
     "tests": []
   }
 ]
