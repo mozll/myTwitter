@@ -59,9 +59,9 @@ CREATE INDEX idx_users_user_avatar on users(user_avatar);
 
 -- SELECT * FROM users WHERE user_name = "elonmusk";
 
--- UPDATE users 
--- SET user_admin = 1
--- WHERE user_name = "admin"
+UPDATE users 
+SET user_admin = 1
+WHERE user_name = "admin"
 
 
 -- UPDATE users SET user_admin = 1 WHERE user_id = "5efeea55a2284f0299735229b4f2e922"
