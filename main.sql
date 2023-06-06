@@ -59,9 +59,9 @@ CREATE INDEX idx_users_user_avatar on users(user_avatar);
 
 -- SELECT * FROM users WHERE user_name = "elonmusk";
 
--- UPDATE users 
--- SET user_admin = 1
--- WHERE user_name = "admin"
+UPDATE users 
+SET user_admin = 1
+WHERE user_name = "admin"
 
 
 -- UPDATE users SET user_admin = 1 WHERE user_id = "5efeea55a2284f0299735229b4f2e922"
@@ -110,6 +110,17 @@ INSERT INTO tweets VALUES("b1dbb467680f4b73ac144243484e1642", "Test gaming now",
 
 
 -- SELECT * FROM tweets;
+
+CREATE VIRTUAL TABLE users_search USING fts5 (user_name, user_first_name, user_last_name);
+
+SELECT * FROM users_search
+
+INSERT INTO users_search SELECT user_name, user_first_name, user_last_name FROM users;
+
+SELECT user_name FROM users_search WHERE users_search MATCH "elon";
+
+
+
 
 
 CREATE INDEX idx_tweets_tweet_image ON tweets(tweet_image);

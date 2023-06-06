@@ -22,11 +22,11 @@
   <div class="min-h-screen h-full border-x border-gray-600">
     
     % if user_cookie:
-
+    
     <!-- TOP OF SITE AND ABOVE CREATE TWEET -->
     <div class="sticky top-0 flex flex-col font-bold gap-4 p-4 border-b border-gray-600 bg-twitterDarkMode 
      ">
-     Home
+     Home 
     </div>
     <!-- END OF TOP OF SITE -->
     
@@ -78,7 +78,7 @@
     <section id="tweets">
     % for tweet in tweets:
     <!-- tweet -->
-    <div class="flex gap-4 p-4 border-t border-gray-600">
+    <div class="tweet flex gap-4 p-4 border-t border-gray-600">
       <div class="">
         <a href="/{{tweet['user_name']}}"> <img src="images/{{tweet['user_avatar']}}" class="w-12 h-12 ml-1 mr-4 bg-red-300 rounded-full"> </a>
       </div>
@@ -106,10 +106,18 @@
             </span>
           </div>
           
-          <svg width="32" height="32" viewBox="0 0 24 24" class="ml-auto text-gray-500">
-            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-              d="M6.75 12a.75.75 0 1 1-1.5 0a.75.75 0 0 1 1.5 0Zm6 0a.75.75 0 1 1-1.5 0a.75.75 0 0 1 1.5 0Zm6 0a.75.75 0 1 1-1.5 0a.75.75 0 0 1 1.5 0Z" />
+          % if tweet["tweet_user_fk"] == user_id:
+          <form class="ml-auto" onsubmit="deleteTweet(); return false">
+            <input style="display:none" type="text" name="tweet_id" value="{{tweet['tweet_id']}}">
+          <button>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-400">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
+        </button>
+      </form>
+          
+
+          % end
 
         </div>
         <div class="text-base font-normal">
@@ -161,13 +169,16 @@
           </button>
         </form>
           </div>
-
-          <svg width="20" height="20" viewBox="0 0 256 256" class="text-gray-400 "><path fill="currentColor" d="M176 162a37.9 37.9 0 0 0-28.3 12.7l-48.9-31.5a37.7 37.7 0 0 0 0-30.4l48.9-31.5A38 38 0 1 0 138 56a36.6 36.6 0 0 0 3.2 15.2l-48.9 31.5a38 38 0 1 0 0 50.6l48.9 31.5A36.6 36.6 0 0 0 138 200a38 38 0 1 0 38-38Zm0-132a26 26 0 1 1-26 26a26.1 26.1 0 0 1 26-26ZM64 154a26 26 0 1 1 26-26a26.1 26.1 0 0 1-26 26Zm112 72a26 26 0 1 1 26-26a26.1 26.1 0 0 1-26 26Z"/></svg>
-          <svg width="24" height="24" viewBox="0 0 512 512" class=""><path fill="currentColor" d="M128 496H48V304h80Zm224 0h-80V208h80Zm112 0h-80V96h80Zm-224 0h-80V16h80Z"/></svg>
+          
+          
+          
+          
 
           % end
-        </div>
-
+        </div> 
+        
+        
+       
       </div>
       <!-- end right of tweet -->
     </div>
@@ -251,6 +262,21 @@
             totalDislikes.innerText = Number(totalDislikes.innerText) + 1
           }
 
+        }
+
+
+        async function deleteTweet() {
+          console.log("tweet deleted");
+          const deleteTweetContainer = event.target.parentNode.parentNode.parentNode.remove()
+
+          
+          const form = event.target
+          const conn = await fetch("/delete-tweet", {
+            method:"POST",
+            body: new FormData(form)
+          }) 
+          const data = await conn.json()
+          console.log(data);
         }
 
     </script>
