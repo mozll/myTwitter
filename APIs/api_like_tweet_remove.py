@@ -7,7 +7,7 @@ def _():
         db = x.db()
         tweet_like_removed = request.forms.get("tweet_id")
 
-        db.execute("UPDATE tweets SET tweet_total_likes = tweet_total_likes + 1 WHERE tweet_id = ?",(tweet_like_removed,))
+        db.execute("UPDATE tweets SET tweet_total_likes = tweet_total_likes - 1 WHERE tweet_id = ?",(tweet_like_removed,))
         
         db.commit()
         return {'info':'Ok',"tweet_like_removed":tweet_like_removed}
