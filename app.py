@@ -369,6 +369,9 @@ import APIs.api_admin_delete_user
 import APIs.api_admin_deactivate_user
 import APIs.api_admin_activate_user
 import APIs.api_like_tweet
+import APIs.api_like_tweet_remove
+import APIs.api_dislike_tweet
+import APIs.api_dislike_tweet_remove
 
 
 ##############################

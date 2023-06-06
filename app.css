@@ -1188,6 +1188,11 @@ video {
   color: rgb(249 24 128 / var(--tw-text-opacity));
 }
 
+.text-twitterYellow {
+  --tw-text-opacity: 1;
+  color: rgb(253 203 88 / var(--tw-text-opacity));
+}
+
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));

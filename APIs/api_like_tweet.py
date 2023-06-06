@@ -4,8 +4,8 @@ import x
 @post("/like-tweet")
 def _():
     try:
-        user_cookie = request.get_cookie("user_cookie", secret="my-secret")
-        user_obj = {} if not user_cookie else user_cookie
+        # user_cookie = request.get_cookie("user_cookie", secret="my-secret")
+        # user_obj = {} if not user_cookie else user_cookie
 
         db = x.db()
         tweet_liked_id = request.forms.get("tweet_id")
