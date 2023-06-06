@@ -1,15 +1,18 @@
-from bottle import post, response
+from bottle import post, response, request, get
 import json
 import x
 
-@post('/search')
+@get('/search')
 def _():
     try:
         db = x.db()
 
-        db.execute("")
-        response.set_header("content-type", "application/json");
-        return json.dumps[{"Name":"A"},{"name":"B"}]
+        searchInput = request.query.get("searchInput")
+        searchResults = db.execute("SELECT * FROM users_search WHERE user_name LIKE ?",(f'{searchInput}%',)).fetchall()
+
+        print(searchInput,"searchinput ###")
+        print(searchResults, "searchresult print")
+        return {"info":"ok", "searchResults":searchResults }
     except Exception as ex:
         print(ex)
         if "db" in locals(): db.rollback()

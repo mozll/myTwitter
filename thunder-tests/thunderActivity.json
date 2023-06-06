@@ -615,9 +615,19 @@
     "method": "POST",
     "sortNum": 0,
     "created": "2023-04-17T11:11:07.282Z",
-    "modified": "2023-04-17T11:11:07.282Z",
+    "modified": "2023-06-06T21:41:42.399Z",
     "headers": [],
     "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "searchInput",
+          "value": "dup"
+        }
+      ]
+    },
     "tests": []
   },
   {
@@ -825,6 +835,91 @@
         {
           "name": "tweet_id",
           "value": "0483baa72b9a4edaa7593ebabfa4fb2f"
+        }
+      ]
+    },
+    "tests": []
+  },
+  {
+    "_id": "1851dae4-b982-4efb-8023-6f5cd9a712b9",
+    "colId": "history",
+    "containerId": "",
+    "name": "127.0.0.1/search",
+    "url": "127.0.0.1/search",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-06-06T21:43:39.140Z",
+    "modified": "2023-06-06T21:43:45.768Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "searchInput",
+          "value": "dupr"
+        }
+      ]
+    },
+    "tests": []
+  },
+  {
+    "_id": "d9cdb459-9ce9-4a7b-a8f9-cbb3e7ec991f",
+    "colId": "history",
+    "containerId": "",
+    "name": "127.0.0.1/search?searchInput=dup",
+    "url": "127.0.0.1/search?searchInput=dup",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-06-06T21:43:56.597Z",
+    "modified": "2023-06-06T21:43:56.597Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "searchInput",
+        "value": "dup",
+        "isPath": false
+      }
+    ],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "searchInput",
+          "value": "dupr"
+        }
+      ]
+    },
+    "tests": []
+  },
+  {
+    "_id": "b3b0aceb-8e62-4282-8c9c-123270f49e5f",
+    "colId": "history",
+    "containerId": "",
+    "name": "127.0.0.1/search?searchInput=du",
+    "url": "127.0.0.1/search?searchInput=du",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-06-06T21:45:48.679Z",
+    "modified": "2023-06-06T21:52:28.801Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "searchInput",
+        "value": "du",
+        "isPath": false
+      }
+    ],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "searchInput",
+          "value": "dupr",
+          "isDisabled": true
         }
       ]
     },

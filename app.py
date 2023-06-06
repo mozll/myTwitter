@@ -62,35 +62,6 @@ def _():
   finally:
     pass
 
-# This data will come from the database
-# For now, we just hard coded the data
-# 0 False 1 True
-
-# tweets = [
-#   { "verified":1, "image_name":"1.jpg", "fullname":"Elon Musk", "username":"elonmusk","message":"All things in moderation, especially content moderation", "total_messages":"1","total_retweets":"2","total_likes":"3","total_dislikes":"4",},
-
-#   { "verified":0, "image_name":"2.jpg", "fullname":"Joe Biden", "username":"joebiden","message":"I am THE president","message_image":"73120ca128fb49f18a1585f929af42ad.jpg","total_messages":"1","total_retweets":"2","total_likes":"3","total_dislikes":"4",},
-
-#   { "verified":1, "image_name":"1.jpg", "fullname":"Elon Musk", "username":"elonmusk","message":"Surround your house with treadmills set to jogging speed to stop walking dead ur welcome","message_image":"FpR2F4kaEAAE9Xk.jpg", "total_messages":"1","total_retweets":"2","total_likes":"3","total_dislikes":"4",},
-  
-#   { "verified":1, "image_name":"4.png", "fullname":"Peter Rasmussen", "username":"dupreeh","message":"""2-1 vs @FNATIC and we’ve secured our spot in the Spodek! Very excited to be back! 🤝🏽❤️ 
-#   Hard time as T today! But we managed to pull through with some crucial rounds and some decent CT sides! 
-#   Room for improvement - one step at a time!""","total_messages":"1","total_retweets":"2","total_likes":"3","total_dislikes":"4",},
-  
-#   { "verified":1, "image_name":"1.jpg", "fullname":"Elon Musk", "username":"elonmusk","message":"Don’t worry, just some of my 👽 🛸 friends of mine stopping by …", "total_messages":"1","total_retweets":"2","total_likes":"3","total_dislikes":"4",},
-
-#   { "verified":1, "image_name":"1.jpg", "fullname":"Elon Musk", "username":"elonmusk","message":"","message_image":"Foaz7GYX0AU9unl.jpg","total_messages":"1","total_retweets":"2","total_likes":"3","total_dislikes":"4",},
-# ]
-
-# list = array
-# dictionary is {}. Think of it as JSON
-# trends = [
-#   {"title":"Gaming", "total_hash":5451},
-#   {"title":"Counter-Strike", "total_hash":231},
-#   {"title":"Movies", "total_hash":346},
-#   {"title":"Coding", "total_hash":465},
-# ]
-
 ########################
 @get("/js/<filename>")
 def _(filename):

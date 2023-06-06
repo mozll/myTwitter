@@ -317,6 +317,22 @@ async function likeTweet() {
           }
 
         }
+
+
+        async function deleteTweet() {
+          console.log("tweet deleted");
+          const deleteTweetContainer = event.target.parentNode.parentNode.parentNode.remove()
+
+          
+          const form = event.target
+          const conn = await fetch("/delete-tweet", {
+            method:"POST",
+            body: new FormData(form)
+          }) 
+          const data = await conn.json()
+          console.log(data);
+        }
+
 </script>
 
 
