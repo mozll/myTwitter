@@ -64,8 +64,8 @@ CREATE INDEX idx_users_user_avatar on users(user_avatar);
 -- WHERE user_name = "admin"
 
 
-UPDATE users SET user_admin = 1 WHERE user_id = "5efeea55a2284f0299735229b4f2e922"
-UPDATE users SET user_admin = 1 WHERE user_id = "8bde9794f6c8433baa4517732182fc69"
+-- UPDATE users SET user_admin = 1 WHERE user_id = "5efeea55a2284f0299735229b4f2e922"
+-- UPDATE users SET user_admin = 1 WHERE user_id = "8bde9794f6c8433baa4517732182fc69"
 
 
 -- ####################
@@ -131,9 +131,9 @@ INSERT INTO trends VALUES("2a9470bc61314187b19d7190b76cd535", "Coding", 22574);
 INSERT INTO trends VALUES("c9773e2bb68647039a7a40c2ee7d4716", "Ukraine", 4458796);
 
 
-UPDATE users SET user_total_followers = user_total_followers + 1 WHERE user_id = "8bde9794f6c8433baa4517732182fc69";
+-- UPDATE users SET user_total_followers = user_total_followers + 1 WHERE user_id = "8bde9794f6c8433baa4517732182fc69";
 
-UPDATE tweets set tweet_total_likes = tweet_total_likes + 1 WHERE tweet_id = "485db3c60952420e9c4670bb8d3c5830";
+-- UPDATE tweets set tweet_total_likes = tweet_total_likes + 1 WHERE tweet_id = "485db3c60952420e9c4670bb8d3c5830";
 
 
 -- SELECT * FROM trends ORDER BY CAST (trend_total_tweets AS INTEGER) DESC;
