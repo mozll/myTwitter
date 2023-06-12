@@ -1,10 +1,14 @@
 -- PRAGMA journal_mode=WAL;
--- -- PRAGMA read_uncommitted = false
+
 -- PRAGMA read_committed = true;
--- -- PRAGMA foreign_keys;
--- PRAGMA foreign_keys = true;
+
+PRAGMA foreign_keys;
+PRAGMA foreign_keys = ON;
+PRAGMA foreign_keys;
 
 DROP TABLE IF EXISTS users;
+
+PRAGMA foreign_keys = ON;
 CREATE TABLE users(
   user_id                     TEXT UNIQUE NOT NULL, -- 41421563466789
   user_name                   TEXT UNIQUE NOT NULL,
@@ -15,7 +19,7 @@ CREATE TABLE users(
   user_avatar                 TEXT NOT NULL, /* SHOULD BE UNIQUE, TO PREVENT SAME NAME IMAGES */
   user_cover_image            TEXT NOT NULL, /* SHOULD BE UNIQUE, TO PREVENT SAME NAME IMAGES */
   user_created_at             TEXT NOT NULL,
-  user_total_tweets           INTEGER DEFAULT 0,  /* int(5) */
+  user_total_tweets           INTEGER DEFAULT 0, 
   user_total_retweets         INTEGER DEFAULT 0, 
   user_total_comments         INTEGER DEFAULT 0,
   user_total_likes            INTEGER DEFAULT 0,
@@ -30,46 +34,39 @@ CREATE TABLE users(
   user_gold_key               TEXT DEFAULT "0",
   user_password               TEXT NOT NULL,
   user_password_reset_key     TEXT DEFAULT "",
-  user_admin                  INTEGER DEFAULT "",
+  user_admin                  INTEGER DEFAULT 0,
   PRIMARY KEY(user_id)
 ) WITHOUT ROWID;
 
+INSERT INTO users VALUES("51602a9f7d82472b90ed1091248f6cb1", "elonmusk", "Elon", "Musk", "elonmusk@gmail.com","", "51602a9f7d82472b90ed1091248f6cb1.jpg", "coverImageELON.jpg", "1676629975", "22700", "10", "15", "17", "16", "128900000", "177", "1","0","","","1","0","123", "",0);
 
--- UPDATE users
--- SET user_password = test
--- WHERE user_password_reset_key = 496d2114264b42dfa29ebaae924ba239
+INSERT INTO users VALUES("6268331d012247539998d7664bd05cc1", "shakira", "Shakira", "", "shakira@gmail.com","", "6268331d012247539998d7664bd05cc1.jpg","coverImageSHAKIRA.jpg", "1676630033", "7999", "20", "25", "27", "26", "53700000", "235","1","0","","","","0","123", "",0);
 
-INSERT INTO users VALUES("51602a9f7d82472b90ed1091248f6cb1", "elonmusk", "Elon", "Musk", "elonmusk@gmail.com","", "51602a9f7d82472b90ed1091248f6cb1.jpg", "coverImageELON.jpg", "1676629975", "22700", "10", "15", "17", "16", "128900000", "177", "1","0","","","1","0","123", "","0");
-INSERT INTO users VALUES("6268331d012247539998d7664bd05cc1", "shakira", "Shakira", "", "shakira@gmail.com","", "6268331d012247539998d7664bd05cc1.jpg","coverImageSHAKIRA.jpg", "1676630033", "7999", "20", "25", "27", "26", "53700000", "235","1","0","","","","0","123", "","0");
-INSERT INTO users VALUES("a22da1effb3d4f03a0f77f9aa8320203", "rihanna", "Rihanna", "", "rihanna@gmail.com","", "a22da1effb3d4f03a0f77f9aa8320203.jpg","coverImageRIHANNA.jpg", "1676630057", "10600", "30", "35", "37", "36", "9", "980","0","0","","","","0","123", "","0");
-INSERT INTO users VALUES("7e968791b6c24ed0a482416f0e769727", "joebiden", "Joe", "Biden", "joebiden@gmail.com","", "7e968791b6c24ed0a482416f0e769727.jpg","coverImageBIDEN.jpg" ,"1676630128", "3210", "40", "45", "47", "46", "52486000", "323","0","0","","","1","0","123", "","0");
-INSERT INTO users VALUES("d6389953261a48eba125fa54d8ce958e", "Dupreeh", "Peter", "Rasmussen", "dupreeh@gmail.com","", "d6389953261a48eba125fa54d8ce958e.png","coverImageDupreeh.jpg" ,"1676630231", "9607", "50", "55", "57", "56", "304800", "763","1","0","","","","0","123", "","0");
+INSERT INTO users VALUES("a22da1effb3d4f03a0f77f9aa8320203", "rihanna", "Rihanna", "", "rihanna@gmail.com","", "a22da1effb3d4f03a0f77f9aa8320203.jpg","coverImageRIHANNA.jpg", "1676630057", "10600", "30", "35", "37", "36", "9", "980","0","0","","","","0","123", "",0);
+
+INSERT INTO users VALUES("7e968791b6c24ed0a482416f0e769727", "joebiden", "Joe", "Biden", "joebiden@gmail.com","", "7e968791b6c24ed0a482416f0e769727.jpg","coverImageBIDEN.jpg" ,"1676630128", "3210", "40", "45", "47", "46", "52486000", "323","0","0","","","1","0","123", "",0);
+
+INSERT INTO users VALUES("d6389953261a48eba125fa54d8ce958e", "Dupreeh", "Peter", "Rasmussen", "dupreeh@gmail.com","", "d6389953261a48eba125fa54d8ce958e.png","coverImageDupreeh.jpg" ,"1676630231", "9607", "50", "55", "57", "56", "304800", "763","1","0","","","","0","123", "",0);
+
+-- SELECT * FROM users WHERE user_name = "elonmusk";
+
+SELECT * FROM users;
 
 -- UPDATE users SET user_gold = 1 
 -- WHERE user_name = "Mozeltov";
 
+-- UPDATE users SET user_admin = 1 WHERE user_id = "11f0a0367b0a466682e1d40d598ebc9a";
 
-/* to index and make searchable but there can still be same values */
-CREATE INDEX idx_users_user_first_name on users(user_first_name);
-CREATE INDEX idx_users_user_last_name on users(user_last_name);
-CREATE INDEX idx_users_user_avatar on users(user_avatar);
+-- UPDATE users SET user_total_followers = user_total_followers + 1 WHERE user_id = "8bde9794f6c8433baa4517732182fc69";
 
--- SELECT name FROM sqlite_master WHERE type ="index" 
--- SELECT name FROM sqlite_master WHERE type ="trigger" 
+-- SELECT user_name FROM users WHERE user_id = "d6389953261a48eba125fa54d8ce958e";
+-- DELETE FROM users WHERE user_id= "d6389953261a48eba125fa54d8ce958e";
 
--- SELECT * FROM users WHERE user_name = "elonmusk";
-
--- UPDATE users 
--- SET user_admin = 1
--- WHERE user_name = "admin"
-
-
--- UPDATE users SET user_admin = 1 WHERE user_id = "5efeea55a2284f0299735229b4f2e922"
--- UPDATE users SET user_admin = 1 WHERE user_id = "8bde9794f6c8433baa4517732182fc69"
-
-
--- ####################
+-- ################################### Tweets
 DROP TABLE IF EXISTS tweets;
+PRAGMA foreign_keys;
+PRAGMA foreign_keys = ON;
+PRAGMA foreign_keys;
 CREATE TABLE tweets(
   tweet_id              TEXT,
   tweet_message         TEXT,
@@ -82,7 +79,7 @@ CREATE TABLE tweets(
   tweet_total_dislikes  INTEGER,
   tweet_total_views     INTEGER,
   PRIMARY KEY(tweet_id),
-  FOREIGN KEY(tweet_user_fk) REFERENCES users(user_id)
+  FOREIGN KEY(tweet_user_fk) REFERENCES users(user_id) ON DELETE CASCADE
 ) WITHOUT ROWID;
 
 INSERT INTO tweets VALUES("bdbeb933dcf145dc9bba9282d20e775a", "All things in moderation, especially content moderation", "", "1676654614", "51602a9f7d82472b90ed1091248f6cb1", "1","2","3","4","5");
@@ -105,51 +102,107 @@ INSERT INTO tweets VALUES("485db3c60952420e9c4670bb8d3c5830", "Elon-testing", "F
 
 INSERT INTO tweets VALUES("b1dbb467680f4b73ac144243484e1642", "Test gaming now", "", "1676655298", "d6389953261a48eba125fa54d8ce958e", "1","2","3","4","5");
 
+SELECT * FROM tweets WHERE tweet_user_fk = "51602a9f7d82472b90ed1091248f6cb1";
 
--- INSERT INTO tweets VALUES("b1dbb467680f4b73ac144243484e1444","Hey","", "1","xxx", "1","2","3","4","5");
+SELECT * FROM tweets WHERE tweet_user_fk = "d6389953261a48eba125fa54d8ce958e";
 
+DELETE FROM users WHERE user_id = "d6389953261a48eba125fa54d8ce958e";
+SELECT * FROM users WHERE user_id = "d6389953261a48eba125fa54d8ce958e";
 
--- SELECT * FROM tweets;
-
-CREATE VIRTUAL TABLE IF NOT EXISTS users_search USING fts5 (user_name, user_first_name, user_last_name);
-
-
--- INSERT INTO users_search SELECT user_name, user_first_name, user_last_name FROM users;
-
--- SELECT * FROM users_search WHERE user_name LIKE "d%";
--- SELECT * FROM users_search
-
-
-UPDATE users SET user_admin = 1 WHERE user_id = "11f0a0367b0a466682e1d40d598ebc9a";
-
-
-CREATE INDEX idx_tweets_tweet_image ON tweets(tweet_image);
-
-
+-- UPDATE tweets set tweet_total_likes = tweet_total_likes + 1 WHERE tweet_id = "485db3c60952420e9c4670bb8d3c5830";
 
 
 DROP TABLE IF EXISTS trends;
 CREATE TABLE trends(
   trend_id            TEXT,
   trend_title         TEXT NOT NULL,
-  trend_total_tweets  TEXT DEFAULT 0,
+  trend_total_tweets  INTEGER DEFAULT 0,
   PRIMARY KEY(trend_id)
 ) WITHOUT ROWID;
+
 INSERT INTO trends VALUES("882f3de5c2e5450eaf6e59c14be1db70", "Gaming", 1524);
 INSERT INTO trends VALUES("7a90e16350074cf7a15fba48113c4046", "Counter-Strike", 87565);
 INSERT INTO trends VALUES("43ace034564c42788169ac18aaf601f5", "Movies", 924);
 INSERT INTO trends VALUES("2a9470bc61314187b19d7190b76cd535", "Coding", 22574);
 INSERT INTO trends VALUES("c9773e2bb68647039a7a40c2ee7d4716", "Ukraine", 4458796);
 
-
--- UPDATE users SET user_total_followers = user_total_followers + 1 WHERE user_id = "8bde9794f6c8433baa4517732182fc69";
-
--- UPDATE tweets set tweet_total_likes = tweet_total_likes + 1 WHERE tweet_id = "485db3c60952420e9c4670bb8d3c5830";
+SELECT * FROM trends ORDER BY trend_total_tweets DESC;
 
 
--- SELECT * FROM trends ORDER BY CAST (trend_total_tweets AS INTEGER) DESC;
+-- ########################################## COMMENTS TABLE
+DROP TABLE IF EXISTS comments;
+PRAGMA foreign_keys;
+PRAGMA foreign_keys = ON;
+PRAGMA foreign_keys;
+CREATE TABLE comments(
+comment_id INTEGER UNIQUE NOT NULL,
+comment_message TEXT,
+comment_creator_fk TEXT,
+tweet_id_fk TEXT,
+PRIMARY KEY(comment_id),
+FOREIGN KEY (comment_creator_fk) REFERENCES users(user_id) ON DELETE CASCADE,
+FOREIGN KEY (tweet_id_fk) REFERENCES tweets(tweet_id) ON DELETE CASCADE
+) WITHOUT ROWID;
 
--- ##############################
+INSERT INTO comments VALUES(
+1,
+"Hello Joe biden from Elon",
+"51602a9f7d82472b90ed1091248f6cb1",
+"8e08580e4c0a47b386ec956d5a25604f");
+
+INSERT INTO comments VALUES(
+2,
+"Hi to all my commentators from Elon",
+"51602a9f7d82472b90ed1091248f6cb1",
+"485db3c60952420e9c4670bb8d3c5830");
+
+INSERT INTO comments VALUES(
+3,
+"Hello Biden from Peter Dupreeh",
+"d6389953261a48eba125fa54d8ce958e",
+"8e08580e4c0a47b386ec956d5a25604f");
+
+-- DELETE FROM comments
+SELECT * FROM comments;
+
+DELETE FROM users WHERE user_id = "d6389953261a48eba125fa54d8ce958e";
+
+
+
+--  ############### THIS WAY I SELECT ALL OF MY COMMENTS and corresponding tweets together with my user
+SELECT users.user_id, users.user_name, tweets.tweet_id, tweets.tweet_message, tweets.tweet_user_fk, comments.* FROM comments
+JOIN users ON comments.comment_creator_fk = users.user_id
+JOIN tweets ON comments.tweet_id_fk = tweets.tweet_id
+WHERE tweet_id_fk = "8e08580e4c0a47b386ec956d5a25604f"; 
+
+SELECT * FROM users JOIN tweets ON tweet_user_fk = user_id;
+
+
+-- TO VIEW THE DATA CORRESPONDING TO THE FOREIGN KEYS I HAVE TO USE JOINS IN THE SELECT QUERY
+
+SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id ORDER BY tweet_created_at DESC
+
+
+-- By creating the FTS5 virtual table "users_search" with the specified columns, i enable full-text searching on the user_name, user_first_name, and user_last_name
+CREATE VIRTUAL TABLE IF NOT EXISTS users_search USING fts5 (user_name, user_first_name, user_last_name);
+
+-- INSERT INTO users_search SELECT user_name, user_first_name, user_last_name FROM users;
+
+-- SELECT * FROM users_search WHERE user_name LIKE "d%";
+-- SELECT * FROM users_search
+
+/* to create indexes on the specified columns in a table called "users."
+Indexes are used to improve the performance of queries by allowing the database to quickly locate and retrieve data based on the indexed columns. */
+-- CREATE INDEX idx_users_user_first_name on users_search(user_first_name);
+-- CREATE INDEX idx_users_user_last_name on users_search(user_last_name);
+-- CREATE INDEX idx_users_user_name on users_search(user_name);
+
+
+
+
+
+
+-- ############################ JUNCTION TABLES, TO CREATE RELATIONS
 
 -- DROP TABLE IF EXISTS follows;
 -- CREATE TABLE follows(
@@ -157,49 +210,54 @@ INSERT INTO trends VALUES("c9773e2bb68647039a7a40c2ee7d4716", "Ukraine", 4458796
 --   follow_user_follower   TEXT REFERENCES user(user_id)
 -- ) WITHOUT ROWID;
 
+-- CREATE TABLE tweet_likes(
+-- tweet_id_fk TEXT,
+-- tweet_liker_fk TEXT,
+-- FOREIGN KEY (tweet_id_fk) REFERENCES tweets(tweet_id),
+-- FOREIGN KEY(tweet_liker_fk) REFERENCES users(user_id)
+-- ) WITHOUT ROWID;
 
 
--- ##############################
--- ##############################
+-- ############################## LOOK UP TABLE, TO REMOVE EMPTY FIELDS
+-- CREATE TABLE countries (
+--   country_id   TEXT,
+--   country_name TEXT,
+--   PRIMARY KEY (country_id)
+-- );
+
+-- INSERT INTO countries VALUES ('1', 'Denmark');
+
+-- SELECT * FROM countries
 
 
+-- ############################# JOINS
+-- # JOIN TO SHOW NEWEST TWEETS
 -- SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id ORDER BY tweet_created_at DESC LIMIT 5;
 
 -- SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id WHERE user_id = ?;
 
-
 -- SELECT * FROM users LEFT JOIN tweets ON tweet_user_fk = user_id where user_id = ?;
 
--- SELECT * FROM tweets
 
--- DELETE FROM tweets WHERE tweet_user_fk = "57cbc6f561844bf6a323a6b0fdace576";
+-- ############################### STORED PROCEDURES
+-- DROP PROCEDURE get_users()
+-- CREATE PROCEDURE get_users()
+-- BEGIN
+--   SELECT * FROM users;
+-- END
 
--- DELETE FROM users where user_id = ?;
+-- CALL get_users();
 
+-- CREATE PROCEDURE find_user(IN id TEXT)
+-- BEGIN
+--   SELECT *
+--   FROM users
+--   WHERE user_id = id;
+-- END
 
-/* 
-DROP PROCEDURE get_users()
+-- CALL find_user("51602a9f7d82472b90ed1091248f6cb1"); */
 
-DELIMITER //
-CREATE PROCEDURE get_users()
-BEGIN
-  SELECT * FROM users;
-END
-DELIMITER ;
-
-CALL get_users();
-
-DELIMITER //
-CREATE PROCEDURE find_user(IN id TEXT)
-BEGIN
-  SELECT *
-  FROM users
-  WHERE user_id = id;
-END
-DELIMITER ;
-
-CALL find_user("51602a9f7d82472b90ed1091248f6cb1"); */
-
+-- ################################ VIEWS
 /* DROP VIEW IF EXISTS users_by_name;
 CREATE VIEW users_by_name AS SELECT * FROM users ORDER BY user_name DESC;
 
@@ -228,108 +286,73 @@ WHERE trend_total_tweets > 3000;
 SELECT * FROM popular_trends;
  */
 
-/* all the tweets with all the users, in a view, join command
+-- ################################# VIEW WITH JOIN 
 
---Join and test it for all users and tweets
--- create the view that contains the join command
--- the name of the view: users_and_tweets */
+-- CREATE VIEW users_and_tweets AS SELECT * FROM users JOIN tweets ON user_id = tweet_user_fk;
 
 -- SELECT * FROM users JOIN tweets ON user_id = tweet_user_fk;
-
--- -- CREATE VIEW users_and_tweets AS SELECT * FROM users JOIN tweets ON user_id = tweet_user_fk;
 
 -- SELECT * FROM users_and_tweets ORDER BY user_first_name DESC;
 
 
 
-
-/* DROP TRIGGER IF EXISTS increment_user_total_tweets;
-CREATE TRIGGER increment_user_total_tweets AFTER INSERT ON tweets
-BEGIN
-    UPDATE users
-    SET user_total_tweets = user_total_tweets + 1
-    WHERE user_id = NEW.tweet_user_fk;
-END;
-
--- if a user deletes a tweet
+-- ################################ TRIGGERS
+-- DROP TRIGGER IF EXISTS increment_user_total_tweets;
+-- CREATE TRIGGER increment_user_total_tweets AFTER INSERT ON tweets
+-- BEGIN
+--     UPDATE users
+--     SET user_total_tweets = user_total_tweets + 1
+--     WHERE user_id = NEW.tweet_user_fk;
+-- END;
 
 -- if a tweet is deleted the total tweets of the users is automatically deleted
+
+-- DROP TRIGGER IF EXISTS decrement_user_total_tweets;
+-- CREATE TRIGGER decrement_user_total_tweets AFTER DELETE ON tweets
+-- BEGIN
+--     UPDATE users
+--     SET user_total_tweets = user_total_tweets - 1
+--     WHERE user_id = OLD.tweet_user_fk;
+-- END;
+
+-- SELECT user_name, user_total_tweets from users; */
 
 -- SELECT MAX (user_total_tweets) FROM users -- Selects user with most tweets
 
 -- DELETE ON CASCADE -- Deletes everything the user is referencing aswell, if the user is deletied then, in the phones table, where the user is connected, his number gets deleted aswell
 
 
-DROP TRIGGER IF EXISTS decrement_user_total_tweets;
-CREATE TRIGGER decrement_user_total_tweets AFTER DELETE ON tweets
-BEGIN
-    UPDATE users
-    SET user_total_tweets = user_total_tweets - 1
-    WHERE user_id = OLD.tweet_user_fk;
-END;
 
-SELECT user_name, user_total_tweets from users; */
-
-
--- INSERT INTO tweets VALUES(
---   "3ad7c99a108b4b0d91a8c2e20dfc9c9a", 
---   "Hi", 
---   "",
---   "1677162587",
---   "ebb0d9d74d6c4825b3e1a1bcd73ff49a"
--- );
-/* 
-DELETE FROM tweets WHERE tweet_id = "3ad7c99a108b4b0d91a8c2e20dfc9c9a";
-
-
+--- ############################## ATOMIC CODE EXAMPLE
 BEGIN TRANSACTION;
-
 UPDATE users SET user_total_tweets = user_total_tweets + 1 WHERE user_id = '51602a9f7d82472b90ed1091248f6cb1';
 INSERT INTO tweets (tweet_id, tweet_message, tweet_created_at, tweet_user_fk)
 VALUES ('bdbeb933dcf145dc9bba9282d20e775a', 'This is a tweet', '2023-05-09', '51602a9f7d82472b90ed1091248f6cb1');
-
 COMMIT;
 
 
-DROP IF EXISTS
-CREATE TABLE orders (
-id TEXT,
-customer_id INTEGER REFERENCES customers(id),
-order_date TEXT,
-PRIMARY KEY(id)
-)
-
-DROP IF EXISTS
-CREATE TABLE tweets (
-tweet_id TEXT,
-tweet_message TEXT,
-user_id TEXT REFERENCES users(user_id),
-PRIMARY KEY(user_id)
-)
-
-SELECT user_name FROM users
-UNION
-SELECT trend_title FROM trends
-
-
-SELECT tweet_user_fk, COUNT(*) AS tweet_count
-FROM tweets
-GROUP BY tweet_user_fk
-HAVING COUNT(*) > 10;
-
-DROP IF EXISTS
+-- ################################ FOREIGN KEY CONSTRAINT
+DROP TABLE IF EXISTS tweets
 CREATE TABLE tweets(
 tweet_id TEXT,
 tweet_message TEXT,
-user_id TEXT,
+user_id_fk TEXT,
 PRIMARY KEY (tweet_id),
-FOREIGN KEY(user_id) REFERENCES users(user_id) ON DELETE CASCADE
-)
+FOREIGN KEY(user_id_fk) REFERENCES users(user_id) ON DELETE CASCADE
+);
 
-CREATE TABLE tweets (
-  tweet_id TEXT,
-  tweet_message TEXT,
-  user_id TEXT,
-  PRIMARY KEY (tweet_id),
-  FOREIGN KEY (user_id) REFERENCES users(user_id)
-); */
+
+-- ######################### UNION, like concatenation
+SELECT user_name FROM users UNION SELECT trend_title FROM trends
+
+
+-- ############################## GROUP BY & HAVING EXAMPLE
+SELECT tweet_user_fk, COUNT(*) AS tweet_count
+FROM tweets
+GROUP BY tweet_user_fk
+HAVING COUNT(*) < 10;
+
+
+
+SELECT COUNT(user_first_name) FROM users WHERE user_first_name = "Elon";
+
