@@ -7,8 +7,6 @@ PRAGMA foreign_keys = ON;
 PRAGMA foreign_keys;
 
 DROP TABLE IF EXISTS users;
-
-PRAGMA foreign_keys = ON;
 CREATE TABLE users(
   user_id                     TEXT UNIQUE NOT NULL, -- 41421563466789
   user_name                   TEXT UNIQUE NOT NULL,
@@ -48,25 +46,10 @@ INSERT INTO users VALUES("7e968791b6c24ed0a482416f0e769727", "joebiden", "Joe", 
 
 INSERT INTO users VALUES("d6389953261a48eba125fa54d8ce958e", "Dupreeh", "Peter", "Rasmussen", "dupreeh@gmail.com","", "d6389953261a48eba125fa54d8ce958e.png","coverImageDupreeh.jpg" ,"1676630231", "9607", "50", "55", "57", "56", "304800", "763","1","0","","","","0","123", "",0);
 
--- SELECT * FROM users WHERE user_name = "elonmusk";
-
 SELECT * FROM users;
-
--- UPDATE users SET user_gold = 1 
--- WHERE user_name = "Mozeltov";
-
--- UPDATE users SET user_admin = 1 WHERE user_id = "11f0a0367b0a466682e1d40d598ebc9a";
-
--- UPDATE users SET user_total_followers = user_total_followers + 1 WHERE user_id = "8bde9794f6c8433baa4517732182fc69";
-
--- SELECT user_name FROM users WHERE user_id = "d6389953261a48eba125fa54d8ce958e";
--- DELETE FROM users WHERE user_id= "d6389953261a48eba125fa54d8ce958e";
 
 -- ################################### Tweets
 DROP TABLE IF EXISTS tweets;
-PRAGMA foreign_keys;
-PRAGMA foreign_keys = ON;
-PRAGMA foreign_keys;
 CREATE TABLE tweets(
   tweet_id              TEXT,
   tweet_message         TEXT,
@@ -102,6 +85,8 @@ INSERT INTO tweets VALUES("485db3c60952420e9c4670bb8d3c5830", "Elon-testing", "F
 
 INSERT INTO tweets VALUES("b1dbb467680f4b73ac144243484e1642", "Test gaming now", "", "1676655298", "d6389953261a48eba125fa54d8ce958e", "1","2","3","4","5");
 
+
+-- ############################## SELECT tweets, DELETE Dupreeh, Check Tweets
 SELECT * FROM tweets WHERE tweet_user_fk = "51602a9f7d82472b90ed1091248f6cb1";
 
 SELECT * FROM tweets WHERE tweet_user_fk = "d6389953261a48eba125fa54d8ce958e";
@@ -109,31 +94,11 @@ SELECT * FROM tweets WHERE tweet_user_fk = "d6389953261a48eba125fa54d8ce958e";
 DELETE FROM users WHERE user_id = "d6389953261a48eba125fa54d8ce958e";
 SELECT * FROM users WHERE user_id = "d6389953261a48eba125fa54d8ce958e";
 
--- UPDATE tweets set tweet_total_likes = tweet_total_likes + 1 WHERE tweet_id = "485db3c60952420e9c4670bb8d3c5830";
 
-
-DROP TABLE IF EXISTS trends;
-CREATE TABLE trends(
-  trend_id            TEXT,
-  trend_title         TEXT NOT NULL,
-  trend_total_tweets  INTEGER DEFAULT 0,
-  PRIMARY KEY(trend_id)
-) WITHOUT ROWID;
-
-INSERT INTO trends VALUES("882f3de5c2e5450eaf6e59c14be1db70", "Gaming", 1524);
-INSERT INTO trends VALUES("7a90e16350074cf7a15fba48113c4046", "Counter-Strike", 87565);
-INSERT INTO trends VALUES("43ace034564c42788169ac18aaf601f5", "Movies", 924);
-INSERT INTO trends VALUES("2a9470bc61314187b19d7190b76cd535", "Coding", 22574);
-INSERT INTO trends VALUES("c9773e2bb68647039a7a40c2ee7d4716", "Ukraine", 4458796);
-
-SELECT * FROM trends ORDER BY trend_total_tweets DESC;
 
 
 -- ########################################## COMMENTS TABLE
 DROP TABLE IF EXISTS comments;
-PRAGMA foreign_keys;
-PRAGMA foreign_keys = ON;
-PRAGMA foreign_keys;
 CREATE TABLE comments(
 comment_id INTEGER UNIQUE NOT NULL,
 comment_message TEXT,
@@ -162,25 +127,44 @@ INSERT INTO comments VALUES(
 "d6389953261a48eba125fa54d8ce958e",
 "8e08580e4c0a47b386ec956d5a25604f");
 
--- DELETE FROM comments
 SELECT * FROM comments;
 
+-- DELETE FROM comments
 DELETE FROM users WHERE user_id = "d6389953261a48eba125fa54d8ce958e";
 
+-- ########################## DELETE tweet with comments
+DELETE FROM tweets WHERE tweet_id ="8e08580e4c0a47b386ec956d5a25604f";
 
 
 --  ############### THIS WAY I SELECT ALL OF MY COMMENTS and corresponding tweets together with my user
 SELECT users.user_id, users.user_name, tweets.tweet_id, tweets.tweet_message, tweets.tweet_user_fk, comments.* FROM comments
 JOIN users ON comments.comment_creator_fk = users.user_id
 JOIN tweets ON comments.tweet_id_fk = tweets.tweet_id
-WHERE tweet_id_fk = "8e08580e4c0a47b386ec956d5a25604f"; 
+WHERE tweet_id_fk = "485db3c60952420e9c4670bb8d3c5830"; 
 
-SELECT * FROM users JOIN tweets ON tweet_user_fk = user_id;
 
 
 -- TO VIEW THE DATA CORRESPONDING TO THE FOREIGN KEYS I HAVE TO USE JOINS IN THE SELECT QUERY
-
 SELECT * FROM tweets JOIN users ON tweet_user_fk = user_id ORDER BY tweet_created_at DESC
+
+SELECT * FROM users JOIN tweets ON tweet_user_fk = user_id;
+
+-- ################################### TRENDS TABLE 
+DROP TABLE IF EXISTS trends;
+CREATE TABLE trends(
+  trend_id            TEXT,
+  trend_title         TEXT NOT NULL,
+  trend_total_tweets  INTEGER DEFAULT 0,
+  PRIMARY KEY(trend_id)
+) WITHOUT ROWID;
+
+INSERT INTO trends VALUES("882f3de5c2e5450eaf6e59c14be1db70", "Gaming", 1524);
+INSERT INTO trends VALUES("7a90e16350074cf7a15fba48113c4046", "Counter-Strike", 87565);
+INSERT INTO trends VALUES("43ace034564c42788169ac18aaf601f5", "Movies", 924);
+INSERT INTO trends VALUES("2a9470bc61314187b19d7190b76cd535", "Coding", 22574);
+INSERT INTO trends VALUES("c9773e2bb68647039a7a40c2ee7d4716", "Ukraine", 4458796);
+
+SELECT * FROM trends ORDER BY trend_total_tweets DESC;
 
 
 -- By creating the FTS5 virtual table "users_search" with the specified columns, i enable full-text searching on the user_name, user_first_name, and user_last_name
@@ -204,11 +188,54 @@ Indexes are used to improve the performance of queries by allowing the database 
 
 -- ############################ JUNCTION TABLES, TO CREATE RELATIONS
 
--- DROP TABLE IF EXISTS follows;
--- CREATE TABLE follows(
---   follow_user_followee   TEXT REFERENCES user(user_id),
---   follow_user_follower   TEXT REFERENCES user(user_id)
--- ) WITHOUT ROWID;
+DROP TABLE IF EXISTS follows;
+CREATE TABLE follows(
+  follow_user_followed   TEXT,
+  follow_user_follower   TEXT,
+  PRIMARY KEY (follow_user_followed, follow_user_follower),
+  FOREIGN KEY (follow_user_followed) REFERENCES users(user_id),
+  FOREIGN KEY (follow_user_follower) REFERENCES users(user_id)
+) WITHOUT ROWID;
+
+-- ############### Trigger so when someone follows increment user_total_followers +1 
+DROP TRIGGER IF EXISTS increment_total_followers;
+CREATE TRIGGER increment_total_followers AFTER INSERT ON follows
+BEGIN
+  UPDATE users SET user_total_followers = user_total_followers + 1 WHERE user_id = NEW.follow_user_followed;
+END;
+
+
+-- ################# Joe biden Follows Elon Musk
+INSERT INTO follows VALUES("7e968791b6c24ed0a482416f0e769727", "51602a9f7d82472b90ed1091248f6cb1");
+INSERT INTO follows VALUES("a22da1effb3d4f03a0f77f9aa8320203", "51602a9f7d82472b90ed1091248f6cb1");
+
+-- ################# Elon Musk follows Joe Biden
+INSERT INTO follows VALUES("51602a9f7d82472b90ed1091248f6cb1", "7e968791b6c24ed0a482416f0e769727");
+
+-- 7e968791b6c24ed0a482416f0e769727 // JOE BIDEN
+-- 51602a9f7d82472b90ed1091248f6cb1 // ELON MUSK
+
+-- ############### Trigger so when someone unfollows decrement user_total_followers -1 
+DROP TRIGGER IF EXISTS decrement_total_followers;
+CREATE TRIGGER decrement_total_followers AFTER DELETE ON follows
+BEGIN
+  UPDATE users SET user_total_followers = user_total_followers - 1 WHERE user_id = OLD.follow_user_followed;
+END;
+
+DELETE FROM follows WHERE follow_user_followed = "a22da1effb3d4f03a0f77f9aa8320203" AND follow_user_follower = "51602a9f7d82472b90ed1091248f6cb1";
+
+
+-- ################################ TRIGGERS
+-- DROP TRIGGER IF EXISTS increment_user_total_tweets;
+-- CREATE TRIGGER increment_user_total_tweets AFTER INSERT ON tweets
+-- BEGIN
+--     UPDATE users
+--     SET user_total_tweets = user_total_tweets + 1
+--     WHERE user_id = NEW.tweet_user_fk;
+-- END;
+
+
+
 
 -- CREATE TABLE tweet_likes(
 -- tweet_id_fk TEXT,
@@ -305,7 +332,7 @@ SELECT * FROM popular_trends;
 --     WHERE user_id = NEW.tweet_user_fk;
 -- END;
 
--- if a tweet is deleted the total tweets of the users is automatically deleted
+-- if a tweet is deleted the total tweets of the users is automatically decremented
 
 -- DROP TRIGGER IF EXISTS decrement_user_total_tweets;
 -- CREATE TRIGGER decrement_user_total_tweets AFTER DELETE ON tweets
